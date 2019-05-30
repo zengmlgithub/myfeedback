@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="324dp"
+    android:layout_height="142dp"
+    android:layout_marginBottom="9dp"
+    android:background="@drawable/shape_rec_black"
+    android:paddingLeft="18dp">
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="19dp"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/title_tv"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="4dp"
+        android:lines="5"
+        android:textSize="8sp" />
+
+    <ImageView
+        android:id="@+id/feedback_iv"
+        android:layout_width="37dp"
+        android:layout_height="19dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/feedback_bg" />
+
+    <ImageView
+        android:id="@+id/msg_line_iv"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/black" />
+
+    <TextView
+        android:id="@+id/msg_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/msg_person_txt"
+        android:textSize="8dp"
+        android:textStyle="bold"
+
+        />
+
+    <TextView
+        android:id="@+id/person_tv"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:layout_toRightOf="@id/msg_tv"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/msg_date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:layout_toLeftOf="@+id/date_tv"
+        android:text="通知时间："
+        android:textSize="8dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:paddingRight="4dp"
+        android:textSize="8dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

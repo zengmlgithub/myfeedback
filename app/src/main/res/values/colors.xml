@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="login_bg">#D765A0</color>
+    <color name="login_txt_color">#FFFFFF</color>
+    <color name="toolBarColor">#FF0000</color>
+    <color name="red">#FF0000</color>
+
+    <color name="black">#000000</color>
+    <color name="line_bg">#FF707070</color>
+    <color name="blue">#3366CC</color>
+    <color name="gray_back">#999</color>
+
+
+    <color name="app_main_color">#FF0000</color>
+    <color name="title_black">#FF000000</color>
+    <color name="depart_blue">#7D7D7D</color>
+    <color name="white">#FFFFFF</color>
+
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:id="@+id/depart_rl"
+        >
+
+        <ImageView
+            android:id="@+id/depart_iv"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:background="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/depart_name_tv"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/depart_iv"
+            android:layout_marginLeft="11dp"
+            android:text="教务处"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/depart_rl"
+        android:layout_marginTop="6dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date_tv"
+            android:text="Date:"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datetime_tv"
+            android:text="2019/05/20 12:45pm"
+            android:textSize="10sp"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/date_tv"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
