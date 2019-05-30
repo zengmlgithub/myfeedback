@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme"
             android:name=".app.FeedbackApplication"
             >
-        <activity android:name=".activity.PhotoActivity">
+        <activity android:name=".activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
