@@ -101,13 +101,10 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     @Override
     public void onClick(View v) {
-        //我的反馈
         if(v.getId() == R.id.main_fk_ll){
             StartUtils.startActivity(getContext(), MyFeedbackActivity.class);
         }else if(v.getId() == R.id.fk_main_ll){  //反馈我的
-            //TODO：反馈我的
             StartUtils.startActivity(getContext(), FeedbackMyActivity.class);
         }
-
     }
 }
