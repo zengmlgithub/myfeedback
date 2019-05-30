@@ -9,6 +9,6 @@ public final class MainMyContacts {
     }
 
     public interface IMainMyPresenter extends IBasePresenter{
-
+         void mkdir();
     }
 }

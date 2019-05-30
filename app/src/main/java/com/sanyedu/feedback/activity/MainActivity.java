@@ -1,5 +1,6 @@
 package com.sanyedu.feedback.activity;
 
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,10 +12,12 @@ import com.sanyedu.feedback.base.SanyBaseActivity;
 import com.sanyedu.feedback.fragment.MainFkFragment;
 import com.sanyedu.feedback.fragment.NoticeFragment;
 import com.sanyedu.feedback.fragment.MainMyFragment;
+import com.sanyedu.feedback.log.SanyLogs;
 import com.sanyedu.feedback.model.Names;
 import com.sanyedu.feedback.mvpimpl.test.TestContact;
 import com.sanyedu.feedback.mvpimpl.test.TestPresenter;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,5 +90,27 @@ public class MainActivity extends SanyBaseActivity<TestPresenter> implements Tes
     @Override
     public void setUserInfo(List<Names> nameList) {
 
+    }
+
+    @Override
+    public void showHeadImage() {
+
+    }
+
+    @Override
+    public void startActivityWithResult(Uri uri, Uri cropUri) {
+
+    }
+
+    @Override
+    public InputStream openInputStream(Uri uri) {
+        InputStream inputStream = null;
+        try{
+            inputStream =  getContentResolver().openInputStream(uri);
+        }catch (Exception e){
+            SanyLogs.e("e---》" + e.toString());
+        }
+
+        return inputStream;
     }
 }
