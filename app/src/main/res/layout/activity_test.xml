@@ -9,7 +9,7 @@
               android:paddingTop="@dimen/activity_vertical_margin"
               tools:context=".activity.TestActivity">
 
-    <com.sanyedu.feedback.widget.FlowLayout
+    <com.sanyedu.myfeedback.widget.FlowLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -82,7 +82,7 @@
                 android:onClick="clearSession"
                 android:text="clearSession"/>
 
-    </com.sanyedu.feedback.widget.FlowLayout>
+    </com.sanyedu.myfeedback.widget.FlowLayout>
 
     <ProgressBar
         android:id="@+id/id_progress"

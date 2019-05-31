@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.sanyedu.feedback">
+          package="com.sanyedu.myfeedback">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--使用摄像头时的权限申明-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
             android:allowBackup="true"
@@ -14,9 +20,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
-            android:name=".app.FeedbackApplication"
+            android:name="com.sanyedu.myfeedback.app.FeedbackApplication"
             >
-        <activity android:name=".activity.FirstActivity">
+        <activity android:name="com.sanyedu.myfeedback.activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -24,14 +30,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.GotoFeedbackActivity" />
-        <activity android:name=".activity.ModifyDetailActivity" />
-        <activity android:name=".activity.ModifyPwdActivity" />
-        <activity android:name=".activity.MyFeedbackActivity" />
-        <activity android:name=".activity.NoticeDetailActivity" />
-        <activity android:name=".activity.FeedbackMyActivity" />
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="com.sany.myfeedback.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name="com.sanyedu.myfeedback.activity.LoginActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.MainActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.ModifyDetailActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.ModifyPwdActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.MyFeedbackActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity" />
 
     </application>
 
