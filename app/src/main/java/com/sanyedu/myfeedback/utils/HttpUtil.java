@@ -28,6 +28,7 @@ public class HttpUtil {
     public static final String MODIFIED_DETAIL_PORT = "academic/selInfo_det"; //整改详情
     public static final String MY_FEEDBACK_PORT = "academic/myDectis";//我的反馈
     public static final String FEEDBACK_MY_PORT = "academic/selMyInfo";//反馈我的
+    public static final String GET_ALL_DEPART_PORT = "schUser/selDept"; //查询所有部门
 
     public static final String SUCCESS = "1";
     public static final String ERROR_ACCOUNT = "0"; //账号密码错误

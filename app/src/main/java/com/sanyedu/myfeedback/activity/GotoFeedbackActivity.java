@@ -19,12 +19,16 @@ import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.sanyedu.myfeedback.R;
+import com.sanyedu.myfeedback.adapter.DepartAdapter;
 import com.sanyedu.myfeedback.adapter.FullyGridLayoutManager;
 import com.sanyedu.myfeedback.adapter.GridImageAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
+import com.sanyedu.myfeedback.model.DepartBean;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackContacts;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackPresenter;
+import com.simple.commonadapter.ListViewAdapter;
+import com.simple.commonadapter.viewholders.GodViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +55,8 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     private List<String> departList ;
     private List<String> personList;
 
-    ArrayAdapter personAdapter;
-    ArrayAdapter departAdapter;
+    DepartAdapter departAdapter;
+
 
     @Override
     public void onClick(View v) {
@@ -113,19 +117,25 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         personList.add("李骑驴");
 
 
-         personAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,personList);
-        personSpinner.setAdapter(personAdapter);
+//         personAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,personList);
+
+//        final ListViewAdapter<> adapter = new ListViewAdapter<String>(R.layout.list_item_type_1) {
+//            @Override
+//            protected void onBindData(GodViewHolder viewHolder, int position, String item) {
+//
+//                viewHolder
+//                        .setText(R.id.textview, item)             // 设置文本内容
+//                        .setImageResource(R.id.imageview, R.drawable.big_smile) ; // 设置图片资源
+//            }
+//        };
+//
+//        personSpinner.setAdapter();
     }
 
     private void initDepart() {
-        departList = new ArrayList<>();
-        departList.add("请选择责任人^");
-        departList.add("信息中心");
-        departList.add("学工处");
-        departList.add("行政中心");
-
-         departAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,departList);
+        departAdapter = new DepartAdapter(getLayoutInflater());
         departSpinner.setAdapter(departAdapter);
+
     }
 
     @Override
@@ -258,9 +268,10 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         }
     }
 
+
     @Override
-    public void setDepartList(List<String> departList) {
-       //TODO:加载数据
+    public void setDepartList(List<DepartBean> departList) {
+
     }
 
     @Override
