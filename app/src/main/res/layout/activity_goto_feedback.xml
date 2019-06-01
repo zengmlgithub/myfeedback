@@ -83,20 +83,18 @@
         android:layout_marginTop="25dp"
         >
 
-        <EditText
+        <Spinner
             android:layout_width="0dp"
             android:layout_height="22dp"
             android:layout_weight="1"
             android:hint="请选择责任部门"
-
             android:background="@drawable/shape_rec_black"
             android:layout_centerHorizontal="true"
-
             android:id="@+id/policy_department_et"
             android:textSize="8sp"
             />
 
-        <EditText
+        <Spinner
             android:layout_width="0dp"
             android:layout_height="22dp"
             android:layout_weight="1"

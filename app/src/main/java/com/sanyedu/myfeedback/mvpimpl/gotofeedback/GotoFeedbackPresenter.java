@@ -9,4 +9,15 @@ public class GotoFeedbackPresenter extends BasePresenter implements GotoFeedback
     public GotoFeedbackPresenter(@NonNull IBaseView view) {
         super(view);
     }
+
+
+    @Override
+    public void getDepart() {
+
+    }
+
+    @Override
+    public void getPersonOfDepart(String departId) {
+
+    }
 }

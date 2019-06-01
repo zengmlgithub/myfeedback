@@ -10,7 +10,9 @@ import android.view.View;
 
 
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -43,6 +45,15 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     private RecyclerView mRecyclerView;
     private PopupWindow pop;
 
+    private Spinner departSpinner;
+    private Spinner personSpinner;
+
+    private List<String> departList ;
+    private List<String> personList;
+
+    ArrayAdapter personAdapter;
+    ArrayAdapter departAdapter;
+
     @Override
     public void onClick(View v) {
         if (v.getId() == gobackTv.getId()){
@@ -54,6 +65,12 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     @Override
     protected void initData() {
+        initPhoto();
+        initDepart();
+        initPerson();
+    }
+
+    private void initPhoto() {
         FullyGridLayoutManager manager = new FullyGridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);
         adapter = new GridImageAdapter(this, onAddPicClickListener);
@@ -85,6 +102,30 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
                 }
             }
         });
+
+    }
+
+    private void initPerson() {
+        personList = new ArrayList<>();
+        personList.add("请选择部门^");
+        personList.add("兰胖子");
+        personList.add("许棍棍");
+        personList.add("李骑驴");
+
+
+         personAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,personList);
+        personSpinner.setAdapter(personAdapter);
+    }
+
+    private void initDepart() {
+        departList = new ArrayList<>();
+        departList.add("请选择责任人^");
+        departList.add("信息中心");
+        departList.add("学工处");
+        departList.add("行政中心");
+
+         departAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,departList);
+        departSpinner.setAdapter(departAdapter);
     }
 
     @Override
@@ -92,6 +133,8 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         gobackTv = findViewById(R.id.goback_iv);
         commitTv = findViewById(R.id.submit_tv);
         mRecyclerView = findViewById(R.id.recycler);
+        departSpinner = findViewById(R.id.policy_department_et);
+        personSpinner = findViewById(R.id.policy_person_et);
     }
 
     @Override
@@ -213,5 +256,15 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
                     break;
             }
         }
+    }
+
+    @Override
+    public void setDepartList(List<String> departList) {
+       //TODO:加载数据
+    }
+
+    @Override
+    public void setperson(List<String> personList) {
+        //TODO:加载数据
     }
 }
