@@ -19,10 +19,6 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     private TextView gobackTv;
     private TextView commitTv;
 
-    private ImageView photo1Iv;
-    private ImageView photo2Tv;
-    private ImageView photo3Tv;
-
     @Override
     public void onClick(View v) {
         if (v.getId() == gobackTv.getId()){
