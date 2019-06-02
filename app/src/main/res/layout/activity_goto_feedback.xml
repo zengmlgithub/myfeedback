@@ -33,13 +33,14 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="22dp"
+        android:layout_height="wrap_content"
         android:hint="请为你的问题输入一个标题"
         android:layout_below="@+id/op_rl"
         android:background="@drawable/shape_rec_black"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:id="@+id/title_et"
+        style="@style/edit_title_style"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,19 +48,17 @@
         android:id="@+id/address_date_ll"
         android:orientation="horizontal"
         android:layout_below="@id/title_et"
+        android:layout_marginTop="10dp"
         >
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请输入反馈地点"
-
             android:background="@drawable/shape_rec_black"
-            android:layout_centerHorizontal="true"
-           android:layout_marginTop="10dp"
             android:id="@+id/address_et"
-            android:textSize="8sp"
+            style="@style/edit_content_style"
             />
     </LinearLayout>
 
@@ -88,7 +87,7 @@
             android:layout_height="22dp"
             android:layout_weight="1"
             android:hint="请选择责任部门"
-            android:background="@drawable/shape_rec_black"
+            android:background="@drawable/shape_ring_depart"
             android:layout_centerHorizontal="true"
             android:id="@+id/policy_department_et"
             android:textSize="8sp"
@@ -100,7 +99,7 @@
             android:layout_weight="1"
             android:hint="请选择责任人"
 
-            android:background="@drawable/shape_rec_black"
+            android:background="@drawable/shape_ring_depart"
             android:layout_centerHorizontal="true"
 
             android:id="@+id/policy_person_et"

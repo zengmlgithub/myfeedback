@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -39,18 +41,27 @@ import java.util.List;
  */
 public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI, View.OnClickListener {
 
-    private TextView gobackTv;
-    private TextView commitTv;
+    @BindView(R.id.goback_iv)
+    TextView gobackTv;
+
+    @BindView(R.id.submit_tv)
+    TextView commitTv;
+
+    @BindView(R.id.recycler)
+    RecyclerView mRecyclerView;
+
+    @BindView(R.id.policy_department_et)
+    Spinner departSpinner;
+
+    @BindView(R.id.policy_person_et)
+    Spinner personSpinner;
 
 
     private int maxSelectNum = 3;
     private List<LocalMedia> selectList = new ArrayList<>();
     private GridImageAdapter adapter;
-    private RecyclerView mRecyclerView;
-    private PopupWindow pop;
 
-    private Spinner departSpinner;
-    private Spinner personSpinner;
+    private PopupWindow pop;
 
     private List<String> departList ;
     private List<String> personList;
@@ -69,6 +80,7 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     @Override
     protected void initData() {
+        ButterKnife.bind(this);
         initPhoto();
         initDepart();
         initPerson();
@@ -140,11 +152,7 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     @Override
     protected void findViews() {
-        gobackTv = findViewById(R.id.goback_iv);
-        commitTv = findViewById(R.id.submit_tv);
-        mRecyclerView = findViewById(R.id.recycler);
-        departSpinner = findViewById(R.id.policy_department_et);
-        personSpinner = findViewById(R.id.policy_person_et);
+
     }
 
     @Override

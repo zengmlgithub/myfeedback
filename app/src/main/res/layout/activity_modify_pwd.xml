@@ -91,7 +91,7 @@
         android:text="确认修改"
         android:textSize="12dp"
         android:id="@+id/confirm_btn"
-        android:background="@color/blue"
+        android:background="@drawable/shape_ring_confirm"
         android:layout_below="@+id/input_third_pwd_et"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"

@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme"
             android:name="com.sanyedu.myfeedback.app.FeedbackApplication"
             >
-        <activity android:name="com.sanyedu.myfeedback.activity.ModifyPwdActivity">
+        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -44,7 +44,7 @@
         <activity android:name="com.sanyedu.myfeedback.activity.MainActivity" />
         <activity android:name="com.sanyedu.myfeedback.activity.FirstActivity" />
         <activity android:name="com.sanyedu.myfeedback.activity.ModifyDetailActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity" />
+
         <activity android:name="com.sanyedu.myfeedback.activity.MyFeedbackActivity" />
         <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity" />
         <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity" />

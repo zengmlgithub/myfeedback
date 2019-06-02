@@ -8,11 +8,12 @@ import android.widget.TextView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.model.DepartBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DepartAdapter extends BaseAdapter {
 
-    private List<DepartBean> departList;
+    private List<DepartBean> departList = new ArrayList<DepartBean>();
     private LayoutInflater inflater;
 
     public DepartAdapter(LayoutInflater inflater){
