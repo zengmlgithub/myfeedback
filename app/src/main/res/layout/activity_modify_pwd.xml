@@ -33,6 +33,15 @@
         android:background="@drawable/shape_rec_black"
         />
 
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:layout_below="@id/input_first_pwd_et"
+              android:layout_alignLeft="@id/input_first_pwd_et"
+              android:text="请输入原密码"
+              android:textSize="8dp"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/first_hint_tv"
+    />
+
     <com.sanyedu.myfeedback.widget.EditTextWithDel
         android:layout_width="324dp"
         android:layout_height="30dp"
@@ -43,8 +52,16 @@
         android:layout_marginTop="25dp"
         android:textSize="13dp"
         android:background="@drawable/shape_rec_black"
-
         />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_below="@id/input_second_pwd_et"
+              android:layout_alignLeft="@id/input_second_pwd_et"
+              android:text="密码必须大于6位,且含有字母大、小写和数字组合"
+              android:textSize="8dp"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/second_hint_tv"
+    />
 
     <com.sanyedu.myfeedback.widget.EditTextWithDel
         android:layout_width="324dp"
@@ -57,16 +74,27 @@
         android:textSize="13dp"
         android:background="@drawable/shape_rec_black"
         />
+
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:layout_below="@id/input_third_pwd_et"
+              android:layout_alignLeft="@id/input_third_pwd_et"
+              android:text="再次输入新密码"
+              android:textSize="8dp"
+              android:layout_marginLeft="8dp"
+              android:id="@+id/third_hint_tv"
+    />
     
     <Button
         android:layout_width="324dp"
         android:layout_height="30dp"
         android:text="确认修改"
-        android:textSize="20dp"
-        android:id="@+id/modify_btn"
+        android:textSize="12dp"
+        android:id="@+id/confirm_btn"
         android:background="@color/blue"
         android:layout_below="@+id/input_third_pwd_et"
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
         />
 </RelativeLayout>
