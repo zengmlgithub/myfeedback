@@ -13,6 +13,7 @@ import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.utils.PictureUtils;
+import com.sanyedu.myfeedback.utils.StatusUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +51,12 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
             holder.contentTv.setText(records.getFeedbackContent());
             holder.feedbackDepartTv.setText("反馈部门：" + records.getFeedbackDept());
 
-            String drawableString = records.getRectiStatus();
-            SanyLogs.i("name:" + records.getFeedbackTitle() + "~~~~~drawableString:" + drawableString);
-            int drawableId = PictureUtils.rectiStatus2DrawableId(drawableString);
-
+            String statusString = records.getRectiStatus();
+            SanyLogs.i("name:" + records.getFeedbackTitle() + "~~~~~drawableString:" + statusString);
+            int drawableId = StatusUtils.rectiStatus2DrawableId(statusString);
+            String typeStr = StatusUtils.rectiStatus2String(statusString);
             holder.typeIv.setBackgroundResource(drawableId);
+            holder.typeIv.setText(typeStr);
 
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -82,7 +84,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
         private ImageView photo1Iv;
         private ImageView photo2Iv;
         private ImageView photo3Iv;
-        private ImageView typeIv;
+        private TextView typeIv;
         private TextView feedbackDepartTv;//反馈部门
 
         private View itemView;

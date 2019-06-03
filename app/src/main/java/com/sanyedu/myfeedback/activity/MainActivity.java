@@ -18,16 +18,10 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Names;
 import com.sanyedu.myfeedback.mvpimpl.test.TestContact;
 import com.sanyedu.myfeedback.mvpimpl.test.TestPresenter;
-import com.sanyedu.myfeedback.utils.ConstantUtil;
-import com.sanyedu.myfeedback.utils.FileUtils;
-import com.sanyedu.myfeedback.utils.PictureUtils;
 
-import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sanyedu.myfeedback.utils.ConstantUtil.*;
 
 public class MainActivity extends SanyBaseActivity<TestPresenter> implements TestContact.ITestUI/*, View.OnClickListener */{
     @BindView(R.id.tablayout)
@@ -40,16 +34,7 @@ public class MainActivity extends SanyBaseActivity<TestPresenter> implements Tes
 
     private ArrayList<String> titles;
 
-//    viewPager = findViewById(R.id.vp_content);
-//    tabLayout = findViewById(R.id.tablayout);
-
     private int images[] = {R.drawable.msg_selector, R.drawable.feedback_selector, R.drawable.my_selector};
-
-
-//    @Override
-//    public void onClick(View v) {
-//
-//    }
 
     @Override
     protected void initData() {

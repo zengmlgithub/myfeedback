@@ -122,13 +122,15 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
-            android:background="@mipmap/icon_modifing_bg"
             android:id="@+id/type_iv"
+            android:textSize="8dp"
+            android:gravity="center"
+            android:textColor="@color/white"
             />
     </RelativeLayout>
 
