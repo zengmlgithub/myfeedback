@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import com.sanyedu.myfeedback.R;
@@ -76,7 +77,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
     @Override
     protected void initData() {
-
+        ButterKnife.bind(this);
         adapter = new ModifyDetailAdapter(this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
