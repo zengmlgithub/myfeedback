@@ -27,14 +27,9 @@ import java.util.List;
  */
 public class MyFeedbackActivity extends SanyBaseActivity<MyFeedbackPresenter> implements MyFeedbackContacts.IMyFeedbackUI/*, View.OnClickListener*/ {
 
-    //    private TabLayout tabLayout;
-//    private ViewPager viewPager;
     private List<Fragment> fragments;
     private ArrayList<String> titles;
     private FeedbackAdapter feedbackAdapter;
-
-//    private ImageButton gobackIB;
-//    private TextView gotoFeedbackTv;
 
     @BindView(R.id.type_tl)
     TabLayout tabLayout;
@@ -47,22 +42,11 @@ public class MyFeedbackActivity extends SanyBaseActivity<MyFeedbackPresenter> im
         finish();
     }
 
-    ImageButton gobackIB;
 
     @OnClick(R.id.go_feedback_tv)
     public void gotoFeedback() {
         StartUtils.startActivity(this, GotoFeedbackActivity.class);
     }
-
-//
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.goback_iv) {
-//            finish();
-//        } else if (v.getId() == R.id.go_feedback_tv) {
-//
-//        }
-//    }
 
     @Override
     protected void initData() {
@@ -88,19 +72,7 @@ public class MyFeedbackActivity extends SanyBaseActivity<MyFeedbackPresenter> im
         viewPager.setAdapter(feedbackAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-//        gobackIB.setOnClickListener(this);
     }
-
-//    @Override
-//    protected void findViews() {
-//
-//    }
-
-//    @Override
-//    protected void setListeners() {
-//        gobackIB.setOnClickListener(this);
-//        gotoFeedbackTv.setOnClickListener(this);
-//    }
 
     @Override
     protected int getLayout() {
