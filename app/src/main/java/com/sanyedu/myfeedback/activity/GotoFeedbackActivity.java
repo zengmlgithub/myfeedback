@@ -10,12 +10,12 @@ import android.view.View;
 
 
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -29,8 +29,7 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DepartBean;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackContacts;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackPresenter;
-import com.simple.commonadapter.ListViewAdapter;
-import com.simple.commonadapter.viewholders.GodViewHolder;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,7 @@ import java.util.List;
 /**
  * 提交反馈的页面
  */
-public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI, View.OnClickListener {
+public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI{
 
     @BindView(R.id.goback_iv)
     TextView gobackTv;
@@ -69,13 +68,18 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     DepartAdapter departAdapter;
 
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == gobackTv.getId()){
-            finish();
-        }else if (v.getId() == commitTv.getId()){
-            //TODO:提交数据
-        }
+//    @Override
+//    public void onClick(View v) {
+//        if (v.getId() == gobackTv.getId()){
+//            finish();
+//        }else if (v.getId() == commitTv.getId()){
+//            //TODO:提交数据
+//        }
+//    }
+
+    @OnClick(R.id.goback_iv)
+    public void close(){
+        finish();
     }
 
     @Override
@@ -150,16 +154,11 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     }
 
-    @Override
-    protected void findViews() {
-
-    }
-
-    @Override
-    protected void setListeners() {
-        gobackTv.setOnClickListener(this);
-        commitTv.setOnClickListener(this);
-    }
+//    @Override
+//    protected void setListeners() {
+//        gobackTv.setOnClickListener(this);
+//        commitTv.setOnClickListener(this);
+//    }
 
     @Override
     protected int getLayout() {

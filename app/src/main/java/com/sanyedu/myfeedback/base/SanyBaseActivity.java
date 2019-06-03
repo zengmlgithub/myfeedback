@@ -48,18 +48,10 @@ public abstract class SanyBaseActivity<P extends IBasePresenter> extends BaseAct
         setContentView(getLayout());
         // 执行初始化方法
         initData();
-        findViews();
-        setListeners();
     }
 
     // 抽象 - 初始化方法，可以对数据进行初始化
     protected abstract void initData();
-
-    //抽象 - 获取views
-    protected abstract void findViews();
-
-    //抽象 - 获取listener
-    protected abstract void setListeners();
 
     protected abstract int getLayout();
 

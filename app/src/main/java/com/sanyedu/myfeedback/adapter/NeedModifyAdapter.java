@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
+import com.sanyedu.myfeedback.utils.PictureUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,12 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
             holder.titleTv.setText(records.getFeedbackTitle());
             holder.contentTv.setText(records.getFeedbackContent());
             holder.feedbackDepartTv.setText("反馈部门：" + records.getFeedbackDept());
+
+            String drawableString = records.getRectiStatus();
+            SanyLogs.i("name:" + records.getFeedbackTitle() + "~~~~~drawableString:" + drawableString);
+            int drawableId = PictureUtils.rectiStatus2DrawableId(drawableString);
+
+            holder.typeIv.setBackgroundResource(drawableId);
 
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 @Override

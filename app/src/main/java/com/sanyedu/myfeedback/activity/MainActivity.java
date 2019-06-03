@@ -1,14 +1,13 @@
 package com.sanyedu.myfeedback.activity;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.FileProvider;
-import android.support.v4.view.ViewPager;
-import android.view.View;
 
+import android.support.v4.view.ViewPager;
+
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.MainAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
@@ -30,26 +29,32 @@ import java.util.List;
 
 import static com.sanyedu.myfeedback.utils.ConstantUtil.*;
 
-public class MainActivity extends SanyBaseActivity<TestPresenter> implements TestContact.ITestUI, View.OnClickListener {
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class MainActivity extends SanyBaseActivity<TestPresenter> implements TestContact.ITestUI/*, View.OnClickListener */{
+    @BindView(R.id.tablayout)
+     TabLayout tabLayout;
+    @BindView(R.id.vp_content)
+    ViewPager viewPager;
 
     private List<Fragment> fragments;
     private MainAdapter mainAdapter;
 
     private ArrayList<String> titles;
 
+//    viewPager = findViewById(R.id.vp_content);
+//    tabLayout = findViewById(R.id.tablayout);
+
     private int images[] = {R.drawable.msg_selector, R.drawable.feedback_selector, R.drawable.my_selector};
 
 
-    @Override
-    public void onClick(View v) {
-
-    }
+//    @Override
+//    public void onClick(View v) {
+//
+//    }
 
     @Override
     protected void initData() {
+        ButterKnife.bind(this);
+
         fragments = new ArrayList<>();
         fragments.add(new NoticeFragment());
         fragments.add(new MainFkFragment());
@@ -75,16 +80,16 @@ public class MainActivity extends SanyBaseActivity<TestPresenter> implements Tes
 
     }
 
-    @Override
-    protected void findViews() {
-        viewPager = findViewById(R.id.vp_content);
-        tabLayout = findViewById(R.id.tablayout);
-    }
-
-    @Override
-    protected void setListeners() {
-
-    }
+//    @Override
+//    protected void findViews() {
+//        viewPager = findViewById(R.id.vp_content);
+//        tabLayout = findViewById(R.id.tablayout);
+//    }
+//
+//    @Override
+//    protected void setListeners() {
+//
+//    }
 
     @Override
     protected int getLayout() {

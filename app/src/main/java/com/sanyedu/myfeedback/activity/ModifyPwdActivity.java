@@ -50,15 +50,15 @@ public class ModifyPwdActivity extends SanyBaseActivity<ModifyPwdPresenter> impl
 
     }
 
-    @Override
-    protected void findViews() {
-        //TODO:采用butterknife后，不需要findviews了
-    }
+//    @Override
+//    protected void findViews() {
+//        //TODO:采用butterknife后，不需要findviews了
+//    }
 
-    @Override
-    protected void setListeners() {
+//    @Override
+//    protected void setListeners() {
 //        confirmBtn.setOnClickListener(this);
-    }
+//    }
 
     @Override
     protected int getLayout() {

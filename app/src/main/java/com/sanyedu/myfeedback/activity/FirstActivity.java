@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.widget.Button;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
@@ -14,7 +16,8 @@ import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.StartUtils;
 
 public class FirstActivity extends SanyBaseActivity {
-    private Button skipButton;
+    @BindView(R.id.next_btn)
+    Button skipButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,17 +35,8 @@ public class FirstActivity extends SanyBaseActivity {
 
     @Override
     protected void initData() {
+        ButterKnife.bind(this);
         mHandler.post(myRunnale);
-    }
-
-    @Override
-    protected void findViews() {
-        skipButton = findViewById(R.id.next_btn);
-    }
-
-    @Override
-    protected void setListeners() {
-
     }
 
     @Override

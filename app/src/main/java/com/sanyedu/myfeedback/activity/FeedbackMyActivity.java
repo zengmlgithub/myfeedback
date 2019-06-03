@@ -4,8 +4,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.fragment.BaseFeedbackMyFragment;
@@ -21,28 +25,21 @@ import java.util.List;
 /**
  * 反馈我的
  */
-public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackContacts.IMyFeedbackUI, View.OnClickListener {
+public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackContacts.IMyFeedbackUI {
+    @BindView(R.id.type_tl)
+    TabLayout tabLayout;
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    @BindView(R.id.vp_content)
+    ViewPager viewPager;
+
     private List<Fragment> fragments;
     private ArrayList<String> titles;
     private FeedbackAdapter feedbackAdapter;
 
-    private ImageButton gobackIB;
-    private TextView gotoFeedbackTv;
-    @Override
-    public void onClick(View v) {
-        if(v.getId() == R.id.goback_iv){
-            finish();
-        }else if (v.getId() == R.id.go_feedback_tv){
-            StartUtils.startActivity(this,GotoFeedbackActivity.class);
-        }
-    }
 
     @Override
     protected void initData() {
-
+        ButterKnife.bind(this);
         fragments = new ArrayList<>();
 
         BaseFeedbackMyFragment submitedFragment = BaseFeedbackMyFragment.newInstance("1");
@@ -67,18 +64,15 @@ public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackCo
 
     }
 
-    @Override
-    protected void findViews() {
-        tabLayout = findViewById(R.id.type_tl);
-        viewPager = findViewById(R.id.vp_content);
-        gobackIB = findViewById(R.id.goback_iv);
-        gotoFeedbackTv = findViewById(R.id.go_feedback_tv);
+
+    @OnClick(R.id.goback_iv)
+    public void close(){
+        finish();
     }
 
-    @Override
-    protected void setListeners() {
-        gobackIB.setOnClickListener(this);
-        gotoFeedbackTv.setOnClickListener(this);
+    @OnClick(R.id.go_feedback_tv)
+    public void goFeebackOnClick() {
+        StartUtils.startActivity(this,GotoFeedbackActivity.class);
     }
 
     @Override
