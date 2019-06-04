@@ -13,7 +13,7 @@ public class HttpUtil {
     private static final boolean IS_HTTP = true;
 
     private static final String FINAL_SERVER = "";  //正式服务器地址
-    private static final String TEST_SERVER = "172.16.11.252:8082";  //测试服务器地址
+    private static final String TEST_SERVER = "172.16.11.188:8082";  //测试服务器地址
 
     public static final String HTTPS = "https://";
     public static final String HTTP = "http://";
@@ -29,6 +29,10 @@ public class HttpUtil {
     public static final String MY_FEEDBACK_PORT = "academic/myDectis";//我的反馈
     public static final String FEEDBACK_MY_PORT = "academic/selMyInfo";//反馈我的
     public static final String GET_ALL_DEPART_PORT = "schUser/selDept"; //查询所有部门
+    public static final String GET_ONE_DEPART_TEACHER_PORT = "schUser/selTeacher"; //查找某个部门下的所有老师
+    public static final String POST_FEEDBACK_TO_SERVER_PORT = "submitFeedback/updateFile";//上传反馈到服务器
+    public static final String POST_UPLOAD_PORT = "submitFeedback/updateFile";
+
 
     public static final String SUCCESS = "1";
     public static final String ERROR_ACCOUNT = "0"; //账号密码错误
@@ -97,7 +101,29 @@ public class HttpUtil {
         public final static String EVERY_PAGE = "everyPage";
         public final static String ID = "id";
         public final static String TYPE = "type";
-
     }
 
+    public static class OneDepartTeacher{
+        public final static String DEPART_ID = "id";
+        public final static String TeName = "teName";
+    }
+
+    public static class FeedbackToServer{
+        public final static String FEEDBACK_TITLE = "feedbackTitle";
+        public final static String FEEDBACK_ADDRESS = "feedbackAdress";
+        public final static String FEEDBACK_CONTENT = "feedbackContent";
+        public final static String FEEDBACK_DEPT = "feedbackDept";
+        public final static String FEEDBACK_PERSON_ID = "feedbackPersonid";
+        public final static String FEEDBACK_PERSON_NAME = "feedbackPersonname";
+        public final static String FEEDBACK_A = "feedbackA";
+        public final static String FEEDBACK_B = "feedbackB";
+        public final static String FEEDBACK_C = "feedbackC";
+        public final static String TO_RESPONSIBL_NAME = "toResponsiblename";
+        public final static String  TO_RESPONSIBLE_DEPT= "toResponsibledept";
+    }
+
+    public static class UploadFile{
+//        public final static String KEY = "key";
+
+    }
 }

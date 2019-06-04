@@ -3,10 +3,7 @@ package com.sanyedu.myfeedback.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 
-import android.widget.ImageButton;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -63,6 +60,7 @@ public class MyFeedbackActivity extends SanyBaseActivity<MyFeedbackPresenter> im
         fragments.add(finishFragment);
 
         titles = new ArrayList<>();
+
         titles.add("已提交");
         titles.add("已审核");
         titles.add("整改中");

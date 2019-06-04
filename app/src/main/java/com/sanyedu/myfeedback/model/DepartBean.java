@@ -12,9 +12,9 @@ package com.sanyedu.myfeedback.model;
 public class DepartBean {
 
     private String fullname;
-    private int id;
-    private int num;
-    private int pid;
+    private String id;
+    private String num;
+    private String pid;
     private String pids;
     private String simplename;
     private String tips;
@@ -28,28 +28,28 @@ public class DepartBean {
         return fullname;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setNum(int num) {
-        this.num = num;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setPid(int pid) {
-        this.pid = pid;
+    public void setNum(String num) {
+        this.num = num;
     }
 
-    public int getPid() {
+    public String getPid() {
         return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
     }
 
     public void setPids(String pids) {
@@ -84,4 +84,17 @@ public class DepartBean {
         return version;
     }
 
+    @Override
+    public String toString() {
+        return "DepartBean{" +
+                "fullname='" + fullname + '\'' +
+                ", id=" + id +
+                ", num=" + num +
+                ", pid=" + pid +
+                ", pids='" + pids + '\'' +
+                ", simplename='" + simplename + '\'' +
+                ", tips='" + tips + '\'' +
+                ", version='" + version + '\'' +
+                '}';
+    }
 }

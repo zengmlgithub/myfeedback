@@ -84,27 +84,25 @@
 
         <Spinner
             android:layout_width="0dp"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请选择责任部门"
             android:background="@drawable/shape_ring_depart"
-            android:layout_centerHorizontal="true"
             android:id="@+id/policy_department_et"
-            android:textSize="8sp"
+
+            android:paddingLeft="10dp"
             />
 
         <Spinner
             android:layout_width="0dp"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="请选择责任人"
-
             android:background="@drawable/shape_ring_depart"
-            android:layout_centerHorizontal="true"
-
             android:id="@+id/policy_person_et"
             android:layout_marginLeft="10dp"
-            android:textSize="8sp"
+            android:gravity="center"
+            android:paddingLeft="10dp"
             />
     </LinearLayout>
 

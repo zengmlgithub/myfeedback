@@ -10,6 +10,7 @@ import android.view.View;
 
 
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -24,9 +25,11 @@ import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.DepartAdapter;
 import com.sanyedu.myfeedback.adapter.FullyGridLayoutManager;
 import com.sanyedu.myfeedback.adapter.GridImageAdapter;
+import com.sanyedu.myfeedback.adapter.PersonAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DepartBean;
+import com.sanyedu.myfeedback.model.PersonBean;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackContacts;
 import com.sanyedu.myfeedback.mvpimpl.gotofeedback.GotoFeedbackPresenter;
 
@@ -38,7 +41,7 @@ import java.util.List;
 /**
  * 提交反馈的页面
  */
-public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI{
+public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI, AdapterView.OnItemSelectedListener {
 
     @BindView(R.id.goback_iv)
     TextView gobackTv;
@@ -56,26 +59,17 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     Spinner personSpinner;
 
 
+
     private int maxSelectNum = 3;
     private List<LocalMedia> selectList = new ArrayList<>();
     private GridImageAdapter adapter;
 
     private PopupWindow pop;
 
-    private List<String> departList ;
-    private List<String> personList;
+    private List<DepartBean> departBeans = null;
 
     DepartAdapter departAdapter;
-
-
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == gobackTv.getId()){
-//            finish();
-//        }else if (v.getId() == commitTv.getId()){
-//            //TODO:提交数据
-//        }
-//    }
+    private PersonAdapter personAdapter;
 
     @OnClick(R.id.goback_iv)
     public void close(){
@@ -126,32 +120,17 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     }
 
     private void initPerson() {
-        personList = new ArrayList<>();
-        personList.add("请选择部门^");
-        personList.add("兰胖子");
-        personList.add("许棍棍");
-        personList.add("李骑驴");
-
-
-//         personAdapter = new ArrayAdapter(this,R.layout.item_spinner,R.id.person_tv,personList);
-
-//        final ListViewAdapter<> adapter = new ListViewAdapter<String>(R.layout.list_item_type_1) {
-//            @Override
-//            protected void onBindData(GodViewHolder viewHolder, int position, String item) {
-//
-//                viewHolder
-//                        .setText(R.id.textview, item)             // 设置文本内容
-//                        .setImageResource(R.id.imageview, R.drawable.big_smile) ; // 设置图片资源
-//            }
-//        };
-//
-//        personSpinner.setAdapter();
+        personAdapter = new PersonAdapter(getLayoutInflater());
+        personSpinner.setAdapter(personAdapter);
     }
 
     private void initDepart() {
         departAdapter = new DepartAdapter(getLayoutInflater());
         departSpinner.setAdapter(departAdapter);
 
+        getPresenter().getDepart();
+
+        departSpinner.setOnItemSelectedListener(this);
     }
 
 //    @Override
@@ -174,18 +153,16 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
         @Override
         public void onAddPicClick() {
-
             //第一种方式，弹出选择和拍照的dialog
             showPop();
-
         }
     };
 
     private void showPop() {
         View bottomView = View.inflate(GotoFeedbackActivity.this, R.layout.layout_bottom_dialog, null);
-        TextView mAlbum = (TextView) bottomView.findViewById(R.id.tv_album);
-        TextView mCamera = (TextView) bottomView.findViewById(R.id.tv_camera);
-        TextView mCancel = (TextView) bottomView.findViewById(R.id.tv_cancel);
+        TextView mAlbum = bottomView.findViewById(R.id.tv_album);
+        TextView mCamera = bottomView.findViewById(R.id.tv_camera);
+        TextView mCancel = bottomView.findViewById(R.id.tv_cancel);
 
         pop = new PopupWindow(bottomView, -1, -2);
         pop.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -195,7 +172,6 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         lp.alpha = 0.5f;
         getWindow().setAttributes(lp);
         pop.setOnDismissListener(new PopupWindow.OnDismissListener() {
-
             @Override
             public void onDismiss() {
                 WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -258,10 +234,8 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
             switch (requestCode) {
                 case PictureConfig.CHOOSE_REQUEST:
                     // 图片选择结果回调
-
                     images = PictureSelector.obtainMultipleResult(data);
                     selectList.addAll(images);
-
 //                    selectList = PictureSelector.obtainMultipleResult(data);
                     // 例如 LocalMedia 里面返回三种path
                     // 1.media.getPath(); 为原图path
@@ -278,11 +252,47 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     @Override
     public void setDepartList(List<DepartBean> departList) {
-
+        this.departBeans = departList;
+        departAdapter.setData(departList);
     }
 
     @Override
-    public void setperson(List<String> personList) {
-        //TODO:加载数据
+    public void setPersonList(List<PersonBean> personList) {
+        personAdapter.setData(personList);
+    }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(departBeans != null ){
+            DepartBean departBean = departBeans.get(position);
+            if(departBean != null){
+                SanyLogs.i("you hava click:" + position + "," + departBean.toString());
+                String departId = departBean.getId();
+                getPresenter().getPersonOfDepart(departId);
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @OnClick(R.id.submit_tv)
+    public void submitPhotos(){
+        List<String> photoList = new ArrayList<>();
+        if(selectList != null && selectList.size() > 0 ){
+            for(int i = 0; i < selectList.size() ; i ++){
+                LocalMedia localMedia = selectList.get(i);
+                if(localMedia != null){
+                    String photoPath = localMedia.getPath();
+                    SanyLogs.i("photoPath:" + photoPath);
+                    photoList.add(photoPath);
+                }
+            }
+        }
+
+        getPresenter().postFiles(photoList);
     }
 }
