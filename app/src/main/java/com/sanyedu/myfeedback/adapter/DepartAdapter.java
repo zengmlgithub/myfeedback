@@ -27,7 +27,7 @@ public class DepartAdapter extends BaseAdapter {
 
     @Override
     public DepartBean  getItem(int position) {
-        return null;
+        return departList.get(position);
     }
 
     @Override

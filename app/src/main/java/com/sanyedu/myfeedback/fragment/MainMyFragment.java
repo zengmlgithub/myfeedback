@@ -16,13 +16,11 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
-import android.widget.Toast;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.activity.FeedbackMyActivity;
+import com.sanyedu.myfeedback.activity.ModifyPwdActivity;
 import com.sanyedu.myfeedback.activity.MyFeedbackActivity;
 import com.sanyedu.myfeedback.base.BaseFragment;
 import com.sanyedu.myfeedback.log.SanyLogs;
@@ -64,6 +62,11 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private ImageView headIv;
     private PhotoPopupWindow mPhotoPopupWindow;
 
+    private ImageButton settingIv;
+    private RelativeLayout settingRl;
+    private ImageButton modifywIb;
+    private ImageButton logoutIb;
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_main_my;
@@ -91,11 +94,15 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
         myFeedbackRl.setOnClickListener(this);
         feedbackMyRl.setOnClickListener(this);
+        settingIv.setOnClickListener(this);
 
         headIv.setOnClickListener(this);
+        settingIv.setOnClickListener(this);
+        modifywIb.setOnClickListener(this);
+        logoutIb.setOnClickListener(this);
     }
 
-    private void findViews(View view){
+    private void findViews(View view) {
         nameTv = view.findViewById(R.id.name_tv);
         departTv = view.findViewById(R.id.depart_tv);
         feedbackMyTv = view.findViewById(R.id.feedback_main_number_tv);
@@ -110,6 +117,13 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         myFeedbackRl = view.findViewById(R.id.main_fk_ll);
 
         headIv = view.findViewById(R.id.head_iv);
+
+        settingIv = view.findViewById(R.id.settings_iv);
+        settingRl = view.findViewById(R.id.setting_rl);
+        modifywIb = view.findViewById(R.id.modify_pwd_ib);
+        logoutIb = view.findViewById(R.id.logout_ib);
+
+
     }
 
     @Override
@@ -134,62 +148,91 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.main_fk_ll){
+        if (v.getId() == R.id.main_fk_ll) {
             StartUtils.startActivity(getContext(), MyFeedbackActivity.class);
-        }else if(v.getId() == R.id.fk_main_ll){  //反馈我的
+        } else if (v.getId() == R.id.fk_main_ll) {  //反馈我的
             StartUtils.startActivity(getContext(), FeedbackMyActivity.class);
-        }else if(v.getId() == headIv.getId()) {
-            //TODO:弹出图片框
-            //创建存放头像的文件夹
-            getPresenter().mkdir();
-
-            mPhotoPopupWindow = new PhotoPopupWindow(getActivity(), new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 文件权限申请
-                    if (ContextCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                            != PackageManager.PERMISSION_GRANTED) {
-                        // 权限还没有授予，进行申请
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 200); // 申请的 requestCode 为 200
-                    } else {
-                        // 如果权限已经申请过，直接进行图片选择
-                        mPhotoPopupWindow.dismiss();
-                        Intent intent = new Intent(Intent.ACTION_PICK);
-                        intent.setType("image/*");
-                        // 判断系统中是否有处理该 Intent 的 Activity
-                        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-                            startActivityForResult(intent, REQUEST_IMAGE_GET);
-                        } else {
-                            Toast.makeText(getActivity(), "未找到图片查看器", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }, new View.OnClickListener()
-            {
-                @Override
-                public void onClick (View v){
-                    // 拍照及文件权限申请
-                    if (ContextCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                            || ContextCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                            != PackageManager.PERMISSION_GRANTED) {
-                        // 权限还没有授予，进行申请
-                        ActivityCompat.requestPermissions(getActivity(),
-                                new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 300); // 申请的 requestCode 为 300
-                    } else {
-                        // 权限已经申请，直接拍照
-                        mPhotoPopupWindow.dismiss();
-                        imageCapture();
-                    }
-                }
-            });
-            View rootView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_main, null);
-            mPhotoPopupWindow.showAtLocation(rootView,
-                    Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        } else if (v.getId() == headIv.getId()) {
+            showPop();
+        } else if (v.getId() == settingIv.getId()) {
+            showSettings();
+        } else if(v.getId() == modifywIb.getId()){
+            startModifyPwdActivity();
+        } else if(v.getId() == logoutIb.getId()){
+            showLogoutDialog();
         }
+    }
+
+    //显示是否退出页面
+    private void showLogoutDialog() {
+    }
+
+    //打开修改密码的activity
+    private void startModifyPwdActivity() {
+        StartUtils.startActivity(getActivity(), ModifyPwdActivity.class);
+    }
+
+    //显示悬浮按钮
+    private void showSettings() {
+        int visible = settingRl.getVisibility();
+        if(visible != View.VISIBLE){
+            settingRl.setVisibility(View.VISIBLE);
+        }else{
+            settingRl.setVisibility(View.GONE);
+        }
+    }
+
+    private void showPop() {
+        //TODO:弹出图片框
+        //创建存放头像的文件夹
+        getPresenter().mkdir();
+
+        mPhotoPopupWindow = new PhotoPopupWindow(getActivity(), new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 文件权限申请
+                if (ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // 权限还没有授予，进行申请
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 200); // 申请的 requestCode 为 200
+                } else {
+                    // 如果权限已经申请过，直接进行图片选择
+                    mPhotoPopupWindow.dismiss();
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    // 判断系统中是否有处理该 Intent 的 Activity
+                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivityForResult(intent, REQUEST_IMAGE_GET);
+                    } else {
+                        Toast.makeText(getActivity(), "未找到图片查看器", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 拍照及文件权限申请
+                if (ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                        || ContextCompat.checkSelfPermission(getActivity(),
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // 权限还没有授予，进行申请
+                    ActivityCompat.requestPermissions(getActivity(),
+                            new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 300); // 申请的 requestCode 为 300
+                } else {
+                    // 权限已经申请，直接拍照
+                    mPhotoPopupWindow.dismiss();
+                    imageCapture();
+                }
+            }
+        });
+        View rootView = LayoutInflater.from(getActivity()).inflate(R.layout.activity_main, null);
+        mPhotoPopupWindow.showAtLocation(rootView,
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+
     }
 
     private void imageCapture() {
@@ -213,7 +256,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         // 去拍照,拍照的结果存到oictureUri对应的路径中
         intent.putExtra(MediaStore.EXTRA_OUTPUT, pictureUri);
 //        Log.e(TAG,"before take photo"+pictureUri.toString());
-        SanyLogs.e("before take photo"+pictureUri.toString());
+        SanyLogs.e("before take photo" + pictureUri.toString());
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
 
@@ -228,14 +271,14 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
                 case REQUEST_SMALL_IMAGE_CUTTING:
 //                    Log.e(TAG,"before show");
                     SanyLogs.i("before show");
-                    File cropFile=new File(FileUtils.getMyPetRootDirectory(),"crop.jpg");
+                    File cropFile = new File(FileUtils.getMyPetRootDirectory(), "crop.jpg");
                     Uri cropUri = Uri.fromFile(cropFile);
                     getPresenter().setPicToView(cropUri);
                     break;
 
                 // 相册选取
                 case REQUEST_IMAGE_GET:
-                    Uri uri= PictureUtils.getImageUri(getContext(),data);
+                    Uri uri = PictureUtils.getImageUri(getContext(), data);
                     getPresenter().startPhotoZoom(uri);
                     break;
 
@@ -261,18 +304,18 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 //                    break;
                 default:
             }
-        }else{
+        } else {
 //            Log.e(TAG,"result = "+resultCode+",request = "+requestCode);
-            SanyLogs.e("result = "+resultCode+",request = "+requestCode);
+            SanyLogs.e("result = " + resultCode + ",request = " + requestCode);
         }
     }
 
     @Override
     public InputStream openInputStream(Uri uri) {
         InputStream inputStream = null;
-        try{
-            inputStream =  getActivity().getContentResolver().openInputStream(uri);
-        }catch (Exception e){
+        try {
+            inputStream = getActivity().getContentResolver().openInputStream(uri);
+        } catch (Exception e) {
             SanyLogs.e("e---》" + e.toString());
         }
 
@@ -293,8 +336,8 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
                 Bitmap bm = BitmapFactory.decodeFile(path);
                 // 将图片显示到ImageView中
                 headIv.setImageBitmap(bm);
-            }else{
-               SanyLogs.i("no file");
+            } else {
+                SanyLogs.i("no file");
 //                headIv.setImageResource(R.drawable.huaji);
             }
         } else {
@@ -320,7 +363,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         intent.putExtra("scale", true);
         intent.putExtra("return-data", false);
 
-        SanyLogs.i("cropUri = "+cropUri.toString());
+        SanyLogs.i("cropUri = " + cropUri.toString());
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cropUri);
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("noFaceDetection", true); // no face detection
