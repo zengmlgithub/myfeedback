@@ -26,7 +26,7 @@
                     android:id="@+id/head_iv"
                     android:layout_marginTop="21dp"
                     android:layout_marginLeft="28dp"
-                    android:background="@color/black"
+                    android:background="@color/gray_back"
             />
             <TextView
                     android:layout_width="wrap_content"
@@ -38,6 +38,9 @@
                     android:textColor="@color/black"
                     android:layout_below="@+id/head_iv"
                     android:id="@+id/depart_tv"
+                    android:layout_alignRight="@id/head_iv"
+                    android:lines="1"
+                    android:ellipsize="end"
             />
 
             <RelativeLayout
@@ -45,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/depart_tv"
                     android:layout_marginTop="2dp"
+                    android:layout_alignRight="@id/head_iv"
             >
 
                 <ImageView
@@ -66,6 +70,8 @@
 
                         android:textSize="10sp"
                         android:layout_centerVertical="true"
+                        android:lines="1"
+                        android:ellipsize="end"
                 />
 
             </RelativeLayout>
@@ -83,7 +89,6 @@
                         android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/title_tv"
-                        android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
                         android:ellipsize="end"
                         android:textSize="15sp"
                         android:textColor="@color/black"
@@ -91,15 +96,15 @@
                 />
 
                 <TextView
-                        android:layout_width="150dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/detail_tv"
-                        android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
                         android:textSize="12sp"
                         android:textColor="@color/gray_back"
                         android:lines="4"
                         android:ellipsize="end"
                         android:layout_marginTop="4dp"
+                        android:layout_marginRight="6dp"
                 />
 
                 <LinearLayout
@@ -139,7 +144,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"
                     android:id="@+id/type_iv"
-                    android:textSize="8dp"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="@color/white"
             />
@@ -153,8 +158,9 @@
 
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="19dp"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
+                android:id="@+id/feedback_department_ll"
         >
 
             <TextView
@@ -162,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/feedback_department_tv"
                     android:text="@string/policy_department_txt"
-                    android:textSize="8sp"
+                    android:textSize="15sp"
                     android:textColor="@color/white"
                     android:layout_marginLeft="20dp"
             />

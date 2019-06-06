@@ -7,12 +7,12 @@
 
     <solid android:color="@color/color_FF4500" />
 
-    <corners android:bottomLeftRadius="15dp"
-        android:topLeftRadius="15dp"
+    <corners android:bottomLeftRadius="11dp"
+        android:topLeftRadius="11dp"
     />
 
     <size
-        android:width="37dp"
-        android:height="18dp"
+        android:width="47dp"
+        android:height="22dp"
         />
 </shape>

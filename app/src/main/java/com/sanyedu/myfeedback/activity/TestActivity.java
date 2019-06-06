@@ -38,7 +38,7 @@ public class TestActivity extends AppCompatActivity {
         for (int i = 0; i < 100; i++) {
             Records records = new Records();
             records.setFeedbackAdress("A栋105");
-            records.setFeedbackDept("信息中心");
+            records.setFeedbackDept("学工部信息中心");
             records.setToResponsibledept("信息中心");
             records.setFeedbackTitle("教学楼6楼天台上有鸟粪");
             records.setFeedbackContent("教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪教学楼6楼天台上有鸟粪");

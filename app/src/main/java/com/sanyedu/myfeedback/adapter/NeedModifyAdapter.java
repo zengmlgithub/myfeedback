@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.sanyedu.myfeedback.R;
@@ -55,8 +56,12 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
             SanyLogs.i("name:" + records.getFeedbackTitle() + "~~~~~drawableString:" + statusString);
             int drawableId = StatusUtils.rectiStatus2DrawableId(statusString);
             String typeStr = StatusUtils.rectiStatus2String(statusString);
+            int colorId = StatusUtils.rectiStatus2Color(statusString);
+
+
             holder.typeIv.setBackgroundResource(drawableId);
             holder.typeIv.setText(typeStr);
+            holder.feedbackDepartLl.setBackgroundColor(context.getResources().getColor(colorId));
 
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -86,6 +91,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
         private ImageView photo3Iv;
         private TextView typeIv;
         private TextView feedbackDepartTv;//反馈部门
+        private LinearLayout feedbackDepartLl;
 
         private View itemView;
 
@@ -107,6 +113,8 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
             typeIv = itemView.findViewById(R.id.type_iv);
 
             feedbackDepartTv = itemView.findViewById(R.id.feedback_department_tv);
+
+            feedbackDepartLl = itemView.findViewById(R.id.feedback_department_ll);
         }
     }
 
