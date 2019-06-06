@@ -40,16 +40,47 @@
                     android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name="com.sanyedu.myfeedback.activity.LoginActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.MainActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.ModifyDetailActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.LoginActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name="com.sanyedu.myfeedback.activity.MainActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name="com.sanyedu.myfeedback.activity.ModifyDetailActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
 
-        <activity android:name="com.sanyedu.myfeedback.activity.MyFeedbackActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity" />
-        <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity" />
-        <activity android:name=".activity.ModifyPwdActivity" />
-        <activity android:name=".activity.ModifyInfoActivity" />
+        <activity android:name="com.sanyedu.myfeedback.activity.MyFeedbackActivity"
+            android:launchMode="singleInstance"
+             android:screenOrientation="portrait"
+        />
+        <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name=".activity.ModifyPwdActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name=".activity.ModifyInfoActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
+        <activity android:name=".activity.ModifyTelActivity"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+        />
 
 
     </application>

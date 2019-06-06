@@ -40,5 +40,7 @@
     <string name="modify_email">修改邮箱</string>
     <string name="confirm">确定</string>
     <string name="modify_email_success">邮箱修改成功</string>
+    <string name="modify_tel_success">电话号码修改成功</string>
     <string name="please_input_email">请输入email</string>
+    <string name= "please_input_tel">请输入电话号码</string>
 </resources>

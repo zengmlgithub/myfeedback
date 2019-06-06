@@ -13,7 +13,7 @@ import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
 
-public class ModifyInfoPresenter  extends BasePresenter<ModifyInfoContacts.IModifyInfoUI> implements ModifyInfoContacts.IModifyInfoPresenter {
+public class ModifyInfoPresenter extends BasePresenter<ModifyInfoContacts.IModifyInfoUI> implements ModifyInfoContacts.IModifyInfoPresenter {
     public ModifyInfoPresenter(@NonNull ModifyInfoContacts.IModifyInfoUI view) {
         super(view);
     }

@@ -18,7 +18,7 @@ import com.sanyedu.myfeedback.utils.ToastUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModifyInfoActivity extends SanyBaseActivity<ModifyInfoPresenter> implements ModifyInfoContacts.IModifyInfoUI {
+public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> implements ModifyInfoContacts.IModifyInfoUI {
 
 //    @BindView(R.id.goback_ib)
 //    ImageButton gobackIB;
@@ -52,23 +52,22 @@ public class ModifyInfoActivity extends SanyBaseActivity<ModifyInfoPresenter> im
 
     @OnClick(R.id.confirm_btn)
     public void confirm(){
-
-        String emailStr = modifyEt.getText().toString().trim();
-        if(TextUtils.isEmpty(emailStr)){
-            ToastUtil.showLongToast(R.string.please_input_email);
+        String telStr = modifyEt.getText().toString().trim();
+        if(TextUtils.isEmpty(telStr)){
+            ToastUtil.showLongToast(R.string.please_input_tel);
             return;
         }
 
         TeacherBean newBean = createNewTeacher();
         if(newBean != null) {
-            newBean.setTeEmail(emailStr);
+//            newBean.setTeEmail(emailStr);
+            newBean.setTePhone(telStr);
             List<TeacherBean> beanList = new ArrayList<>();
             beanList.add(newBean);
             String str = new Gson().toJson(beanList);
             getPresenter().ModifyObj("1",str);
         }else{
             //TODO:当email没有输入的时候，这个时候是不需要改东西的时候，可以做一个用户提示
-
         }
     }
 

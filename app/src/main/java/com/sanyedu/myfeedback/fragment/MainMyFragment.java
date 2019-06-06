@@ -19,10 +19,7 @@ import android.view.View;
 import android.widget.*;
 
 import com.sanyedu.myfeedback.R;
-import com.sanyedu.myfeedback.activity.FeedbackMyActivity;
-import com.sanyedu.myfeedback.activity.ModifyInfoActivity;
-import com.sanyedu.myfeedback.activity.ModifyPwdActivity;
-import com.sanyedu.myfeedback.activity.MyFeedbackActivity;
+import com.sanyedu.myfeedback.activity.*;
 import com.sanyedu.myfeedback.base.BaseFragment;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.TeacherBean;
@@ -69,6 +66,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private ImageButton logoutIb;
 
     private RelativeLayout emailRl;
+    private RelativeLayout telRl;
 
 
     @Override
@@ -106,6 +104,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         logoutIb.setOnClickListener(this);
 
         emailRl.setOnClickListener(this);
+        telRl.setOnClickListener(this);
     }
 
     private void findViews(View view) {
@@ -130,7 +129,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         logoutIb = view.findViewById(R.id.logout_ib);
 
         emailRl = view.findViewById(R.id.email_rl);
-
+        telRl = view.findViewById(R.id.tel_rl);
     }
 
     @Override
@@ -169,7 +168,13 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
             showLogoutDialog();
         } else if(v.getId() == emailRl.getId()){
             modifyEmail();
+        } else if(v.getId() == telRl.getId()){
+            modifyTel();
         }
+    }
+
+    private void modifyTel() {
+        StartUtils.startActivity(getActivity(), ModifyTelActivity.class);
     }
 
     private void modifyEmail() {
