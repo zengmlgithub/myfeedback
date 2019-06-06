@@ -1,160 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="324dp"
-    android:layout_height="150dp"
-    android:orientation="vertical"
-    android:background="@drawable/shape_rec_grayblack"
-    >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="120dp">
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="314dp"
+        android:layout_height="180dp"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="5dp"
 
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="47dp"
-            android:id="@+id/head_iv"
-            android:layout_marginTop="21dp"
-            android:layout_marginLeft="28dp"
-            android:background="@color/black"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="4dp"
-            android:text="信息中心"
-            android:textSize="10sp"
-            android:textColor="@color/black"
-            android:layout_below="@+id/head_iv"
-            android:id="@+id/depart_tv"
-            />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/depart_tv"
-            android:layout_marginTop="2dp"
-            >
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:id="@+id/address_iv"
-                android:layout_marginLeft="28dp"
-                android:background="@mipmap/icon_address"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/address_tv"
-                android:text="A栋教学楼"
-                android:layout_toRightOf="@id/address_iv"
-
-                android:textSize="8sp"
-                android:layout_centerVertical="true"
-                />
-
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="94dp"
-            android:layout_marginTop="24dp"
+            android:background="@drawable/shape_rec_grayblack"
+    >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+            <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:id="@+id/head_iv"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginLeft="28dp"
+                    android:background="@color/black"
+            />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="4dp"
+                    android:text="信息中心"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@+id/head_iv"
+                    android:id="@+id/depart_tv"
+            />
+
+            <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/depart_tv"
+                    android:layout_marginTop="2dp"
             >
 
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/title_tv"
-                android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
-                android:ellipsize="end"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:lines="1"
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/address_iv"
+                        android:layout_marginLeft="28dp"
+                        android:background="@mipmap/icon_address"
+
                 />
 
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/detail_tv"
-                android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:lines="2"
-                android:ellipsize="end"
-                android:layout_marginTop="4dp"
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/address_tv"
+                        android:text="A栋教学楼"
+                        android:layout_toRightOf="@id/address_iv"
+
+                        android:textSize="10sp"
+                        android:layout_centerVertical="true"
                 />
+
+            </RelativeLayout>
+
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="94dp"
+                    android:layout_alignTop="@+id/head_iv"
+            >
+
+                <TextView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/title_tv"
+                        android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
+                        android:ellipsize="end"
+                        android:textSize="15sp"
+                        android:textColor="@color/black"
+                        android:lines="1"
+                />
+
+                <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/detail_tv"
+                        android:text="教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了教学楼A栋105的投影坏了"
+                        android:textSize="12sp"
+                        android:textColor="@color/gray_back"
+                        android:lines="4"
+                        android:ellipsize="end"
+                        android:layout_marginTop="4dp"
+                />
+
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
                 >
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/photo1_iv"
-                    android:background="@mipmap/icon_test_bg"
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/photo1_iv"
+                            android:background="@mipmap/icon_test_bg"
                     />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/photo2_iv"
-                    android:background="@mipmap/icon_test_bg"
-                    android:layout_marginLeft="10dp"
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/photo2_iv"
+                            android:background="@mipmap/icon_test_bg"
+                            android:layout_marginLeft="10dp"
                     />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/photo3_iv"
-                    android:background="@mipmap/icon_test_bg"
-                    android:layout_marginLeft="10dp"
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/photo3_iv"
+                            android:background="@mipmap/icon_test_bg"
+                            android:layout_marginLeft="10dp"
                     />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="15dp"
-            android:id="@+id/type_iv"
-            android:textSize="8dp"
-            android:gravity="center"
-            android:textColor="@color/white"
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/type_iv"
+                    android:textSize="8dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
             />
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray_back"
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_back"
         />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="19dp"
-        android:background="@mipmap/modifing_footer"
-        android:gravity="center_vertical"
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:gravity="center_vertical"
         >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/feedback_department_tv"
-            android:text="@string/policy_department_txt"
-            android:textSize="8sp"
-            android:textColor="@color/white"
-            android:layout_marginLeft="20dp"
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/feedback_department_tv"
+                    android:text="@string/policy_department_txt"
+                    android:textSize="8sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="20dp"
             />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>
+
