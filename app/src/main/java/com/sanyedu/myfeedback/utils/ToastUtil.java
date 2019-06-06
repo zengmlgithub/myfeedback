@@ -74,6 +74,14 @@ public class ToastUtil {
             toast.show();
         }
     }
+
+    public static void showLongToast(int id){
+        if(FeedbackApplication.getApp() != null){
+            String str = FeedbackApplication.getApp().getResources().getString(id);
+            showLongToast(str);
+        }
+    }
+
     /**
      * 长时间显示Toast【居中】
      * @param msg 显示的内容-字符串*/

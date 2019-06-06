@@ -49,6 +49,7 @@
         <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity" />
         <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity" />
         <activity android:name=".activity.ModifyPwdActivity" />
+        <activity android:name=".activity.ModifyInfoActivity" />
 
 
     </application>

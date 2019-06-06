@@ -20,6 +20,7 @@ import android.widget.*;
 
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.activity.FeedbackMyActivity;
+import com.sanyedu.myfeedback.activity.ModifyInfoActivity;
 import com.sanyedu.myfeedback.activity.ModifyPwdActivity;
 import com.sanyedu.myfeedback.activity.MyFeedbackActivity;
 import com.sanyedu.myfeedback.base.BaseFragment;
@@ -67,6 +68,9 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private ImageButton modifywIb;
     private ImageButton logoutIb;
 
+    private RelativeLayout emailRl;
+
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_main_my;
@@ -100,6 +104,8 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         settingIv.setOnClickListener(this);
         modifywIb.setOnClickListener(this);
         logoutIb.setOnClickListener(this);
+
+        emailRl.setOnClickListener(this);
     }
 
     private void findViews(View view) {
@@ -123,6 +129,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         modifywIb = view.findViewById(R.id.modify_pwd_ib);
         logoutIb = view.findViewById(R.id.logout_ib);
 
+        emailRl = view.findViewById(R.id.email_rl);
 
     }
 
@@ -160,7 +167,13 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
             startModifyPwdActivity();
         } else if(v.getId() == logoutIb.getId()){
             showLogoutDialog();
+        } else if(v.getId() == emailRl.getId()){
+            modifyEmail();
         }
+    }
+
+    private void modifyEmail() {
+        StartUtils.startActivity(getActivity(), ModifyInfoActivity.class);
     }
 
     //显示是否退出页面
@@ -182,7 +195,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         }
     }
 
-    private void showPop() {
+        private void showPop() {
         //TODO:弹出图片框
         //创建存放头像的文件夹
         getPresenter().mkdir();

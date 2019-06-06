@@ -32,6 +32,7 @@ public class HttpUtil {
     public static final String GET_ONE_DEPART_TEACHER_PORT = "schUser/selTeacher"; //查找某个部门下的所有老师
     public static final String POST_FEEDBACK_TO_SERVER_PORT = "submitFeedback/updateFile";//上传反馈到服务器
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
+    public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
 
 
     public static final String SUCCESS = "1";
@@ -133,5 +134,10 @@ public class HttpUtil {
         public final static String USERNAME = "userName";
         public final static String PASSWORD = "password";
         public final static String NewPassword = "newPassword";
+    }
+
+    public static class UpdateObj{
+        public final static String TYPE = "type";
+        public final static String TE_USER = "teUser";
     }
 }

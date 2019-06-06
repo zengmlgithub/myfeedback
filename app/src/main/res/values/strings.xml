@@ -37,4 +37,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="modify_email">修改邮箱</string>
+    <string name="confirm">确定</string>
+    <string name="modify_email_success">邮箱修改成功</string>
+    <string name="please_input_email">请输入email</string>
 </resources>
