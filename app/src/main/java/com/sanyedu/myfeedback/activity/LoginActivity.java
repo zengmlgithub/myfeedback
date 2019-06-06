@@ -19,24 +19,6 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
     @BindView(R.id.password_et)
      EditText passwordEt;
 
-
-//    private Button commitBtn;
-
-
-//    usernameEt = findViewById(R.id.username_et);
-//    passwordEt = findViewById(R.id.password_et);
-//    commitBtn =  findViewById(R.id.commit_btn);
-
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.commit_btn){
-//            String username = usernameEt.getText().toString();
-//            String password = passwordEt.getText().toString();
-//            getPresenter().getToken(username,password, "2");
-//        }
-//
-//    }
-
     @OnClick(R.id.commit_btn)
     public void commit(){
         String username = usernameEt.getText().toString();
@@ -49,15 +31,6 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
         ButterKnife.bind(this);
     }
 
-//    @Override
-//    protected void findViews() {
-//
-//    }
-//
-//    @Override
-//    protected void setListeners() {
-//        commitBtn.setOnClickListener(this);
-//    }
 
     @Override
     protected int getLayout() {

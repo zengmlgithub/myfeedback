@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@mipmap/login_bg"
+                android:paddingLeft="17dp"
+                android:paddingRight="17dp"
     >
 
     <ImageView
@@ -14,7 +16,7 @@
         />
 
     <EditText
-        android:layout_width="341dp"
+        android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_below="@id/title_iv"
         android:id="@+id/username_et"
@@ -23,9 +25,10 @@
         android:layout_centerHorizontal="true"
         android:paddingLeft="48dp"
         android:hint="用户名"
+        android:textSize="20sp"
         />
     <EditText
-        android:layout_width="341dp"
+        android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_below="@id/username_et"
         android:id="@+id/password_et"
@@ -34,11 +37,12 @@
         android:layout_centerHorizontal="true"
         android:paddingLeft="48dp"
         android:hint="密码"
-        android:password="true"
+        android:inputType="textPassword"
+        android:textSize="20sp"
         />
     
     <Button
-        android:layout_width="341dp"
+        android:layout_width="match_parent"
         android:layout_height="54dp"
         android:background="@drawable/login_btn_bg"
         android:layout_below="@id/password_et"
@@ -46,9 +50,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/commit_btn"
         android:text="登录"
-        android:textSize="13sp"
         android:textColor="@color/login_txt_color"
-
+        android:textSize="20sp"
         />
 
     <TextView
@@ -56,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/commit_btn"
         android:text="湖南三一工业职业技术学院"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:layout_marginTop="118dp"
         android:layout_centerHorizontal="true"
         />
