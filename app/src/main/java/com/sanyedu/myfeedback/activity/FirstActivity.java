@@ -31,6 +31,8 @@ public class FirstActivity extends SanyBaseActivity {
 //                StartUtils.startActivity(FirstActivity.this,clazz);
 //            }
 //        },3000);
+
+//        SpHelper.clear();
     }
 
     @Override
