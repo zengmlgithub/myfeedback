@@ -14,7 +14,7 @@
     <string name="pos">单位</string>
     <string name="card">工号</string>
     <string name="school">湖南三一工业职业技术学院</string>
-    <string name="msg_person_txt">通知人：</string>
+    <string name="msg_person_txt">通知人:</string>
     <string name="policy_department_txt">反馈部门：学工部</string>
     <string name="today_feedback_txt">今日反馈</string>
     <string name="test_txt_1">今日主要内容</string>

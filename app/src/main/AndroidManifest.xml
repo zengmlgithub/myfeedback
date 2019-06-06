@@ -22,7 +22,7 @@
             android:theme="@style/AppTheme"
             android:name="com.sanyedu.myfeedback.app.FeedbackApplication"
             >
-        <activity android:name="com.sanyedu.myfeedback.activity.TestActivity"
+        <activity android:name="com.sanyedu.myfeedback.activity.NoticeTestActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
         >

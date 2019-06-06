@@ -57,7 +57,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
                 @Override
                 public void onClick(View v) {
                     //触发自定义监听的单击事件
-                    onItemClickListener.onItemClick(holder.itemView,position,id);
+//                    onItemClickListener.onItemClick(holder.itemView,position,id);
                 }
             });
 
