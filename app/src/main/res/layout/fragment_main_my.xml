@@ -7,7 +7,7 @@
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="263dp"
+            android:layout_height="233dp"
             android:background="@mipmap/main_head_bg"
             android:id="@+id/head_rl"
     >
@@ -15,9 +15,8 @@
         <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-
-                android:layout_marginTop="71dp"
-                android:layout_centerInParent="true"
+                android:layout_marginTop="41dp"
+                android:layout_centerHorizontal="true"
                 android:id="@+id/head_iv"
                 android:src="@mipmap/icon_head"
         />
@@ -54,28 +53,43 @@
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="17dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="6dp"
             android:background="@mipmap/icon_settings"
             android:id="@+id/settings_iv"
+
     />
 
-    <RelativeLayout android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+    <RelativeLayout android:layout_width="60dp"
+                    android:layout_height="84dp"
                     android:layout_alignRight="@id/settings_iv"
                     android:id="@+id/setting_rl"
                     android:visibility="gone"
                     android:layout_below="@+id/settings_iv"
+                    android:background="@mipmap/setting_bg"
                     >
-                    <ImageButton android:layout_width="50dp" android:layout_height="50dp"
-                        android:id="@+id/modify_pwd_ib"
-                                 android:background="@color/red"
+                    <TextView android:layout_width="match_parent"
+                                 android:layout_height="41dp"
+                                 android:id="@+id/modify_pwd_ib"
+                                android:background="@mipmap/modify_bg"
+                              android:text="去整改"
+                              android:gravity="center"
+                              android:textSize="12sp"
+
                     />
 
-                    <ImageButton android:layout_width="50dp" android:layout_height="50dp"
+
+
+                    <TextView android:layout_width="match_parent"
+                                 android:layout_height="38dp"
                                  android:id="@+id/logout_ib"
                                  android:layout_below="@+id/modify_pwd_ib"
-                                 android:background="@color/blue"
+                               android:background="@drawable/shape_logout"
+                              android:text="去关闭"
+                              android:gravity="center"
+                              android:textSize="12sp"
+
                     />
+
     </RelativeLayout>
 
     <RelativeLayout

@@ -37,4 +37,19 @@
     <color name="color_5856D6">#5856D6</color>
     <color name="color_000000">#000000</color>
     <color name="color_7CCD7C">#7CCD7C</color>
+
+    <color name="font_gray_b">#d4d4d3</color>
+
+    <color name="font_tab_1">#42369a</color>
+    <color name="font_tab_0">#b1b1b1</color>
+
+
+    <color name="font_common_1">#424242</color>
+    <color name="font_common_2">#a1a1a1</color>
+    <color name="font_blue">#42369a</color>
+
+    <color name="font_green">#00cccc</color>
+
+    <color name="commom_background">#f3f3f3</color>
+
 </resources>

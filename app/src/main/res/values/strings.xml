@@ -43,4 +43,6 @@
     <string name="modify_tel_success">电话号码修改成功</string>
     <string name="please_input_email">请输入email</string>
     <string name= "please_input_tel">请输入电话号码</string>
+    <string name="cancel">取消</string>
+    <string name="submit">提交</string>
 </resources>

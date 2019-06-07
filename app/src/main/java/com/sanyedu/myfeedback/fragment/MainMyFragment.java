@@ -1,6 +1,7 @@
 package com.sanyedu.myfeedback.fragment;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -30,6 +31,7 @@ import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.FileUtils;
 import com.sanyedu.myfeedback.utils.PictureUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
+import com.sanyedu.myfeedback.widget.CommonDialog;
 import com.sanyedu.myfeedback.widget.PhotoPopupWindow;
 
 import java.io.File;
@@ -62,12 +64,16 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     private ImageButton settingIv;
     private RelativeLayout settingRl;
-    private ImageButton modifywIb;
-    private ImageButton logoutIb;
+    private TextView modifywIb;
+    private TextView logoutIb;
 
     private RelativeLayout emailRl;
     private RelativeLayout telRl;
 
+    private TextView modifyTv;
+    private TextView logoutTv;
+
+    private Dialog dialog;
 
     @Override
     protected int getLayout() {
@@ -105,6 +111,8 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
         emailRl.setOnClickListener(this);
         telRl.setOnClickListener(this);
+
+
     }
 
     private void findViews(View view) {
@@ -130,6 +138,8 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
         emailRl = view.findViewById(R.id.email_rl);
         telRl = view.findViewById(R.id.tel_rl);
+
+
     }
 
     @Override
@@ -162,13 +172,16 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
             showPop();
         } else if (v.getId() == settingIv.getId()) {
             showSettings();
-        } else if(v.getId() == modifywIb.getId()){
+        } else if (v.getId() == modifywIb.getId()) {
             startModifyPwdActivity();
-        } else if(v.getId() == logoutIb.getId()){
-            showLogoutDialog();
-        } else if(v.getId() == emailRl.getId()){
+        } else if (v.getId() == logoutIb.getId()) {
+            dialog = createDialog();
+            if (!dialog.isShowing()) {
+                dialog.show();
+            }
+        } else if (v.getId() == emailRl.getId()) {
             modifyEmail();
-        } else if(v.getId() == telRl.getId()){
+        } else if (v.getId() == telRl.getId()) {
             modifyTel();
         }
     }
@@ -181,9 +194,6 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         StartUtils.startActivity(getActivity(), ModifyInfoActivity.class);
     }
 
-    //显示是否退出页面
-    private void showLogoutDialog() {
-    }
 
     //打开修改密码的activity
     private void startModifyPwdActivity() {
@@ -193,14 +203,14 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     //显示悬浮按钮
     private void showSettings() {
         int visible = settingRl.getVisibility();
-        if(visible != View.VISIBLE){
+        if (visible != View.VISIBLE) {
             settingRl.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             settingRl.setVisibility(View.GONE);
         }
     }
 
-        private void showPop() {
+    private void showPop() {
         //TODO:弹出图片框
         //创建存放头像的文件夹
         getPresenter().mkdir();
@@ -387,4 +397,29 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         intent.putExtra("noFaceDetection", true); // no face detection
         startActivityForResult(intent, REQUEST_SMALL_IMAGE_CUTTING);
     }
+
+
+    private Dialog createDialog() {
+
+        if (dialog == null) {
+            dialog = new CommonDialog(getActivity(), R.style.dialog, "您确定要注销此账号吗?", new CommonDialog.OnCloseListener() {
+
+                @Override
+                public void onPositive(Dialog dialog, boolean cancel) {
+                    //此处将会清除sp内所有的信息
+                    SanyLogs.i("进入到commonDialog");
+                    SpHelper.clear();
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onNevige(Dialog dialog, boolean confirm) {
+                    dialog.dismiss();
+                    //
+                }
+            }).setTitle("注销");
+        }
+        return dialog;
+    }
 }
+

@@ -22,9 +22,10 @@
             android:theme="@style/AppTheme"
             android:name="com.sanyedu.myfeedback.app.FeedbackApplication"
             >
-        <activity android:name="com.sanyedu.myfeedback.activity.NoticeTestActivity"
+        <activity android:name="com.sanyedu.myfeedback.activity.FirstActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
