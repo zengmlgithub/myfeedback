@@ -45,4 +45,6 @@
     <string name= "please_input_tel">请输入电话号码</string>
     <string name="cancel">取消</string>
     <string name="submit">提交</string>
+    <string name="skip_txt">跳过&#160;&#160;</string>
+    <string name="second_txt">s</string>
 </resources>

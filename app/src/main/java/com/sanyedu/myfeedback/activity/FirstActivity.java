@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.widget.Button;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
@@ -17,22 +19,11 @@ import com.sanyedu.myfeedback.utils.StartUtils;
 
 public class FirstActivity extends SanyBaseActivity {
     @BindView(R.id.next_btn)
-    Button skipButton;
+    TextView skipButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_first);
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                boolean success = hasUserInfo();
-//                Class<?> clazz = success == true ? MainActivity.class:LoginActivity.class;
-//                StartUtils.startActivity(FirstActivity.this,clazz);
-//            }
-//        },3000);
-
-//        SpHelper.clear();
     }
 
     @Override
@@ -54,9 +45,10 @@ public class FirstActivity extends SanyBaseActivity {
     private void goToNext(){
         Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
+        finish();
     }
 
-//    private static final int MSG_CODE = 0;
+
     private int limitTime = 4;
     private Handler mHandler = new Handler();
     private Runnable myRunnale = new Runnable() {
@@ -66,12 +58,13 @@ public class FirstActivity extends SanyBaseActivity {
             SanyLogs.i("current limitTime:" + limitTime);
             if(limitTime>0){
                 mHandler.postDelayed(myRunnale,1000);
-//                limitTime.setText("剩余"+time+"s");
-                skipButton.setText("剩余" + limitTime + "s");
+                String skipTxt = getResources().getString(R.string.skip_txt);
+                String secondTxt = getResources().getString(R.string.second_txt);
+                skipButton.setText(skipTxt + limitTime + "s");
             }else{
-//                mTvChange.setText("完毕");
                 mHandler.removeCallbacks(myRunnale);
                 goToNext();
+
             }
         }
     };
@@ -79,5 +72,13 @@ public class FirstActivity extends SanyBaseActivity {
     @Override
     public IBaseXPresenter onBindPresenter() {
         return null;
+    }
+
+    @OnClick(R.id.next_btn)
+    public void goNext(){
+        if (mHandler != null){
+            mHandler.removeCallbacks(myRunnale);
+        }
+        goToNext();
     }
 }
