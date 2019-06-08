@@ -1,6 +1,8 @@
 package com.sanyedu.myfeedback.mvp;
 
 import android.app.ProgressDialog;
+import com.sanyedu.myfeedback.R;
+import com.sanyedu.myfeedback.widget.SanyProgressDialog;
 
 public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivity<P> implements IBaseView {
     // 加载进度框
@@ -9,11 +11,17 @@ public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivi
     @Override
     public void showLoading(){
         //TODO:显示loading
+        //显示ProgressDialog
+        mProgressDialog = new SanyProgressDialog(this, R.style.CustomProgressDialog);
+        mProgressDialog.show();
     }
     
     @Override
     public void hideLoading(){
        //TODO:隐藏loading
+        if(mProgressDialog != null){
+            mProgressDialog.dismiss();
+        }
     }
     
     @Override

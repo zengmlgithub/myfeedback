@@ -6,6 +6,7 @@ import com.sanyedu.myfeedback.mvp.IBaseView;
 public final class LoginContacts {
     public interface ILoginUI extends IBaseView {
         public void startMain(); //跳转到登录
+        public void loginFailure(String msg); //登录失败
     }
 
     public interface ILoginPresenter extends IBasePresenter{

@@ -6,6 +6,7 @@ import com.sanyedu.myfeedback.imageloader.ImageLoader;
 import com.sanyedu.myfeedback.imageloader.PicassoLoader;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.share.SpHelper;
+import me.jessyan.autosize.AutoSizeConfig;
 
 public class FeedbackApplication extends Application {
 
@@ -17,6 +18,10 @@ public class FeedbackApplication extends Application {
         SanyLogs.d("start app..");
         super.onCreate();
         gApp = this;
+
+        //增加自动适配方案
+        AutoSizeConfig.getInstance().setCustomFragment(true);
+
         //初始化图片库
         ImageLoader.getInstance().setGlobalImageLoader(new PicassoLoader());
 

@@ -45,6 +45,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         SanyLogs.e("testUrl:" + e.getMessage());
+                        getView().loginFailure("登录失败");
                     }
 
                     @Override
@@ -59,10 +60,9 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                 } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
                                     SanyLogs.i("getToken:error");
+                                    getView().loginFailure(HttpUtil.ERROR_SERVER);
                                 }
                             }
-
-
                         }
 
                     }
@@ -88,6 +88,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().loginFailure(HttpUtil.ERROR_SERVER);
                             }
 
                             @Override
@@ -96,10 +97,12 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                 try {
                                     TeacherBean userInfo = response.getObj().get(0);
                                     SpHelper.putObj(ConstantUtil.USERINFO,userInfo);
+                                    getView().startMain();
                                 }catch (Exception e){
                                     SanyLogs.i(e.toString());
+                                    getView().loginFailure(HttpUtil.ERROR_SERVER);
                                 }
-                               getView().startMain();
+
                             }
                         }
                 );

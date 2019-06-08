@@ -1,7 +1,5 @@
 package com.sanyedu.myfeedback.activity;
 
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -12,6 +10,7 @@ import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.mvpimpl.login.LoginContacts;
 import com.sanyedu.myfeedback.mvpimpl.login.LoginPresenter;
 import com.sanyedu.myfeedback.utils.StartUtils;
+import com.sanyedu.myfeedback.utils.ToastUtil;
 
 public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements LoginContacts.ILoginUI/*, View.OnClickListener*/{
     @BindView(R.id.username_et)
@@ -24,6 +23,7 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
         String username = usernameEt.getText().toString();
         String password = passwordEt.getText().toString();
         getPresenter().getToken(username,password, "2");
+        showLoading();
     }
 
     @Override
@@ -45,5 +45,11 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
     @Override
     public void startMain() {
         StartUtils.startActivity(LoginActivity.this, MainActivity.class);
+    }
+
+    @Override
+    public void loginFailure(String msg) {
+        hideLoading();
+        ToastUtil.showLongToast(msg);
     }
 }

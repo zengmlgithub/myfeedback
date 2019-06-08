@@ -28,8 +28,8 @@ public abstract class SanyBaseActivity<P extends IBasePresenter> extends BaseAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 隐藏标题栏
-        if (getSupportActionBar() != null)
-            getSupportActionBar().hide();
+//        if (getSupportActionBar() != null)
+//            getSupportActionBar().hide();
 
 //        // 沉浸效果
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
