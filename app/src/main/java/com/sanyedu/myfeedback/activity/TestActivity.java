@@ -47,9 +47,9 @@ public class TestActivity extends AppCompatActivity  {
         List<Records> recordsList = new ArrayList<>();
         for (int i = 0; i < 100; i ++) {
             Records records = new Records();
-            records.setRectiStatus("1");
-            records.setFeedbackContent("测试1测试1测试1测试1测试1测试1测试1测试1测试1测试1测试1测试1测试1测试1");
-            records.setFeedbackTitle("测试数据");
+            records.setRectiStatus(i % 7 + "");
+            records.setFeedbackContent("A栋的101地面卫生没有搞干净，请派人搞干净");
+            records.setFeedbackTitle("请做好6S数据");
             records.setFeedbackDept("信息中心");
             records.setFeedbackAdress("A栋5楼");
             records.setFeedbackCreatetime("2019-01-04 13:00");
