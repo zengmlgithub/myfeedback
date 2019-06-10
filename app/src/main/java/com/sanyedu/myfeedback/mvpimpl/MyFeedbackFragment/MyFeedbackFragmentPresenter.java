@@ -65,15 +65,19 @@ public class MyFeedbackFragmentPresenter extends BasePresenter<MyFeedbackFragmen
                                 PageRecordBean noticeBean = response.getObj();
                                 if (noticeBean != null){
                                     List<Records> recordsList = noticeBean.getRecords();
-//                                    SanyLogs.i("sanyLog~~~~~~111111");
+                                    SanyLogs.i("sanyLog~~~~~~111111");
                                     if (recordsList != null && recordsList.size() > 0){
-//                                        SanyLogs.i("sanyLog~~~~~~222222");
+                                        SanyLogs.i("sanyLog~~~~~~222222");
                                         getView().setFeebacks(recordsList);
                                     }else{
-                                        ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                        SanyLogs.i("sanyLog~~~~~~333333");
+                                        //这时是没有出错，但没有记录的情况
+//                                        ToastUtil.showLongToast(response.getInfo());
                                     }
                                 }else{
-                                    ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                    //TODO:这时是没有出错，但没有记录的情况
+                                    SanyLogs.i("sanyLog~~~~~~444444444444444");
+//                                    ToastUtil.showLongToast(response.getInfo());
                                 }
                             }
                         }

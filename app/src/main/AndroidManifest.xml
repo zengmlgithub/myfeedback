@@ -30,7 +30,7 @@
                 android:name="design_height_in_dp"
                 android:value="640"/>
 
-        <activity android:name="com.sanyedu.myfeedback.activity.Test3Activity"
+        <activity android:name="com.sanyedu.myfeedback.activity.FirstActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -52,49 +52,56 @@
                     android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name="com.sanyedu.myfeedback.activity.LoginActivity"
+        <activity android:name=".activity.LoginActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name="com.sanyedu.myfeedback.activity.MainActivity"
+        <activity android:name=".activity.MainActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name="com.sanyedu.myfeedback.activity.GotoFeedbackActivity"
+        <activity android:name=".activity.GotoFeedbackActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name="com.sanyedu.myfeedback.activity.ModifyDetailActivity"
+        <activity android:name=".activity.ModifyDetailActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
 
-        <activity android:name="com.sanyedu.myfeedback.activity.MyFeedbackActivity"
+        <activity android:name=".activity.MyFeedbackActivity"
             android:launchMode="singleInstance"
              android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name="com.sanyedu.myfeedback.activity.NoticeDetailActivity"
+        <activity android:name=".activity.NoticeDetailActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name="com.sanyedu.myfeedback.activity.FeedbackMyActivity"
+        <activity android:name=".activity.FeedbackMyActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
         <activity android:name=".activity.ModifyPwdActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
         <activity android:name=".activity.ModifyInfoActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
         <activity android:name=".activity.ModifyTelActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-
-
     </application>
-
 </manifest>

@@ -60,7 +60,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                 } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
                                     //TODO:error
                                     SanyLogs.i("getToken:error");
-                                    getView().loginFailure(HttpUtil.ERROR_SERVER);
+                                    getView().loginFailure(tokenModel.getToken());
                                 }
                             }
                         }
