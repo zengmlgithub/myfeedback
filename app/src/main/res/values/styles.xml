@@ -64,15 +64,25 @@
         <item name="android:layout_marginTop">6dp</item>
     </style>
 
-    <style name="common_title_style">
+    <style name="common_title_style" parent="title_style">
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="title_style">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_centerHorizontal">true</item>
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
+
+    <style name="content_style">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray_back</item>
+    </style>
+
+
 
 
 

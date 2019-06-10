@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -20,6 +21,7 @@ import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.HttpUtil;
+import com.sanyedu.myfeedback.utils.StartUtils;
 
 /**
  * 整改详情
@@ -48,6 +50,43 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @BindView(R.id.fk_info_rv)
     RecyclerView recyclerView;
 
+    @BindView(R.id.operator_rl)
+    RelativeLayout opeartorRl;
+
+    TextView modifyTv;
+    TextView closeTv;
+
+
+//    @BindView(R.id.modify_pwd_tv)
+//    TextView modifyTv;//整改
+//
+//    @BindView(R.id.logout_ib)
+//    TextView closeTv; //关闭
+
+    //去整改
+//    @OnClick(R.id.modify_pwd_tv)
+//    public void modifyFeedback() {
+//
+//    }
+
+
+    //去关闭
+//    @OnClick(R.id.logout_ib)
+//    public void closeFeedback() {
+//
+//    }
+
+    @OnClick(R.id.modify_fk_ib)
+    public void setVsibleOfOperator(){
+        if(opeartorRl.getVisibility() == View.VISIBLE){
+            opeartorRl.setVisibility(View.GONE);
+        }else{
+            opeartorRl.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+
     private ModifyDetailAdapter adapter;
 
     @OnClick(R.id.goback_ib)
@@ -58,6 +97,30 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+
+
+//        modifyTv.setText("去整改");
+//        closeTv.setText("去关闭");
+
+        modifyTv = opeartorRl.findViewById(R.id.modify_pwd_tv);
+        closeTv = opeartorRl.findViewById(R.id.logout_tv);
+        modifyTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO:去修改
+//                StartUtils.startActivity();
+            }
+        });
+
+        closeTv.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
         adapter = new ModifyDetailAdapter(this);
         recyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -67,7 +130,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         if (intent != null) {
             String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
             SanyLogs.i("get id from NoticeDetailActivity:" + id);
-            getPresenter().getDetail(id);
+//            getPresenter().getDetail(id);
         }
 
 

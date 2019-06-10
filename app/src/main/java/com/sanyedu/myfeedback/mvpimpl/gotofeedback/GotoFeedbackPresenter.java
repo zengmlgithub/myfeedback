@@ -105,7 +105,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                                 if(personBeans != null && personBeans.size() > 0){
                                     getView().setPersonList(personBeans);
                                 }else{
-                                    ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                    ToastUtil.showLongToast(response.getInfo());
                                 }
                             }
                         }
@@ -167,7 +167,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
 
     private void postFile(final String fileName,final File file,final int i) {
-        String url = HttpUtil.getPort(HttpUtil.GET_ONE_DEPART_TEACHER_PORT);
+        String url = HttpUtil.getPort(HttpUtil.UPLOAD_PHOTO_PORT);
         OkHttpUtils
                 .post()
                 .addFile("img",fileName,file)
@@ -179,6 +179,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                ToastUtil.showLongToast("上传失败");
                             }
 
                             @Override
@@ -210,7 +211,6 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                                     SanyLogs.i("第" + i + "张图片上传成功");
                                 }
                                 //传一下张图片
-
                             }
                         }
                 );

@@ -195,6 +195,10 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
                                 .imageSpanCount(3)
                                 .previewImage(true)
                                 .selectionMode(PictureConfig.MULTIPLE)
+//                                .enableCrop(true)
+//                                .freeStyleCropEnabled(true)
+//                                .showCropFrame(true)
+//                                .showCropGrid(true)
                                 .forResult(PictureConfig.CHOOSE_REQUEST);
                         break;
                     case R.id.tv_camera:
@@ -292,7 +296,6 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
                 }
             }
         }
-
         getPresenter().postFiles(photoList);
     }
 }

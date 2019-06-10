@@ -13,7 +13,7 @@ public class HttpUtil {
     private static final boolean IS_HTTP = true;
 
     private static final String FINAL_SERVER = "";  //正式服务器地址
-    private static final String TEST_SERVER = "172.16.10.251:8082";  //测试服务器地址
+    private static final String TEST_SERVER = "42.48.115.201:8082";  //测试服务器地址
 
     public static final String HTTPS = "https://";
     public static final String HTTP = "http://";
@@ -33,6 +33,7 @@ public class HttpUtil {
     public static final String POST_FEEDBACK_TO_SERVER_PORT = "submitFeedback/updateFile";//上传反馈到服务器
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
+    public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
 
 
     public static final String SUCCESS = "1";
