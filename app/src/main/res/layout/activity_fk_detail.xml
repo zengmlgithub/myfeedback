@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="6dp"
         android:id="@+id/title_rl"
         >
         <ImageButton
@@ -16,12 +16,8 @@
             android:layout_marginLeft="17dp"
             />
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/detail_title"
-            android:textSize="15sp"
-            android:textColor="@color/title_black"
-            android:layout_centerHorizontal="true"
+            style="@style/common_title_style"
             />
 
         <ImageButton

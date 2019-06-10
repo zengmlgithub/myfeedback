@@ -29,51 +29,31 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     TextView titleTv;  //标题
 
     @BindView(R.id.fk_single_detail)
-     TextView contentTv;
+    TextView contentTv;
 
-
-//    private ImageButton gobackBtn;
-//    private ImageButton modifyBtn;
     @BindView(R.id.fk_single_pos)
     TextView addressTv;
 
     @BindView(R.id.date_tv)
-     TextView dateTv;
+    TextView dateTv;
     @BindView(R.id.detail_1)
     ImageView photo1Iv;
 
     @BindView(R.id.detail_2)
-     ImageView photo2Iv;
+    ImageView photo2Iv;
 
     @BindView(R.id.detail_3)
-     ImageView photo3Iv;
+    ImageView photo3Iv;
 
-    private RecyclerView recyclerView;
+    @BindView(R.id.fk_info_rv)
+    RecyclerView recyclerView;
+
     private ModifyDetailAdapter adapter;
 
-//    titleTv = findViewById(R.id.fk_single_title);
-//    contentTv = findViewById(R.id.fk_single_detail);
-//    gobackBtn = findViewById(R.id.goback_ib);
-//    modifyBtn = findViewById(R.id.modify_fk_ib);
-//    addressTv = findViewById(R.id.fk_single_pos);
-//    dateTv = findViewById(R.id.date_tv);
-//    photo1Iv = findViewById(R.id.detail_1);
-//    photo2Iv = findViewById(R.id.detail_2);
-//    photo3Iv = findViewById(R.id.detail_3);
-//
-//    recyclerView = findViewById(R.id.fk_info_rv);
-
-     @OnClick(R.id.goback_ib)
-     public void closePage(){
-         finish();
-     }
-
-//    @Override
-//    public void onClick(View v) {
-//       if (v.getId() == R.id.goback_ib){
-//            finish();
-//       }
-//    }
+    @OnClick(R.id.goback_ib)
+    public void closePage() {
+        finish();
+    }
 
     @Override
     protected void initData() {
@@ -84,7 +64,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         recyclerView.setLayoutManager(manager);
 
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
             SanyLogs.i("get id from NoticeDetailActivity:" + id);
             getPresenter().getDetail(id);
@@ -93,17 +73,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
     }
 
-//    @Override
-//    protected void findViews() {
-//
-//
-//
-//    }
-//
-//    @Override
-//    protected void setListeners() {
-//        gobackBtn.setOnClickListener(this);
-//    }
 
     @Override
     protected int getLayout() {
@@ -119,13 +88,13 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @Override
     public void setDetail(DetailBean bean) {
         SanyLogs.i(bean.toString());
-        if (bean != null){
+        if (bean != null) {
             titleTv.setText(bean.getFeedbackTitle());
             contentTv.setText(bean.getFeedbackContent());
             addressTv.setText(bean.getFeedbackAdress());
             dateTv.setText(bean.getFeedbackPubtime());
 
-            if(adapter != null){
+            if (adapter != null) {
                 adapter.setList(bean.getDetailedList());
             }
         }
