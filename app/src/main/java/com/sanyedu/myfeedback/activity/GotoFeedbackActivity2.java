@@ -175,21 +175,34 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
 
     @Override
     public void setDepartList(List<DepartBean> departList) {
-
+        departBeans = departList;
+        departAdapter.setData(departList);
     }
 
     @Override
     public void setPersonList(List<PersonBean> personList) {
-
+        personAdapter.setData(personList);
     }
 
     @Override
     public FeedbackItem getCurrentItem() {
         FeedbackItem tempItem = new FeedbackItem();
         try {
-            tempItem.setFeedbackAddress(addressEt.getText().toString().trim());
-            tempItem.setFeedbackContent(contentEt.getText().toString().trim());
-            tempItem.setFeedbackContent(titleEt.getText().toString().trim());
+            String address = addressEt.getText().toString().trim();
+            SanyLogs.i("address:" + address);
+            tempItem.setFeedbackAddress(address);
+
+            String content = contentEt.getText().toString().trim();
+            SanyLogs.i("content:" + content);
+            tempItem.setFeedbackContent(content);
+
+            String feedbackDept = getFeedbackDept();
+            SanyLogs.i("feedbackDept:" + feedbackDept);
+            tempItem.setFeedbackDept(feedbackDept);
+
+            String title = titleEt.getText().toString().trim();
+            SanyLogs.i("title:" + title);
+            tempItem.setFeedbackTitle(title);
 
             String responseDepartName = getResponseDepartName();
             tempItem.setToResponsibledept(responseDepartName);
@@ -209,7 +222,16 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
         }catch (Exception e){
             SanyLogs.i(e.toString());
         }
-        return null;
+        return tempItem;
+    }
+
+    private String getFeedbackDept() {
+        TeacherBean teacherBean = SpHelper.getObj(ConstantUtil.USERINFO);
+        String depart = null;
+        if(teacherBean != null){
+            depart = teacherBean.getTeDept();
+        }
+        return depart;
     }
 
     private String getFeedbackPeopleName() {

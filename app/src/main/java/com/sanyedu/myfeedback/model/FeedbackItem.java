@@ -130,4 +130,22 @@ public class FeedbackItem implements Serializable {
     public void setToResponsibleid(String toResponsibleid) {
         this.toResponsibleid = toResponsibleid;
     }
+
+    @Override
+    public String toString() {
+        return "FeedbackItem{" +
+                "feedbackTitle='" + feedbackTitle + '\'' +
+                ", feedbackAddress='" + feedbackAddress + '\'' +
+                ", feedbackContent='" + feedbackContent + '\'' +
+                ", feedbackDept='" + feedbackDept + '\'' +
+                ", feedbackPersonid='" + feedbackPersonid + '\'' +
+                ", feedbackPersonname='" + feedbackPersonname + '\'' +
+                ", feedbackA='" + feedbackA + '\'' +
+                ", feedbackB='" + feedbackB + '\'' +
+                ", feedbackC='" + feedbackC + '\'' +
+                ", toResponsiblename='" + toResponsiblename + '\'' +
+                ", toResponsibledept='" + toResponsibledept + '\'' +
+                ", toResponsibleid='" + toResponsibleid + '\'' +
+                '}';
+    }
 }

@@ -30,7 +30,7 @@ public class HttpUtil {
     public static final String FEEDBACK_MY_PORT = "academic/selMyInfo";//反馈我的
     public static final String GET_ALL_DEPART_PORT = "schUser/selDept"; //查询所有部门
     public static final String GET_ONE_DEPART_TEACHER_PORT = "schUser/selTeacher"; //查找某个部门下的所有老师
-    public static final String POST_FEEDBACK_TO_SERVER_PORT = "submitFeedback/updateFile";//上传反馈到服务器
+    public static final String POST_FEEDBACK_TO_SERVER_PORT = "submitFeedback/sub_deai";//上传反馈到服务器
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
     public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
@@ -123,6 +123,7 @@ public class HttpUtil {
         public final static String FEEDBACK_C = "feedbackC";
         public final static String TO_RESPONSIBL_NAME = "toResponsiblename";
         public final static String  TO_RESPONSIBLE_DEPT= "toResponsibledept";
+        public final static String TO_RESPONSIBLE_ID = "toResponsibleid";
     }
 
     public static class UploadFile{
