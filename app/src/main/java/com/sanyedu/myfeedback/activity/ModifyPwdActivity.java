@@ -5,7 +5,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -55,7 +54,7 @@ public class ModifyPwdActivity extends SanyBaseActivity<ModifyPwdPresenter> impl
         SanyLogs.i("you have click confirm");
     }
 
-    @OnClick(R.id.goback_ib)
+    @OnClick(R.id.goback_tv)
     public void goback(){
         finish();
     }

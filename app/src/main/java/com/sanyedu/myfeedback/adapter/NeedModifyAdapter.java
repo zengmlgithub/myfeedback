@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
-import com.sanyedu.myfeedback.utils.PictureUtils;
 import com.sanyedu.myfeedback.utils.StatusUtils;
 
 import java.util.ArrayList;
@@ -103,7 +102,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
             headIv = itemView.findViewById(R.id.head_iv);
             departTv = itemView.findViewById(R.id.depart_tv);
             addressTv = itemView.findViewById(R.id.address_tv);
-            titleTv = itemView.findViewById(R.id.title_tv);
+            titleTv = itemView.findViewById(R.id.save_tv);
             contentTv = itemView.findViewById(R.id.detail_tv);
 
             photo1Iv = itemView.findViewById(R.id.photo1_iv);

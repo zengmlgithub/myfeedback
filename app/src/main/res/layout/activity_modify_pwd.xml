@@ -5,7 +5,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@mipmap/left_arrow"
-            android:id="@+id/goback_ib"
+            android:id="@+id/goback_tv"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="17dp"
     />
@@ -14,7 +14,7 @@
             android:text="修改密码"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="6dp"
-            android:id="@+id/title_tv"
+            android:id="@+id/save_tv"
             style="@style/page_title_style"
     />
 
@@ -22,7 +22,7 @@
             android:layout_width="324dp"
             android:id="@+id/input_first_pwd_et"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/title_tv"
+            android:layout_below="@id/save_tv"
             android:layout_marginTop="25dp"
             style="@style/edit_content_style"
             android:background="@drawable/shape_rec_black"

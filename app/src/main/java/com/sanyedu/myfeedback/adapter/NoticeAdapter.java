@@ -81,7 +81,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.itemView = itemView;
-            titleTv = itemView.findViewById(R.id.title_tv);
+            titleTv = itemView.findViewById(R.id.save_tv);
             contentTv = itemView.findViewById(R.id.content_tv);
             typePhtoIv = itemView.findViewById(R.id.feedback_iv);
             personTv = itemView.findViewById(R.id.person_tv);

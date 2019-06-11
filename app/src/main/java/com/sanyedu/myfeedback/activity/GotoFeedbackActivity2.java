@@ -91,7 +91,6 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
     EditText contentEt;
 
 
-
     private List<String> getImagePath() {
         if(selImageList != null && selImageList.size() > 0){
             List<String> tempList = new ArrayList<>();

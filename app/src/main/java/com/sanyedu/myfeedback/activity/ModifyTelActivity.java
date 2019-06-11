@@ -78,7 +78,7 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
         return tempBean;
     }
 
-    @OnClick(R.id.goback_ib)
+    @OnClick(R.id.goback_tv)
     public void goback(){
         finish();
     }

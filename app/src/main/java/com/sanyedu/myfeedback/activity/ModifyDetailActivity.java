@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
@@ -21,7 +19,6 @@ import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.HttpUtil;
-import com.sanyedu.myfeedback.utils.StartUtils;
 
 /**
  * 整改详情
@@ -89,7 +86,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
     private ModifyDetailAdapter adapter;
 
-    @OnClick(R.id.goback_ib)
+    @OnClick(R.id.goback_tv)
     public void closePage() {
         finish();
     }

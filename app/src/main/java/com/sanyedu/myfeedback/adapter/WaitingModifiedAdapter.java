@@ -88,7 +88,7 @@ public class WaitingModifiedAdapter extends BaseExpandableListAdapter {
             childViewHolder.headIv = convertView.findViewById(R.id.head_iv);
             childViewHolder.departTv = convertView.findViewById(R.id.depart_tv);
             childViewHolder.addressTv = convertView.findViewById(R.id.address_iv);
-            childViewHolder.titleTv = convertView.findViewById(R.id.title_tv);
+            childViewHolder.titleTv = convertView.findViewById(R.id.save_tv);
             childViewHolder.detailTv = convertView.findViewById(R.id.detail_tv);
             childViewHolder.photo1Iv = convertView.findViewById(R.id.photo1_iv);
             childViewHolder.photo2Iv = convertView.findViewById(R.id.photo2_iv);
