@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="19dp"
-    android:paddingRight="19dp"
-    >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:paddingLeft="19dp"
+                android:paddingRight="19dp"
+>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,7 +107,7 @@
             />
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
+  <!--  <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -114,7 +115,24 @@
         android:layout_marginTop="44dp"
         android:id="@+id/recycler"
         >
-    </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>-->
 
+    <android.support.v7.widget.RecyclerView
+
+            android:id="@+id/recyclerView"
+            android:layout_marginTop="44dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent"
+            android:scrollbarStyle="outsideOverlay"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/item_upload_image"
+            android:layout_below="@id/pl_fl_ll"
+            >
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

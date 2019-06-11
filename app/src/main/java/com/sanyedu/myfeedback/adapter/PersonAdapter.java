@@ -27,8 +27,8 @@ public class PersonAdapter extends BaseAdapter {
     }
 
     @Override
-    public DepartBean  getItem(int position) {
-        return null;
+    public PersonBean  getItem(int position) {
+        return personList.get(position);
     }
 
     @Override
