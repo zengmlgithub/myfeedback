@@ -176,7 +176,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
 
     @Override
-    public void postFiles(List<String> files,final FeedbackItem item) {
+    public void postFeedbackToServer(List<String> files,final FeedbackItem item) {
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
             return;

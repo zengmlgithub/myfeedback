@@ -59,18 +59,6 @@ public class HttpUtil {
     }
 
 
-//    public static final String getTestPort(){
-//        String server = getServerHost();
-//        String url = server + TEST_PORT;
-//        return url;
-//    }
-//
-//    public static final String getTokenPort(){
-//        String server = getServerHost();
-//        String url = server + AUTO_PORT;
-//        return url;
-//    }
-
     public static final String getPort(String serverAddress){
         String url = null;
         if(!TextUtils.isEmpty(serverAddress)){
@@ -156,4 +144,6 @@ public class HttpUtil {
         public final static String FEEDBACK_FILEB = "feedbackFileb";
         public final static String FEEDBACK_FILEC = "feedbackFilec";
     }
+
+
 }

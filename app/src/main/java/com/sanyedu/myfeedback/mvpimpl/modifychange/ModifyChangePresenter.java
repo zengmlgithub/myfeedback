@@ -6,6 +6,7 @@ import com.sanyedu.myfeedback.activity.ModifyChangeActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.*;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
+import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoContacts;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
@@ -68,7 +69,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
                                 }
 
 //                                String noticeBean = response.getObj();
-                                ToastUtil.showLongToast("反馈成功");
+//                                ToastUtil.showLongToast("反馈成功");
                                 getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿SUCCESS);
                             }
                         }
@@ -76,5 +77,25 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     }
 
 
+    @Override
+    public void updateFeedback(List<String> files,final ChangeFeedbackBean changeFeedbackBean) {
+        if (files == null || files.size() <= 0) {
+            SanyLogs.e("file is null,return");
+            return;
+        }
 
+        UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
+            @Override
+            public void updateFinished(List<String> serverPathList) {
+                if(changeFeedbackBean != null){
+                    changeFeedbackBean.setFeedbackFilea(UpdatePictureService.getServicePathA(serverPathList));
+                    changeFeedbackBean.setFeedbackFileb(UpdatePictureService.getServicePathB(serverPathList));
+                    changeFeedbackBean.setFeedbackFilec(UpdatePictureService.getServicePathC(serverPathList));
+                    updateFeedback(changeFeedbackBean);
+                }
+            }
+        });
+
+        updatePictureService.postFiles();
+    }
 }

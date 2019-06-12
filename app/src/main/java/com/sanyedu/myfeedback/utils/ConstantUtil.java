@@ -25,8 +25,6 @@ public class ConstantUtil {
     public static final String PASSWORD = "password";
     public static final String TEL = "tel" ;
 
-    //sp---个人信息
-    public static final String USERINFO = "userinfo";
 
     public static final String FK_STATE_SUBMITED = "1";  //已提交
     public static final String FK_STATE_CHECKED = "2"; //已审核
@@ -39,8 +37,14 @@ public class ConstantUtil {
     public static final int REQUEST_SMALL_IMAGE_CUTTING = 2;
     public static final int REQUEST_CHANGE_USER_NICK_NAME = 10;
     public static final String IMAGE_FILE_NAME = "user_head_icon.jpg";
+
+    //sp---个人信息
+    public static final String USERINFO = "userinfo";
+
     //provider constant
     public final static String PROVIER_PATH = "com.sany.myfeedback.fileprovider";
     //图片路径
     public static final String HEAD_IMAGE = "user_head_uri";
+
+    public static final String ID = "id";
 }

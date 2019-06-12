@@ -4,6 +4,8 @@ import com.sanyedu.myfeedback.model.ChangeFeedbackBean;
 import com.sanyedu.myfeedback.mvp.IBasePresenter;
 import com.sanyedu.myfeedback.mvp.IBaseView;
 
+import java.util.List;
+
 public final class ModifyChangeContacts {
     public interface IModifyChangeUI extends IBaseView{
         int UPDATE＿SUCCESS = 0;
@@ -12,7 +14,8 @@ public final class ModifyChangeContacts {
     }
 
     public interface IModifyChangePresenter extends IBasePresenter{
-         void updateFeedback(ChangeFeedbackBean changeFeedbackBean);
+         void updateFeedback(List<String> files, ChangeFeedbackBean changeFeedbackBean);
+        void updateFeedback(ChangeFeedbackBean changeFeedbackBean);
     }
 
 

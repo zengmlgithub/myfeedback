@@ -3,6 +3,7 @@ package com.sanyedu.myfeedback.activity;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,8 +19,12 @@ import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ImagePickerAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
+import com.sanyedu.myfeedback.model.ChangeFeedbackBean;
+import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.mvpimpl.modifychange.ModifyChangeContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifychange.ModifyChangePresenter;
+import com.sanyedu.myfeedback.share.SpHelper;
+import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import com.sanyedu.myfeedback.widget.GlideImageLoader;
 import com.sanyedu.myfeedback.widget.PictureChooseDialog;
@@ -40,10 +45,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         finish();
     }
 
-    @OnClick(R.id.save_tv)
-    public void save(){
-        //TODO:save state
-    }
+
 
     @BindView(R.id.content_et)
     EditText contentEt;
@@ -65,11 +67,21 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     public static final int REQUEST_CODE_PREVIEW = 101;
     private ImagePickerAdapter adapter;
 
+    private String feedbackId; //当前反馈的id
+
     @Override
     protected void initData() {
         ButterKnife.bind(this);
         initImagePickerMulti();
         initRecyclerView();
+        getFeedbackId();
+    }
+
+    private void getFeedbackId() {
+        Intent intent = new Intent();
+        if (intent != null){
+            feedbackId = intent.getStringExtra(ConstantUtil.ID);
+        }
     }
 
     @Override
@@ -243,7 +255,77 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
             ToastUtil.showLongToast("整改状态已更新");
             finish();
         }else{
-            ToastUtil.showLongToast("整改状态更新失败，请更新更新！");
+            ToastUtil.showLongToast("整改状态更新失败，请再次上传！");
         }
+    }
+
+    @OnClick(R.id.save_tv)
+    public void save(){
+        ChangeFeedbackBean changeFeedbackBean = new ChangeFeedbackBean();
+        changeFeedbackBean.setFeedbackId(feedbackId);
+
+        String feedbackStatus = getFeedbackStatus();
+        changeFeedbackBean.setFeedbackStatus(feedbackStatus);
+
+        String feedbackContent = getFeedbackContent();
+        changeFeedbackBean.setFeedbackContent(feedbackContent);
+
+        String feedbackPerid = getFeedbackPerid();
+        changeFeedbackBean.setFeedbackPerid(feedbackPerid);
+
+        String feedbackPername = getFeedbackPerName();
+        changeFeedbackBean.setFeedbackPername(feedbackPername);
+
+        String feedbackPerdept = getFeedbackPerDept();
+        changeFeedbackBean.setFeedbackPerdept(feedbackPerdept);
+
+        List<String> pathList = getPathList();
+        getPresenter().updateFeedback(pathList,changeFeedbackBean);
+    }
+
+    private List<String> getPathList() {
+        List<String> tempList = new ArrayList<>();
+        for(int i = 0 ;i < selImageList.size() ; i ++ ){
+            tempList.add(selImageList.get(i).path);
+        }
+        return tempList;
+    }
+
+    private String getFeedbackPerDept() {
+        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        String tempDept = "";
+        if(bean != null){
+            tempDept = bean.getTeDept();
+        }
+        return tempDept;
+    }
+
+    private String getFeedbackPerName() {
+        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        String tempName = "";
+        if(bean != null){
+            tempName = bean.getTeName();
+        }
+        return tempName;
+    }
+
+    private String getFeedbackPerid() {
+        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
+        String tempId = "";
+        if(bean != null){
+            tempId = bean.getId();
+        }
+
+        return tempId;
+    }
+
+    private String getFeedbackContent() {
+        String content = contentEt.getText().toString().trim() ;
+        String contentStr = TextUtils.isEmpty(content)? "":content;
+        return contentStr;
+    }
+
+    private String getFeedbackStatus() {
+        return "1";
     }
 }
