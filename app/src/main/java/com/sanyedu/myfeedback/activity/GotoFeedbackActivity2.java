@@ -78,7 +78,8 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
     public void submit(){
         SanyLogs.i("submit~~~~");
         List<String> pathList = getImagePath();
-        getPresenter().postFiles(pathList);
+
+        getPresenter().postFeedbackToServer(pathList,getCurrentItem());
     }
 
     @BindView(R.id.title_et)
