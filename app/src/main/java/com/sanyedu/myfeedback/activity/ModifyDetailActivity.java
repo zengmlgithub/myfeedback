@@ -146,6 +146,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         Intent intent = getIntent();
         if(intent != null){
             String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
+            SanyLogs.i("id~~~~" + id);
             if("3".equals(id) || "4".equals(id)){
                 modifyFkIb.setVisibility(View.VISIBLE);
             }else{

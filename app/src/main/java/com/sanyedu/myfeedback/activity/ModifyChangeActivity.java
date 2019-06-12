@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 去整改
+ * 修改整改的状态
  */
 public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter> implements ModifyChangeContacts.IModifyChangeUI,ImagePickerAdapter.OnRecyclerViewItemClickListener {
 
@@ -234,6 +234,16 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
                     adapter.setImages(selImageList);
                 }
             }
+        }
+    }
+
+    @Override
+    public void updateFeedbackResult(int result) {
+        if(result == UPDATE＿SUCCESS){
+            ToastUtil.showLongToast("整改状态已更新");
+            finish();
+        }else{
+            ToastUtil.showLongToast("整改状态更新失败，请更新更新！");
         }
     }
 }

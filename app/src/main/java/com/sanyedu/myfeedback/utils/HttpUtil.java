@@ -13,7 +13,7 @@ public class HttpUtil {
     private static final boolean IS_HTTP = true;
 
     private static final String FINAL_SERVER = "";  //正式服务器地址
-    private static final String TEST_SERVER = "172.16.9.212:8082";  //测试服务器地址
+    private static final String TEST_SERVER = "172.16.10.145:8082";  //测试服务器地址
 
     public static final String HTTPS = "https://";
     public static final String HTTP = "http://";
@@ -34,6 +34,7 @@ public class HttpUtil {
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
     public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
+    public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";
 
 
     public static final String SUCCESS = "1";
@@ -142,5 +143,17 @@ public class HttpUtil {
     public static class UpdateObj{
         public final static String TYPE = "type";
         public final static String TE_USER = "teUser";
+    }
+
+    public static class UpdateFeedbackState{
+        public final static String FEEDBACK_ID = "feedbackId";
+        public final static String FEEDBACK_STATUS = "feedbackStatus";
+        public final static String FEEDBACK_CONTENT = "feedbackContent";
+        public final static String FEEDBACK_PERID = "feedbackPerid"; //关闭人id
+        public final static String FEEDBACK_PERNAME = "feedbackPername"; //关闭人名称
+        public final static String FEEDBACK_PERDEPT = "feedbackPerdept"; //关闭人部门
+        public final static String FEEDBACK_FILEA= "feedbackFilea";
+        public final static String FEEDBACK_FILEB = "feedbackFileb";
+        public final static String FEEDBACK_FILEC = "feedbackFilec";
     }
 }

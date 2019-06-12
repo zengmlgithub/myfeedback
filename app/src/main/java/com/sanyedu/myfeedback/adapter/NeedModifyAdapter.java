@@ -66,7 +66,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener != null){
-                        onItemClickListener.onClick(holder.itemView,position,records.getId());
+                        onItemClickListener.onClick(holder.itemView,position,records.getRectiStatus());
                     }
                 }
             });

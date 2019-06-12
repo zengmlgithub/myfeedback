@@ -34,7 +34,7 @@
               android:background="@drawable/shape_rec_black"
               android:lines="10"
               android:textSize="12sp"
-              android:text="你好吗？"
+
               android:layout_below="@id/title_rl"
               android:id="@+id/content_et"
               android:gravity="left|top"

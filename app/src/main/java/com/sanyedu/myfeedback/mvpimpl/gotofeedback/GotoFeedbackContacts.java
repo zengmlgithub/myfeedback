@@ -22,6 +22,6 @@ public final class GotoFeedbackContacts {
         void getDepart();
         void getPersonOfDepart(String departId);
         void postFeedbackToServer(FeedbackItem feedbackBean);
-        void postFiles(List<String> files);
+        void postFeedbackToServer(List<String> pathList,List<String> files);
      }
 }

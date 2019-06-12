@@ -8,19 +8,17 @@ import com.sanyedu.myfeedback.app.FeedbackApplication;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.*;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
+import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IGotoFeedbackUI> implements GotoFeedbackContacts.IGoToFeedbackPresenter {
-    private List<String> pathList = new ArrayList<>();
-    private List<String> serverPathList = new ArrayList<>();
+
 
     public GotoFeedbackPresenter(@NonNull GotoFeedbackContacts.IGotoFeedbackUI view) {
         super(view);
@@ -177,318 +175,28 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
     }
 
 
-    private void postFile(final String fileName, final File file, final int i) {
-        String url = HttpUtil.getPort(HttpUtil.UPLOAD_PHOTO_PORT);
-        OkHttpUtils
-                .post()
-                .addFile("img", fileName, file)
-                .url(url)
-                .build()
-                .execute(
-                        new BaseModelCallback<String>() {
-
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                SanyLogs.e("string:" + e.toString());
-                                ToastUtil.showLongToast("上传失败");
-                            }
-
-                            @Override
-                            public void onResponse(BaseModel<String> response, int id) {
-                                if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    return;
-                                }
-                                SanyLogs.i("getfeedback:" + response.toString());
-                                String code = response.getCode();
-                                if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    return;
-                                }
-
-                                if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
-                                    return;
-                                }
-                                String path = response.getObj();
-                                if (!TextUtils.isEmpty(path)) {
-                                    SanyLogs.i("第" + i + "张图片上传成功");
-                                }
-                                //传一下张图片
-                            }
-                        }
-                );
-    }
-
     @Override
-    public void postFiles(List<String> files) {
+    public void postFiles(List<String> files,final FeedbackItem item) {
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
             return;
         }
 
-        pathList.clear();
-        serverPathList.clear();
-        pathList.addAll(files); //将所有的图片缓存
-
-        if(pathList != null && pathList.size() > 0){
-            String pathA = pathList.get(0);
-            File fileA = new File(pathA);
-            postFilesA(pathA, fileA, 0);
-        }else{
-            ToastUtil.showLongToast("请先拍照或选择已有图片");
-        }
-    }
-
-
-    private File getCompressFile(File oldFile){
-        File newFile = null;
-        if(oldFile.exists() && oldFile.isFile()){
-            newFile = CompressHelper.getDefault(FeedbackApplication.getApp()).compressToFile(oldFile);
-        }
-        return newFile;
-    }
-
-    private void postFilesA(final String fileName, final File file, final int i) {
-        File newFile = getCompressFile(file);
-
-        String url = HttpUtil.getPort(HttpUtil.UPLOAD_PHOTO_PORT);
-        OkHttpUtils
-                .post()
-                .addFile("img", fileName, newFile)
-                .url(url)
-                .build()
-                .execute(
-                        new BaseModelCallback<String>() {
-
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                SanyLogs.e("string:" + e.toString());
-                                saveNullToServerList(i);
-                                if(pathList != null && pathList.size() > 1) {
-                                    String pathB = pathList.get(1);
-                                    File fileB = new File(pathB);
-                                    postFilesB(pathList.get(1), fileB, 1);
-                                }else{
-                                    startUploadData();
-                                }
-                            }
-
-                            @Override
-                            public void onResponse(BaseModel<String> response, int id) {
-                                if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                SanyLogs.i("getfeedback:" + response.toString());
-                                String code = response.getCode();
-                                if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-
-                                if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                String path = response.getObj();
-                                if (!TextUtils.isEmpty(path)) {
-                                    SanyLogs.i("第" + i + "张图片上传成功");
-                                    savePathToServerList(path,i);
-                                } else {
-                                    saveNullToServerList(i);
-                                }
-                                //传一下张图片
-                                if(pathList != null && pathList.size() > 1) {
-                                    String pathB = pathList.get(1);
-                                    File fileB = new File(pathB);
-                                    postFilesB(pathList.get(1), fileB, 1);
-                                }else{
-                                    startUploadData();
-                                }
-
-                            }
-                        }
-                );
-    }
-
-    private void postFilesB(String fileName, File fileB, final int i) {
-
-        File newFile = getCompressFile(fileB);
-
-
-        String url = HttpUtil.getPort(HttpUtil.UPLOAD_PHOTO_PORT);
-        OkHttpUtils
-                .post()
-                .addFile("img", fileName, newFile)
-                .url(url)
-                .build()
-                .execute(
-                        new BaseModelCallback<String>() {
-
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                SanyLogs.e("string:" + e.toString());
-
-                                saveNullToServerList(i);
-                                if(pathList != null && pathList.size() > 2) {
-                                    String pathC = pathList.get(2);
-                                    File fileC = new File(pathC);
-                                    postFilesC(pathList.get(2), fileC, 2);
-                                }else{
-                                    startUploadData();
-                                }
-                            }
-
-                            @Override
-                            public void onResponse(BaseModel<String> response, int id) {
-                                if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                SanyLogs.i("getfeedback:" + response.toString());
-                                String code = response.getCode();
-                                if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-
-                                if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                String path = response.getObj();
-                                if (!TextUtils.isEmpty(path)) {
-                                    SanyLogs.i("第" + i + "张图片上传成功");
-                                    savePathToServerList(path,i);
-                                } else {
-                                    saveNullToServerList(i);
-                                }
-                                //传一下张图片
-                                if(pathList != null && pathList.size() > 2) {
-                                    String pathC = pathList.get(2);
-                                    File fileC = new File(pathC);
-                                    postFilesC(pathList.get(2), fileC, 2);
-                                }else{
-                                    startUploadData();
-                                }
-                            }
-                        }
-                );
-    }
-
-    private void postFilesC(String fileName, File fileC, final int i) {
-
-        File newFile = getCompressFile(fileC);
-
-        String url = HttpUtil.getPort(HttpUtil.UPLOAD_PHOTO_PORT);
-        OkHttpUtils
-                .post()
-                .addFile("img", fileName, newFile)
-                .url(url)
-                .build()
-                .execute(
-                        new BaseModelCallback<String>() {
-
-                            @Override
-                            public void onError(Call call, Exception e, int id) {
-                                SanyLogs.e("string:" + e.toString());
-                                saveNullToServerList(i);
-
-                                //当pathC传完后，开始传其他的数据
-                                startUploadData();
-                            }
-
-                            @Override
-                            public void onResponse(BaseModel<String> response, int id) {
-                                if (response == null) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                SanyLogs.i("getfeedback:" + response.toString());
-                                String code = response.getCode();
-                                if (TextUtils.isEmpty(code)) {
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-
-                                if (!"1".equals(code)) {
-                                    ToastUtil.showLongToast(response.getInfo());
-                                    saveNullToServerList(i);
-                                    return;
-                                }
-                                String path = response.getObj();
-                                if (!TextUtils.isEmpty(path)) {
-                                    SanyLogs.i("第" + i + "张图片上传成功");
-                                    savePathToServerList(path,i);
-                                } else {
-                                    saveNullToServerList(i);
-                                }
-                                //当pathC传完后，开始传其他的数据
-                                startUploadData();
-                            }
-                        }
-                );
-    }
-
-    private void startUploadData(){
-        if (hasPhoto()) {
-            FeedbackItem feedbackItem = getView().getCurrentItem();
-            if(serverPathList != null){
-                switch (serverPathList.size()){
-                    case 1:
-                        feedbackItem.setFeedbackA(serverPathList.get(0));
-                        postFeedbackToServer(feedbackItem);
-                        break;
-                    case 2:
-                        feedbackItem.setFeedbackA(serverPathList.get(0));
-                        feedbackItem.setFeedbackB(serverPathList.get(1));
-                        postFeedbackToServer(feedbackItem);
-                        break;
-                    case 3:
-                        feedbackItem.setFeedbackA(serverPathList.get(0));
-                        feedbackItem.setFeedbackB(serverPathList.get(1));
-                        feedbackItem.setFeedbackC(serverPathList.get(2));
-                        postFeedbackToServer(feedbackItem);
-                        break;
-                    default:
-                        break;
+        UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
+            @Override
+            public void updateFinished(List<String> serverPathList) {
+                if(item != null){
+                    item.setFeedbackA(UpdatePictureService.getServicePathA(serverPathList));
+                    item.setFeedbackB(UpdatePictureService.getServicePathB(serverPathList));
+                    item.setFeedbackC(UpdatePictureService.getServicePathC(serverPathList));
+                    postFeedbackToServer(item);
                 }
             }
+        });
 
-        } else {
-            ToastUtil.showLongToast("图片上传失败，请重新上传");
-        }
+        updatePictureService.postFiles();
     }
 
-    private boolean hasPhoto() {
-        boolean result = false;
-        if(serverPathList != null && serverPathList.size() > 0){
-            for(int i = 0 ; i < serverPathList.size() ; i ++){
-                if(!TextUtils.isEmpty(serverPathList.get(i))){
-                    result = true;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
 
-    private void savePathToServerList(String path,int i) {
-        ToastUtil.showLongToast("第" + (i+1) + "张图片上传成功");
-        serverPathList.add(path);
-    }
 
-    private void saveNullToServerList(int i) {
-        ToastUtil.showLongToast("第" + (i+1) + "张图片上传失败");
-        serverPathList.add(null);
-    }
 }
