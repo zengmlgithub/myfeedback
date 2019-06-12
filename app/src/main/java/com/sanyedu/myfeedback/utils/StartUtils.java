@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import com.sanyedu.myfeedback.log.SanyLogs;
 
-import static com.sanyedu.myfeedback.utils.HttpUtil.NoticeDetail.ID;
 
 /**
  * 启动activity
@@ -22,7 +21,7 @@ public class StartUtils {
     public static void startActivity(Context packageContext, Class<?> cls,String id){
         try {
             Intent intent = new Intent();
-            intent.putExtra(ID, id);
+            intent.putExtra(ConstantUtil.ID, id);
             intent.setClass(packageContext, cls);
             packageContext.startActivity(intent);
         }catch (Exception e){

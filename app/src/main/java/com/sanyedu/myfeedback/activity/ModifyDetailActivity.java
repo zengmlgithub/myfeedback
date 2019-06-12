@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,6 +22,7 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
+import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.StartUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
@@ -59,25 +61,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     TextView modifyTv;
     TextView closeTv;
 
-
-//    @BindView(R.id.modify_pwd_tv)
-//    TextView modifyTv;//整改
-//
-//    @BindView(R.id.logout_ib)
-//    TextView closeTv; //关闭
-
-    //去整改
-//    @OnClick(R.id.modify_pwd_tv)
-//    public void modifyFeedback() {
-//
-//    }
-
-
-    //去关闭
-//    @OnClick(R.id.logout_ib)
-//    public void closeFeedback() {
-//
-//    }
+    private String feedbackId = "";
 
     @BindView(R.id.modify_fk_ib)
     ImageButton modifyFkIb;
@@ -104,6 +88,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     protected void initData() {
         ButterKnife.bind(this);
 
+        initFeedbackId();
         initOperator();
 
         modifyTv = opeartorRl.findViewById(R.id.modify_pwd_tv);
@@ -113,7 +98,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             public void onClick(View v) {
                 //TODO:去修改
 //                StartUtils.startActivity();
-                StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class);
+                StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class,feedbackId);
             }
         });
 
@@ -132,26 +117,21 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
 
+    }
+
+    private void initFeedbackId() {
         Intent intent = getIntent();
-        if (intent != null) {
-            String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
-            SanyLogs.i("get id from NoticeDetailActivity:" + id);
-//            getPresenter().getDetail(id);
+        if(intent != null){
+            feedbackId = intent.getStringExtra(ConstantUtil.ID);
+            SanyLogs.i("feedbackId:" + feedbackId);
         }
-
-
     }
 
     private void initOperator() {
-        Intent intent = getIntent();
-        if(intent != null){
-            String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
-            SanyLogs.i("id~~~~" + id);
-            if("3".equals(id) || "4".equals(id)){
-                modifyFkIb.setVisibility(View.VISIBLE);
-            }else{
-                modifyFkIb.setVisibility(View.INVISIBLE);
-            }
+        if("3".equals(feedbackId) || "4".equals(feedbackId)){
+            modifyFkIb.setVisibility(View.VISIBLE);
+        }else{
+            modifyFkIb.setVisibility(View.INVISIBLE);
         }
     }
 

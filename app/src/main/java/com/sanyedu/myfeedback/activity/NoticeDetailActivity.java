@@ -13,6 +13,7 @@ import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.model.NoticeDetailBean;
 import com.sanyedu.myfeedback.mvpimpl.noticedetail.NoticeDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.noticedetail.NoticeDetailPresenter;
+import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 
 public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter> implements NoticeDetailContacts.INoticeDetailUI/*, View.OnClickListener */{
@@ -54,7 +55,7 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
         ButterKnife.bind(this);
         Intent intent = getIntent();
         if(intent != null){
-            String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
+            String id = intent.getStringExtra(ConstantUtil.ID);
             getPresenter().getNoticeDetail(id);
         }
     }
