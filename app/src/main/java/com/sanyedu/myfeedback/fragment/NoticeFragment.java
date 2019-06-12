@@ -80,10 +80,4 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
     public void hideLoading() {
 
     }
-
-    @Override
-    public void showToast(String msg) {
-
-    }
-
 }

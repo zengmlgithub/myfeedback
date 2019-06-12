@@ -98,9 +98,8 @@ public class HasModifiedAdapter extends BaseExpandableListAdapter {
             childViewHolder = (ChildViewHolder) convertView.getTag();
         }
 
-        //TODO：此处与实际的内容对应
+        //TODO：需要提供实际的部门头像
         childViewHolder.headIv.setBackgroundColor(Color.parseColor("#FF0000"));
-
 
         return convertView;
     }

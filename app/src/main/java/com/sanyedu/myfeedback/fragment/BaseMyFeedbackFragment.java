@@ -131,10 +131,6 @@ public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPrese
 
     }
 
-    @Override
-    public void showToast(String msg) {
-
-    }
 
     @Override
     public void setFeebacks(List<Records> recordsList) {

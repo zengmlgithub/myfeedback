@@ -42,8 +42,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
 
                     @Override
                     public void onResponse(BaseModel<PageNoticeBean> response, int id) {
-//                        SanyLogs.i(response.toString());
-
+                        //TODO:这个通知有点简单，需要进一步加强
                         if(response == null){
                             ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
                             return ;
@@ -52,7 +51,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
                         String code = response.getCode();
                         if (TextUtils.isEmpty(code ) || !"1".equals(code)){
                             ToastUtil.showLongToast(response.getInfo());
-                            //TODO:这时弹出错误的原因
+
                         }else{
                             PageNoticeBean pageNoticeBean= response.getObj();
                             if(pageNoticeBean != null){

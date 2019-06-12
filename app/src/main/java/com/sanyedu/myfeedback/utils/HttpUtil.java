@@ -34,7 +34,9 @@ public class HttpUtil {
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
     public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
-    public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";
+    public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";  //更新状态
+    public static final String CLOASE_FEEDBACK_PORT = "submitFeedback/updFeedback"; //关闭反馈
+
 
 
     public static final String SUCCESS = "1";
@@ -133,6 +135,7 @@ public class HttpUtil {
         public final static String TE_USER = "teUser";
     }
 
+
     public static class UpdateFeedbackState{
         public final static String FEEDBACK_ID = "feedbackId";
         public final static String FEEDBACK_STATUS = "feedbackStatus";
@@ -145,5 +148,11 @@ public class HttpUtil {
         public final static String FEEDBACK_FILEC = "feedbackFilec";
     }
 
-
+    public static class CloseFeedback{
+        public static final String FEEDBACK_ID = "id";
+        public static final String FEEDBACK_CONTENT = "feedbackContent";
+        public static final String FEEDBACK_PERSON_ID = "feedbackPerid";
+        public static final String FEEDBACK_PERSON_NAME = "feedbackPername";
+        public static final String FEEDBACK_PERSON_DEPT = "feedbackPerdept";
+    }
 }

@@ -157,10 +157,6 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     }
 
-    @Override
-    public void showToast(String msg) {
-
-    }
 
     @Override
     public void onClick(View v) {

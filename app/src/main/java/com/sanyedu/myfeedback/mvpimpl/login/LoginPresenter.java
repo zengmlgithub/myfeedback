@@ -60,7 +60,6 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                                     SpHelper.putString(ConstantUtil.TOKEN, tokenModel.getToken());
                                     getLogin(userName, password, regFlag);
                                 } else if (HttpUtil.ERROR_ACCOUNT.equals(code)) {
-                                    //TODO:error
                                     SanyLogs.i("getToken:error");
                                     getView().loginFailure(tokenModel.getToken());
                                 }
@@ -109,10 +108,4 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
                         }
                 );
     }
-
-    private void saveUser(UserInfo userInfo) {
-        //TODO:saveUser
-    }
-
-
 }

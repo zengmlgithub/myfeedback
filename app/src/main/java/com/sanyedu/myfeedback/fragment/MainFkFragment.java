@@ -66,8 +66,5 @@ public class MainFkFragment extends BaseFragment<TodayFeedbackPresenter> impleme
 
     }
 
-    @Override
-    public void showToast(String msg) {
 
-    }
 }

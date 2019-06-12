@@ -22,10 +22,7 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
-import com.sanyedu.myfeedback.utils.ConstantUtil;
-import com.sanyedu.myfeedback.utils.HttpUtil;
-import com.sanyedu.myfeedback.utils.StartUtils;
-import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.utils.*;
 import com.sanyedu.myfeedback.widget.CloseFeedbackDialog;
 
 /**
@@ -96,8 +93,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         modifyTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:去修改
-//                StartUtils.startActivity();
                 StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class,feedbackId);
             }
         });
@@ -162,14 +157,22 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         }
     }
 
+    @Override
+    public void closeFeedbackResult(int resultCode) {
+        if(resultCode == CLOSE_FAILURE){
+            //TODO:关闭失败
+        }else{
+            //TODO:关闭成功
+        }
+    }
+
     private CloseFeedbackDialog closeFeedbackDialog;
     private void showCloaseDialog(){
         if(closeFeedbackDialog == null){
             closeFeedbackDialog = new CloseFeedbackDialog(ModifyDetailActivity.this, R.style.sany_dialog, new CloseFeedbackDialog.OnClickListener() {
                 @Override
                 public void onPositive(Dialog dialog, boolean cancel) {
-                    //TODO:提交
-                    submit(closeFeedbackDialog.getContent());
+                    closeFeedback(closeFeedbackDialog.getContent());
                     dialog.dismiss();
                 }
 
@@ -187,12 +190,16 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     }
 
     //提交内容
-    private void submit(String content){
-        if(TextUtils.isEmpty(content)){
+    private void closeFeedback(String feedbackContent){
+        if(TextUtils.isEmpty(feedbackContent)){
             ToastUtil.showLongToast("请输入内容");
             return;
         }
 
-        //TODO:将内容反馈到服务器上
+        String feedbakcPerid = UserInfoHelper.getPersonId();
+        String feedbackPername = UserInfoHelper.getPersonName();
+        String feedbackPerdept = UserInfoHelper.getPersonDept();
+
+        getPresenter().closeFeedback(feedbackId,feedbackContent,feedbakcPerid,feedbackPername,feedbackPerdept);
     }
 }

@@ -10,7 +10,6 @@ public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivi
     
     @Override
     public void showLoading(){
-        //TODO:显示loading
         //显示ProgressDialog
         mProgressDialog = new SanyProgressDialog(this, R.style.CustomProgressDialog);
         mProgressDialog.show();
@@ -18,17 +17,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivi
     
     @Override
     public void hideLoading(){
-       //TODO:隐藏loading
         if(mProgressDialog != null){
             mProgressDialog.dismiss();
         }
     }
-    
-    @Override
-    public void showToast(String msg){
-       //TODO:显示Toast
-    }
-    
+
     @Override
     protected void onDestroy() {
         hideLoading();

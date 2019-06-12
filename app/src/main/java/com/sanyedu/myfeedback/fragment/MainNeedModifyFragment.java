@@ -60,10 +60,7 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
 
     }
 
-    @Override
-    public void showToast(String msg) {
 
-    }
 
     @Override
     public void setRecords(List<Records> recordsList) {

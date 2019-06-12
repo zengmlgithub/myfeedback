@@ -21,11 +21,13 @@ import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.ChangeFeedbackBean;
 import com.sanyedu.myfeedback.model.TeacherBean;
+import com.sanyedu.myfeedback.model.UserInfo;
 import com.sanyedu.myfeedback.mvpimpl.modifychange.ModifyChangeContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifychange.ModifyChangePresenter;
 import com.sanyedu.myfeedback.share.SpHelper;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.utils.UserInfoHelper;
 import com.sanyedu.myfeedback.widget.GlideImageLoader;
 import com.sanyedu.myfeedback.widget.PictureChooseDialog;
 import com.yanzhenjie.permission.Action;
@@ -270,13 +272,13 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         String feedbackContent = getFeedbackContent();
         changeFeedbackBean.setFeedbackContent(feedbackContent);
 
-        String feedbackPerid = getFeedbackPerid();
+        String feedbackPerid = UserInfoHelper.getPersonId();
         changeFeedbackBean.setFeedbackPerid(feedbackPerid);
 
-        String feedbackPername = getFeedbackPerName();
+        String feedbackPername = UserInfoHelper.getPersonName();
         changeFeedbackBean.setFeedbackPername(feedbackPername);
 
-        String feedbackPerdept = getFeedbackPerDept();
+        String feedbackPerdept = UserInfoHelper.getPersonDept();
         changeFeedbackBean.setFeedbackPerdept(feedbackPerdept);
 
         List<String> pathList = getPathList();
@@ -291,33 +293,6 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         return tempList;
     }
 
-    private String getFeedbackPerDept() {
-        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
-        String tempDept = "";
-        if(bean != null){
-            tempDept = bean.getTeDept();
-        }
-        return tempDept;
-    }
-
-    private String getFeedbackPerName() {
-        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
-        String tempName = "";
-        if(bean != null){
-            tempName = bean.getTeName();
-        }
-        return tempName;
-    }
-
-    private String getFeedbackPerid() {
-        TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
-        String tempId = "";
-        if(bean != null){
-            tempId = bean.getId();
-        }
-
-        return tempId;
-    }
 
     private String getFeedbackContent() {
         String content = contentEt.getText().toString().trim() ;

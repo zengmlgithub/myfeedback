@@ -68,8 +68,5 @@ public class MainHasFeedbackFragment extends BaseFragment<HasModifiedPresenter> 
 
     }
 
-    @Override
-    public void showToast(String msg) {
 
-    }
 }
