@@ -5,6 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.sanyedu.myfeedback.R;
+import com.sanyedu.myfeedback.adapter.FeedbackAdapter;
 import com.sanyedu.myfeedback.base.BaseFragment;
 import com.sanyedu.myfeedback.mvpimpl.todayfeedback.TodayFeedbackContacts;
 import com.sanyedu.myfeedback.mvpimpl.todayfeedback.TodayFeedbackPresenter;

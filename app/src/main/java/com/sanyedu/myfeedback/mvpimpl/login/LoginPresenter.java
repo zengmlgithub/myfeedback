@@ -31,6 +31,8 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
     @Override
     public void getToken(final String userName, final String password, final String regFlag) {
+        SanyLogs.i("password",password);
+        SanyLogs.i("regFlag",regFlag);
         String url = HttpUtil.getPort(HttpUtil.AUTH_PORT);
 //        String tokenValue = "Bearer " + SpHelper.getString(ConstantUtil.TOKEN);
         OkHttpUtils

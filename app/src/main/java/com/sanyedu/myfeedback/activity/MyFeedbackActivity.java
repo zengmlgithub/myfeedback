@@ -10,7 +10,7 @@ import butterknife.OnClick;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.fragment.BaseMyFeedbackFragment;
-import com.sanyedu.myfeedback.fragment.FeedbackAdapter;
+import com.sanyedu.myfeedback.adapter.FeedbackAdapter;
 import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvpimpl.myfeedback.MyFeedbackContacts;
 import com.sanyedu.myfeedback.mvpimpl.myfeedback.MyFeedbackPresenter;

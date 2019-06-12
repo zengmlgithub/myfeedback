@@ -402,7 +402,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private Dialog createDialog() {
 
         if (dialog == null) {
-            dialog = new CommonDialog(getActivity(), R.style.dialog, "您确定要注销此账号吗?", new CommonDialog.OnCloseListener() {
+            dialog = new CommonDialog(getActivity(), R.style.sany_dialog, "您确定要注销此账号吗?", new CommonDialog.OnCloseListener() {
 
                 @Override
                 public void onPositive(Dialog dialog, boolean cancel) {

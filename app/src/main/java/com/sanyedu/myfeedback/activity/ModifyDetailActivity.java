@@ -1,9 +1,12 @@
 package com.sanyedu.myfeedback.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +22,9 @@ import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.HttpUtil;
+import com.sanyedu.myfeedback.utils.StartUtils;
+import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.widget.CloseFeedbackDialog;
 
 /**
  * 整改详情
@@ -73,6 +79,9 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 //
 //    }
 
+    @BindView(R.id.modify_fk_ib)
+    ImageButton modifyFkIb;
+
     @OnClick(R.id.modify_fk_ib)
     public void setVsibleOfOperator(){
         if(opeartorRl.getVisibility() == View.VISIBLE){
@@ -95,9 +104,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     protected void initData() {
         ButterKnife.bind(this);
 
-
-//        modifyTv.setText("去整改");
-//        closeTv.setText("去关闭");
+        initOperator();
 
         modifyTv = opeartorRl.findViewById(R.id.modify_pwd_tv);
         closeTv = opeartorRl.findViewById(R.id.logout_tv);
@@ -106,13 +113,15 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             public void onClick(View v) {
                 //TODO:去修改
 //                StartUtils.startActivity();
+                StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class);
             }
         });
 
         closeTv.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
+                showCloaseDialog();
             }
         });
 
@@ -131,6 +140,18 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         }
 
 
+    }
+
+    private void initOperator() {
+        Intent intent = getIntent();
+        if(intent != null){
+            String id = intent.getStringExtra(HttpUtil.NoticeDetail.ID);
+            if("3".equals(id) || "4".equals(id)){
+                modifyFkIb.setVisibility(View.VISIBLE);
+            }else{
+                modifyFkIb.setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
 
@@ -158,5 +179,39 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
                 adapter.setList(bean.getDetailedList());
             }
         }
+    }
+
+    private CloseFeedbackDialog closeFeedbackDialog;
+    private void showCloaseDialog(){
+        if(closeFeedbackDialog == null){
+            closeFeedbackDialog = new CloseFeedbackDialog(ModifyDetailActivity.this, R.style.sany_dialog, new CloseFeedbackDialog.OnClickListener() {
+                @Override
+                public void onPositive(Dialog dialog, boolean cancel) {
+                    //TODO:提交
+                    submit(closeFeedbackDialog.getContent());
+                    dialog.dismiss();
+                }
+
+                @Override
+                public void onNevige(Dialog dialog, boolean confirm) {
+                    //关闭
+                    dialog.dismiss();
+                }
+            });
+        }
+
+        if(!closeFeedbackDialog.isShowing()){
+            closeFeedbackDialog.show();
+        }
+    }
+
+    //提交内容
+    private void submit(String content){
+        if(TextUtils.isEmpty(content)){
+            ToastUtil.showLongToast("请输入内容");
+            return;
+        }
+
+        //TODO:将内容反馈到服务器上
     }
 }

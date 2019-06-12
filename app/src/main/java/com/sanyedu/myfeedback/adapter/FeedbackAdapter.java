@@ -1,4 +1,4 @@
-package com.sanyedu.myfeedback.fragment;
+package com.sanyedu.myfeedback.adapter;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
