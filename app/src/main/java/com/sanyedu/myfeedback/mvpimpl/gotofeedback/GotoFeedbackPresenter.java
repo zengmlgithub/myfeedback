@@ -184,11 +184,11 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
         UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
             @Override
-            public void updateFinished(List<String> serverPathList) {
+            public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
                 if(item != null){
-                    item.setFeedbackA(UpdatePictureService.getServicePathA(serverPathList));
-                    item.setFeedbackB(UpdatePictureService.getServicePathB(serverPathList));
-                    item.setFeedbackC(UpdatePictureService.getServicePathC(serverPathList));
+                    item.setFeedbackA(service.getServicePathA(serverPathList));
+                    item.setFeedbackB(service.getServicePathB(serverPathList));
+                    item.setFeedbackC(service.getServicePathC(serverPathList));
                     postFeedbackToServer(item);
                 }
             }

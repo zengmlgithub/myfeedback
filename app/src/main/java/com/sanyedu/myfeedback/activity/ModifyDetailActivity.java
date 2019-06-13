@@ -161,8 +161,10 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     public void closeFeedbackResult(int resultCode) {
         if(resultCode == CLOSE_FAILURE){
             //TODO:关闭失败
+            SanyLogs.i("close failure.");
         }else{
             //TODO:关闭成功
+            SanyLogs.i("close failure.");
         }
     }
 

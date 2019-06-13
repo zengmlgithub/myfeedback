@@ -32,7 +32,7 @@ public class UpdatePictureService {
     }
 
     public interface UpdateFinishedListener {
-        void updateFinished(List<String> serverPathList);
+        void updateFinished(UpdatePictureService service,List<String> serverPathList);
     }
 
     public void setUpdateFinishedListener(UpdateFinishedListener updateFinishedListener) {
@@ -252,18 +252,18 @@ public class UpdatePictureService {
                 );
     }
 
-    private boolean hasPhoto() {
-        boolean result = false;
-        if (serverPathList != null && serverPathList.size() > 0) {
-            for (int i = 0; i < serverPathList.size(); i++) {
-                if (!TextUtils.isEmpty(serverPathList.get(i))) {
-                    result = true;
-                    break;
-                }
-            }
-        }
-        return result;
-    }
+//    private boolean hasPhoto() {
+//        boolean result = false;
+//        if (serverPathList != null && serverPathList.size() > 0) {
+//            for (int i = 0; i < serverPathList.size(); i++) {
+//                if (!TextUtils.isEmpty(serverPathList.get(i))) {
+//                    result = true;
+//                    break;
+//                }
+//            }
+//        }
+//        return result;
+//    }
 
     private void savePathToServerList(String path, int i) {
         ToastUtil.showLongToast("第" + (i + 1) + "张图片上传成功");
@@ -278,10 +278,10 @@ public class UpdatePictureService {
     private void startUploadData() {
         if (hasPhoto()) {
             if(updateFinishedListener != null){
-                updateFinishedListener.updateFinished(serverPathList);
+                updateFinishedListener.updateFinished(this,serverPathList);
             }
         } else {
-            updateFinishedListener.updateFinished(null);
+            updateFinishedListener.updateFinished(this,null);
         }
     }
 
@@ -309,4 +309,14 @@ public class UpdatePictureService {
         }
     }
 
+    public  boolean hasPhoto(){
+        if(serverPathList == null || serverPathList.size() <= 0){
+            return false;
+        }
+        if(!"".equals(getServicePathA(serverPathList))  || !"".equals(getServicePathB(serverPathList)) || !"".equals(getServicePathC(serverPathList))){
+            return true;
+        }
+
+        return false;
+    }
 }

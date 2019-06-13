@@ -23,6 +23,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
 
     @Override
     public void updateFeedback(ChangeFeedbackBean changeFeedbackBean){
+        SanyLogs.i("ChangeFeedbackBean:" + changeFeedbackBean.toString());
         String url = HttpUtil.getPort(HttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
 
         OkHttpUtils
@@ -86,12 +87,14 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
 
         UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
             @Override
-            public void updateFinished(List<String> serverPathList) {
-                if(changeFeedbackBean != null){
-                    changeFeedbackBean.setFeedbackFilea(UpdatePictureService.getServicePathA(serverPathList));
-                    changeFeedbackBean.setFeedbackFileb(UpdatePictureService.getServicePathB(serverPathList));
-                    changeFeedbackBean.setFeedbackFilec(UpdatePictureService.getServicePathC(serverPathList));
-                    updateFeedback(changeFeedbackBean);
+            public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
+                if(service.hasPhoto()){
+                    if(changeFeedbackBean != null){
+                        changeFeedbackBean.setFeedbackFilea(service.getServicePathA(serverPathList));
+                        changeFeedbackBean.setFeedbackFileb(service.getServicePathB(serverPathList));
+                        changeFeedbackBean.setFeedbackFilec(service.getServicePathC(serverPathList));
+                        updateFeedback(changeFeedbackBean);
+                    }
                 }
             }
         });
