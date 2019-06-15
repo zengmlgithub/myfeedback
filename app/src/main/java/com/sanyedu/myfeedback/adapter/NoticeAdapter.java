@@ -24,7 +24,6 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 
     public NoticeAdapter(Context context/*, List<NoticeBean> mList*/) {
         this.context = context;
-        this.mList = mList;
         mInflater = LayoutInflater.from(context);
     }
 

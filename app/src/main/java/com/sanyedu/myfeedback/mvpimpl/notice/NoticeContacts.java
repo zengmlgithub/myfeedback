@@ -8,10 +8,23 @@ import java.util.ArrayList;
 
 public final class NoticeContacts {
     public interface INoticeUI extends IBaseView {
-        public void setNotices(ArrayList<NoticeBean> notices);
+        void setNotices(ArrayList<NoticeBean> notices,int maxPageCount);
+
+        void setNoNotices();
+
+        /**
+         * 查看错误
+         * @param serverError
+         */
+        void showError(String serverError);
     }
 
     public interface INoticePresenter extends IBasePresenter{
-        public void getNotices();
+        /**
+         *
+         * @param curPage  当前查询的页面
+         * @param pageCount 每个页面拥有的记录条数
+         */
+        public void getNotices(String curPage,String pageCount);
     }
 }

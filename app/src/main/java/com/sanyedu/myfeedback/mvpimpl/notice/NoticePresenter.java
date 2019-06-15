@@ -24,27 +24,29 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
     }
 
     @Override
-    public void getNotices() {
+    public void getNotices(String startPage,String pageCount) {
         String url = HttpUtil.getPort(HttpUtil.NOTICE_PORT);
 
         OkHttpUtils
                 .post()
                 .url(url)
-                .addParams(HttpUtil.Notice.START_PAGE, "1")
-                .addParams(HttpUtil.Notice.EVERY_PAGE, "10")
+                .addParams(HttpUtil.Notice.START_PAGE, startPage)
+                .addParams(HttpUtil.Notice.EVERY_PAGE, pageCount)
                 .build()
                 .execute(new BaseModelCallback<PageNoticeBean>(){
 
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         SanyLogs.e(e.toString());
+                        getView().showError(ErrorUtils.PARSE_ERROR);
                     }
 
                     @Override
                     public void onResponse(BaseModel<PageNoticeBean> response, int id) {
                         //TODO:这个通知有点简单，需要进一步加强
                         if(response == null){
-                            ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                            ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                            getView().showError(ErrorUtils.SERVER_ERROR);
                             return ;
                         }
 
@@ -57,9 +59,11 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
                             if(pageNoticeBean != null){
                                 ArrayList<NoticeBean> noticeList = pageNoticeBean.getpNotice();
                                 if(noticeList != null && noticeList.size() > 0){
-                                    getView().setNotices(noticeList);
+                                    int totalPageCount = Integer.valueOf(pageNoticeBean.getTotal());
+                                    getView().setNotices(noticeList,totalPageCount);
                                 }else{
-                                    getView().setNotices(null);
+//                                    getView().setNotices(null);
+                                    getView().setNoNotices();
                                 }
                             }
                         }

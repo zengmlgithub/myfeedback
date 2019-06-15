@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+                android:layout_width="match_parent" android:layout_height="match_parent">
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="消息中心"
-        android:textSize="15sp"
-        android:layout_marginTop="6dp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/title"
-        android:textColor="@color/black"
-        />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="消息中心"
+            android:textSize="15sp"
+            android:layout_marginTop="6dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/title"
+            android:textColor="@color/black"
+    />
 
-   <android.support.v7.widget.RecyclerView
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:id="@+id/main_msg_rv"
-       android:layout_centerHorizontal="true"
-       android:layout_below="@+id/title"
-       android:layout_marginTop="15dp"
+    <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+                                                  android:id="@+id/refreshLayout"
+                                                  android:layout_below="@+id/title"
+                                                  android:layout_marginTop="15dp"
 
-       >
-   </android.support.v7.widget.RecyclerView>
+    >
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/main_msg_rv"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/title"
+                android:layout_marginTop="15dp"
+                android:foregroundGravity="center_horizontal"
+
+        >
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </RelativeLayout>

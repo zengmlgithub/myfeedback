@@ -61,9 +61,10 @@ public class RecyclerDemoActivity extends SanyBaseActivity<NeedModifiedPresenter
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                currList.clear();
-                currentPage = 1;
-                getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","2");
+//                currList.clear();
+//                currentPage = 1;
+//                getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","2");
+                initRecycleData();
             }
         });
 

@@ -16,12 +16,12 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
 
     @Override
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-        SanyLogs.i("onScrollStateChanged~~~~");
+//        SanyLogs.i("onScrollStateChanged~~~~");
         super.onScrollStateChanged(recyclerView, newState);
         LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
         // 当不滑动时
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-            SanyLogs.i("onScrollStateChanged~~~~newState:" + newState);
+//            SanyLogs.i("onScrollStateChanged~~~~newState:" + newState);
             // 获取最后一个完全显示的itemPosition
             int lastItemPosition = manager.findLastCompletelyVisibleItemPosition();
             int itemCount = manager.getItemCount();
@@ -29,7 +29,7 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
             // 判断是否滑动到了最后一个item，并且是向上滑动
             if (lastItemPosition == (itemCount - 1) && isSlidingUpward) {
                 // 加载更多
-                SanyLogs.i("onScrollStateChanged~~~~newState:" + lastItemPosition);
+//                SanyLogs.i("onScrollStateChanged~~~~newState:" + lastItemPosition);
                 onLoadMore();
             }else{
                 SanyLogs.i("onScrollStateChanged~~~~not last count" );
