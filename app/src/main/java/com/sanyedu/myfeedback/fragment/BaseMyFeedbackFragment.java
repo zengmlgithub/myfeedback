@@ -66,8 +66,8 @@ public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPrese
 
     }
 
-    public static BaseFeedbackMyFragment newInstance(String param1, String param2) {
-        BaseFeedbackMyFragment fragment = new BaseFeedbackMyFragment();
+    public static BaseMyFeedbackFragment newInstance(String param1, String param2) {
+        BaseMyFeedbackFragment fragment = new BaseMyFeedbackFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +75,7 @@ public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPrese
         return fragment;
     }
 
-    public static BaseFeedbackMyFragment newInstance(String param1) {
+    public static BaseMyFeedbackFragment newInstance(String param1) {
         return newInstance(param1,null);
     }
 
