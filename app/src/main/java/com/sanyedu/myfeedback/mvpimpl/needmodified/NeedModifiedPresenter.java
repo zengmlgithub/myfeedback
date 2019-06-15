@@ -26,7 +26,7 @@ public class NeedModifiedPresenter extends BasePresenter<NeedModifiedContacts.IN
     }
 
     @Override
-    public void getRecords(String startPage, String everyPage,String type) {
+    public void getRecords(@NonNull String startPage, @NonNull String everyPage,@NonNull String type) {
         String url = HttpUtil.getPort(HttpUtil.TODYA_FEEDBACK_PORT);
 
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);

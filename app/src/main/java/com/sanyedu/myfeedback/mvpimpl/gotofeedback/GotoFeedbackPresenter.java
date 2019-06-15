@@ -11,6 +11,7 @@ import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -70,6 +71,13 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
     @Override
     public void getPersonOfDepart(String departId) {
+
+        if(HttpParasLegalityUtils.isParasLegality(departId) == false){
+            SanyLogs.e("param is illegac,return!");
+            return;
+        }
+
+
         String url = HttpUtil.getPort(HttpUtil.GET_ONE_DEPART_TEACHER_PORT);
         OkHttpUtils
                 .post()

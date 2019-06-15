@@ -23,7 +23,7 @@ public class MyFeedbackFragmentPresenter extends BasePresenter<MyFeedbackFragmen
     }
 
     @Override
-    public void getFeedbacks(String startPage, String everyPage, String id, String type) {
+    public void getFeedbacks(@NonNull String startPage, @NonNull String everyPage, @NonNull String id, @NonNull String type) {
         String url = HttpUtil.getPort(HttpUtil.MY_FEEDBACK_PORT);
         SanyLogs.i("request:" + "id:" + id + "====type:" + type);
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);

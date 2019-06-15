@@ -24,7 +24,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
     }
 
     @Override
-    public void getNotices(String startPage,String pageCount) {
+    public void getNotices(@NonNull String startPage,@NonNull String pageCount) {
         String url = HttpUtil.getPort(HttpUtil.NOTICE_PORT);
 
         OkHttpUtils

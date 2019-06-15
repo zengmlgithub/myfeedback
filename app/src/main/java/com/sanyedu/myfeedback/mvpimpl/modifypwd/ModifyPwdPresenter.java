@@ -11,6 +11,7 @@ import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -24,6 +25,13 @@ public class ModifyPwdPresenter extends BasePresenter<ModifyPwdContacts.IModifyP
 
     @Override
     public void modifyPwd(String type, String id, String userName, String oldpwd, String newPwd) {
+
+
+        if(!HttpParasLegalityUtils.isParasLegality(type,id,userName,oldpwd,newPwd)){
+            SanyLogs.e("params is null ,return");
+            return;
+        }
+
         String url = HttpUtil.getPort(HttpUtil.UPDATE_PERSONAL_PASSWORD_PORT);
 
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);

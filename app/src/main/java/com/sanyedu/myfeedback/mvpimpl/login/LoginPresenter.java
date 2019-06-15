@@ -15,6 +15,7 @@ import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.okhttp.callback.GenericsCallback;
 import com.sanyedu.myfeedback.share.SpHelper;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.MD5Utils;
 
@@ -33,6 +34,12 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
     public void getToken(final String userName, final String password, final String regFlag) {
         SanyLogs.i("password",password);
         SanyLogs.i("regFlag",regFlag);
+
+        if(HttpParasLegalityUtils.isParasLegality(userName,password,regFlag) == false){
+            SanyLogs.e("param is illegac,return!");
+            return;
+        }
+
         String url = HttpUtil.getPort(HttpUtil.AUTH_PORT);
 //        String tokenValue = "Bearer " + SpHelper.getString(ConstantUtil.TOKEN);
         OkHttpUtils

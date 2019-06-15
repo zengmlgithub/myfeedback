@@ -43,7 +43,10 @@ public class FirstActivity extends SanyBaseActivity {
     }
 
     private void goToNext(){
-        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+//        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+
+        //TODO:test
+        Class clazz = MainActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
         finish();
     }

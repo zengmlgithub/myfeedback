@@ -88,17 +88,15 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     private void setData() {
         TeacherBean userInfo = SpHelper.getObj(ConstantUtil.USERINFO);
+        if(userInfo != null){
+            nameTv.setText(userInfo.getUsername());
+            departTv.setText(userInfo.getTeDept() + "|" + userInfo.getTePosi());
 
-        nameTv.setText(userInfo.getUsername());
-        departTv.setText(userInfo.getTeDept() + "|" + userInfo.getTePosi());
-
-        emailTv.setText(userInfo.getTeEmail());
-        telTv.setText(userInfo.getTePhone());
-        cardTv.setText(userInfo.getTeJobnum());
-        posTv.setText(userInfo.getTeComp());
-
-//        myFeedbackTv.setText();
-//        feedbackMyTv.setText();
+            emailTv.setText(userInfo.getTeEmail());
+            telTv.setText(userInfo.getTePhone());
+            cardTv.setText(userInfo.getTeJobnum());
+            posTv.setText(userInfo.getTeComp());
+        }
 
         myFeedbackRl.setOnClickListener(this);
         feedbackMyRl.setOnClickListener(this);

@@ -10,6 +10,7 @@ import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoContacts;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -22,9 +23,19 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     }
 
     @Override
-    public void updateFeedback(ChangeFeedbackBean changeFeedbackBean){
-        SanyLogs.i("ChangeFeedbackBean:" + changeFeedbackBean.toString());
+    public void updateFeedback(@NonNull ChangeFeedbackBean changeFeedbackBean){
+
         String url = HttpUtil.getPort(HttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
+
+        try {
+            if(!HttpParasLegalityUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+                SanyLogs.e("ChangeFeedbackBean is null,return!");
+                return;
+            }
+        }catch (Exception e){
+            SanyLogs.e(e.toString());
+            return;
+        }
 
         OkHttpUtils
                 .post()
@@ -80,6 +91,17 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
 
     @Override
     public void updateFeedback(List<String> files,final ChangeFeedbackBean changeFeedbackBean) {
+
+        try {
+            if(!HttpParasLegalityUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+                SanyLogs.e("ChangeFeedbackBean is null,return!");
+                return;
+            }
+        }catch (Exception e){
+            SanyLogs.e(e.toString());
+            return;
+        }
+
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
             return;

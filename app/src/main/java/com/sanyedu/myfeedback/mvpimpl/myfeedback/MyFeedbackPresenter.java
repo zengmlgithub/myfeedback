@@ -11,6 +11,7 @@ import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 
@@ -28,7 +29,14 @@ public class MyFeedbackPresenter extends BasePresenter<MyFeedbackContacts.IMyFee
 
 
     @Override
-    public void getMyFeedbacks(String startPage, String everyPage, String id, String type) {
+    public void getMyFeedbacks(@NonNull String startPage, @NonNull String everyPage, @NonNull String id, @NonNull String type) {
+
+
+        if(!HttpParasLegalityUtils.isParasLegality(startPage,everyPage,id,type)){
+            SanyLogs.e("params is null ,return");
+            return;
+        }
+
         String url = HttpUtil.getPort(HttpUtil.MY_FEEDBACK_PORT);
 
 //        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);

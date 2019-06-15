@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 
+import android.text.TextUtils;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.JsonGenericsSerializator;
 import com.sanyedu.myfeedback.model.TokenModel;
@@ -70,9 +71,13 @@ public class TestPresenter extends BasePresenter<TestContact.ITestUI> implements
 
     private  void saveToken(String tokenString) {
         SanyLogs.i("save token:" + tokenString);
-        if (tokenString == null || "".equals(tokenString)) {
-            return;
-        } else {
+//        if (tokenString == null || "".equals(tokenString)) {
+//            return;
+//        } else {
+//            SpHelper.putString(ConstantUtil.TOKEN,tokenString);
+//        }
+
+        if(!TextUtils.isEmpty(tokenString)){
             SpHelper.putString(ConstantUtil.TOKEN,tokenString);
         }
     }

@@ -20,7 +20,7 @@ import com.sanyedu.myfeedback.utils.ConstantUtil;
 import java.util.List;
 
 /**
- *  我的反馈
+ *  反馈我的
  */
 public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPresenter> implements MyFeedbackFragmentContacts.IMyFeedbackFragmentUI{
     // TODO: Rename parameter arguments, choose names that match

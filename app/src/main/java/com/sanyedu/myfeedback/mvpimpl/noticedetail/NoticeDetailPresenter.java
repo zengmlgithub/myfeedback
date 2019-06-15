@@ -21,7 +21,7 @@ public class NoticeDetailPresenter extends BasePresenter<NoticeDetailContacts.IN
     }
 
     @Override
-    public void getNoticeDetail(String id) {
+    public void getNoticeDetail(@NonNull String id) {
         String url = HttpUtil.getPort(HttpUtil.NOTICE_DETAIL_PORT);
 
         OkHttpUtils

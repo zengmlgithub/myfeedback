@@ -9,6 +9,7 @@ import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
+import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -21,8 +22,12 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoContacts.IModif
 
     @Override
     public void ModifyObj(String type, String obj) {
-        SanyLogs.i("type:" + type);
-        SanyLogs.i("teUser:" + obj);
+
+        if(!HttpParasLegalityUtils.isParasLegality(type,obj)){
+            SanyLogs.e("params is null ,return");
+            return;
+        }
+
         String url = HttpUtil.getPort(HttpUtil.UPDATE_PERSON_OBJ_PORT);
         OkHttpUtils
                 .post()
