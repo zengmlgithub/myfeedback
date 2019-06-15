@@ -3,15 +3,13 @@ package com.sanyedu.myfeedback.mvpimpl.gotofeedback;
 import android.support.annotation.NonNull;
 
 import android.text.TextUtils;
-import com.nanchen.compresshelper.CompressHelper;
-import com.sanyedu.myfeedback.app.FeedbackApplication;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.*;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -72,7 +70,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
     @Override
     public void getPersonOfDepart(String departId) {
 
-        if(HttpParasLegalityUtils.isParasLegality(departId) == false){
+        if(CheckUtils.isParasLegality(departId) == false){
             SanyLogs.e("param is illegac,return!");
             return;
         }

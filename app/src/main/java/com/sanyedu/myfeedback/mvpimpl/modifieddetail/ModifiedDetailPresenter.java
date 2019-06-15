@@ -8,13 +8,11 @@ import com.sanyedu.myfeedback.model.*;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 
 import okhttp3.Call;
-
-import java.util.List;
 
 public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContacts.IModifiedDetailUI> implements ModifiedDetailContacts.IModifiedDetailPresenter {
     public ModifiedDetailPresenter(@NonNull ModifiedDetailContacts.IModifiedDetailUI view) {
@@ -24,7 +22,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
     @Override
     public void getDetail(@NonNull String id) {
 
-        if(HttpParasLegalityUtils.isParasLegality(id) == false){
+        if(CheckUtils.isParasLegality(id) == false){
             SanyLogs.e("param is illegac,return!");
             return;
         }

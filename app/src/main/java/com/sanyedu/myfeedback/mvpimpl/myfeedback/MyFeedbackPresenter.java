@@ -11,7 +11,7 @@ import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 
@@ -32,7 +32,7 @@ public class MyFeedbackPresenter extends BasePresenter<MyFeedbackContacts.IMyFee
     public void getMyFeedbacks(@NonNull String startPage, @NonNull String everyPage, @NonNull String id, @NonNull String type) {
 
 
-        if(!HttpParasLegalityUtils.isParasLegality(startPage,everyPage,id,type)){
+        if(!CheckUtils.isParasLegality(startPage,everyPage,id,type)){
             SanyLogs.e("params is null ,return");
             return;
         }

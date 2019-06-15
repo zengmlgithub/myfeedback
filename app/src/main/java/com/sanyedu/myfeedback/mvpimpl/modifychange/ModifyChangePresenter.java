@@ -2,15 +2,13 @@ package com.sanyedu.myfeedback.mvpimpl.modifychange;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.sanyedu.myfeedback.activity.ModifyChangeActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.*;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.mvpimpl.UpdatePicture.UpdatePictureService;
-import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoContacts;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -28,7 +26,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
         String url = HttpUtil.getPort(HttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
 
         try {
-            if(!HttpParasLegalityUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
                 SanyLogs.e("ChangeFeedbackBean is null,return!");
                 return;
             }
@@ -93,7 +91,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     public void updateFeedback(List<String> files,final ChangeFeedbackBean changeFeedbackBean) {
 
         try {
-            if(!HttpParasLegalityUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
                 SanyLogs.e("ChangeFeedbackBean is null,return!");
                 return;
             }

@@ -4,8 +4,10 @@ import android.text.TextUtils;
 import com.sanyedu.myfeedback.log.SanyLogs;
 
 import java.lang.reflect.Field;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class HttpParasLegalityUtils {
+public class CheckUtils {
     /**
      * 判断参数是否为空，如果为空，则返回非法
      *
@@ -24,6 +26,12 @@ public class HttpParasLegalityUtils {
         return isLegality;
     }
 
+    /**
+     * 判断对象中的值是否有空存在
+     * @param obj
+     * @return
+     * @throws Exception
+     */
     public static boolean isAllObjFieldLegacity(Object obj) throws Exception {
         Class stuCla = (Class) obj.getClass();// 得到类对象
         Field[] fs = stuCla.getDeclaredFields();//得到属性集合
@@ -37,5 +45,21 @@ public class HttpParasLegalityUtils {
             }
         }
         return flag;
+    }
+
+    /**
+     * 手机号验证
+     *
+     * @param str
+     * @return 验证通过返回true
+     */
+    public static boolean isMobile(String str) {
+        Pattern p = null;
+        Matcher m = null;
+        boolean b = false;
+        p = Pattern.compile("^[1][3,4,5,7,8,9][0-9]{9}$"); // 验证手机号
+        m = p.matcher(str);
+        b = m.matches();
+        return b;
     }
 }

@@ -1,7 +1,9 @@
 package com.sanyedu.myfeedback.activity;
 
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -12,6 +14,7 @@ import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoPresenter;
 import com.sanyedu.myfeedback.share.SpHelper;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 
@@ -29,6 +32,9 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     @BindView(R.id.modify_content_etw)
     EditText modifyEt;
 
+    @BindView(R.id.check_tv)
+    TextView checkTv;
+
     @Override
     protected void initData() {
         ButterKnife.bind(this);
@@ -38,6 +44,8 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     protected int getLayout() {
         return R.layout.activity_modify_info;
     }
+
+
 
     @Override
     public ModifyInfoPresenter onBindPresenter() {
@@ -53,9 +61,16 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     @OnClick(R.id.confirm_btn)
     public void confirm(){
         String telStr = modifyEt.getText().toString().trim();
+
         if(TextUtils.isEmpty(telStr)){
-            ToastUtil.showLongToast(R.string.please_input_tel);
+            checkTv.setVisibility(View.VISIBLE);
+            checkTv.setText(getResources().getText(R.string.tel_null));
             return;
+        }
+
+        if(!CheckUtils.isMobile(telStr)){
+            checkTv.setVisibility(View.VISIBLE);
+            checkTv.setText(getResources().getText(R.string.error_tel));
         }
 
         TeacherBean newBean = createNewTeacher();

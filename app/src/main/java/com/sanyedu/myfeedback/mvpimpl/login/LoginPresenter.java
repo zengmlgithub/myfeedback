@@ -9,13 +9,12 @@ import com.sanyedu.myfeedback.model.BaseModelCallback;
 import com.sanyedu.myfeedback.model.JsonGenericsSerializator;
 import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.model.TokenModel;
-import com.sanyedu.myfeedback.model.UserInfo;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.okhttp.callback.GenericsCallback;
 import com.sanyedu.myfeedback.share.SpHelper;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.MD5Utils;
 
@@ -35,7 +34,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
         SanyLogs.i("password",password);
         SanyLogs.i("regFlag",regFlag);
 
-        if(HttpParasLegalityUtils.isParasLegality(userName,password,regFlag) == false){
+        if(CheckUtils.isParasLegality(userName,password,regFlag) == false){
             SanyLogs.e("param is illegac,return!");
             return;
         }

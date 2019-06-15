@@ -47,4 +47,7 @@
     <string name="submit">提交</string>
     <string name="skip_txt">跳过&#160;&#160;</string>
     <string name="second_txt">s</string>
+    <string name="modify_tel">修改电话</string>
+    <string name="error_tel">电话号码不正确</string>
+    <string name="tel_null">请输入电话号码</string>
 </resources>

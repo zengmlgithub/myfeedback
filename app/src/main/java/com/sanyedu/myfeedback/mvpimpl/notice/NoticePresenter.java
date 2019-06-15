@@ -11,7 +11,7 @@ import com.sanyedu.myfeedback.model.PageNoticeBean;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 
@@ -27,7 +27,7 @@ public class NoticePresenter extends BasePresenter<NoticeContacts.INoticeUI> imp
     @Override
     public void getNotices(@NonNull String startPage,@NonNull String pageCount) {
 
-        if(!HttpParasLegalityUtils.isParasLegality(startPage,pageCount)){
+        if(!CheckUtils.isParasLegality(startPage,pageCount)){
             SanyLogs.e("para is null,return!");
             return;
         }

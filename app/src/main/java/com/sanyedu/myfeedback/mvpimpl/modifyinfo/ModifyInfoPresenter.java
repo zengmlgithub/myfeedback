@@ -5,11 +5,10 @@ import android.text.TextUtils;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.BaseModel;
 import com.sanyedu.myfeedback.model.BaseModelCallback;
-import com.sanyedu.myfeedback.model.DetailBean;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
@@ -23,7 +22,7 @@ public class ModifyInfoPresenter extends BasePresenter<ModifyInfoContacts.IModif
     @Override
     public void ModifyObj(String type, String obj) {
 
-        if(!HttpParasLegalityUtils.isParasLegality(type,obj)){
+        if(!CheckUtils.isParasLegality(type,obj)){
             SanyLogs.e("params is null ,return");
             return;
         }

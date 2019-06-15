@@ -11,9 +11,8 @@ import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
-import com.sanyedu.myfeedback.utils.ToastUtil;
 
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class NeedModifiedPresenter extends BasePresenter<NeedModifiedContacts.IN
     @Override
     public void getRecords(@NonNull String startPage, @NonNull String everyPage,@NonNull String type) {
 
-        if(!HttpParasLegalityUtils.isParasLegality(startPage,everyPage,type)){
+        if(!CheckUtils.isParasLegality(startPage,everyPage,type)){
             SanyLogs.e("params is null,return");
             return;
         }

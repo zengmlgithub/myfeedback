@@ -6,17 +6,13 @@ import android.text.TextUtils;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.BaseModel;
 import com.sanyedu.myfeedback.model.BaseModelCallback;
-import com.sanyedu.myfeedback.model.PageRecordBean;
-import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
 import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
-import com.sanyedu.myfeedback.utils.HttpParasLegalityUtils;
+import com.sanyedu.myfeedback.utils.CheckUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.ToastUtil;
 import okhttp3.Call;
-
-import java.util.List;
 
 public class ModifyPwdPresenter extends BasePresenter<ModifyPwdContacts.IModifyPwdUI> implements ModifyPwdContacts.IModifyPwdPresenter {
     public ModifyPwdPresenter(@NonNull ModifyPwdContacts.IModifyPwdUI view) {
@@ -27,7 +23,7 @@ public class ModifyPwdPresenter extends BasePresenter<ModifyPwdContacts.IModifyP
     public void modifyPwd(String type, String id, String userName, String oldpwd, String newPwd) {
 
 
-        if(!HttpParasLegalityUtils.isParasLegality(type,id,userName,oldpwd,newPwd)){
+        if(!CheckUtils.isParasLegality(type,id,userName,oldpwd,newPwd)){
             SanyLogs.e("params is null ,return");
             return;
         }
