@@ -17,8 +17,8 @@ import okhttp3.Call;
 
 import java.util.List;
 
-public class MyFeedbackFragmentPresenter extends BasePresenter<MyFeedbackFragmentContacts.IMyFeedbackFragmentUI> implements MyFeedbackFragmentContacts.IMyFeedbacFragmentPresenter  {
-    public MyFeedbackFragmentPresenter(@NonNull MyFeedbackFragmentContacts.IMyFeedbackFragmentUI view) {
+public class MyFeedbackFragmentPresenter extends BasePresenter<CommonFeedbackFragmentContacts.ICommonFeedbackFragmentUI> implements CommonFeedbackFragmentContacts.ICommonFeedbacFragmentPresenter  {
+    public MyFeedbackFragmentPresenter(@NonNull CommonFeedbackFragmentContacts.ICommonFeedbackFragmentUI view) {
         super(view);
     }
 
@@ -42,23 +42,25 @@ public class MyFeedbackFragmentPresenter extends BasePresenter<MyFeedbackFragmen
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().showError(ErrorUtils.SERVER_ERROR);
                             }
 
                             @Override
                             public void onResponse(BaseModel<PageRecordBean> response, int id) {
                                 if (response == null){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().showError(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
                                 SanyLogs.i("getfeedback:" + response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().showError(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
                                 if (!"1".equals(code)){
-                                    ToastUtil.showLongToast(response.getInfo());
+//                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().showError(response.getInfo());
                                     return;
                                 }
 
@@ -68,16 +70,13 @@ public class MyFeedbackFragmentPresenter extends BasePresenter<MyFeedbackFragmen
                                     SanyLogs.i("sanyLog~~~~~~111111");
                                     if (recordsList != null && recordsList.size() > 0){
                                         SanyLogs.i("sanyLog~~~~~~222222");
-                                        getView().setFeebacks(recordsList);
+                                        int maxCount = Integer.parseInt(noticeBean.getTotal());
+                                        getView().setFeebacks(recordsList,maxCount);
                                     }else{
-                                        SanyLogs.i("sanyLog~~~~~~333333");
-                                        //这时是没有出错，但没有记录的情况
-//                                        ToastUtil.showLongToast(response.getInfo());
+                                        getView().showNoMoreList();
                                     }
                                 }else{
-                                    //TODO:这时是没有出错，但没有记录的情况
-                                    SanyLogs.i("sanyLog~~~~~~444444444444444");
-//                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().showNoMoreList();
                                 }
                             }
                         }

@@ -3,9 +3,11 @@ package com.sanyedu.myfeedback.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,10 +20,12 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.mvpimpl.MyFeedbackFragment.FeedbackMyFragmentPresenter;
-import com.sanyedu.myfeedback.mvpimpl.MyFeedbackFragment.MyFeedbackFragmentContacts;
+import com.sanyedu.myfeedback.mvpimpl.MyFeedbackFragment.CommonFeedbackFragmentContacts;
 import com.sanyedu.myfeedback.share.SpHelper;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
+import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
+import com.sanyedu.myfeedback.utils.ToastUtil;
 import com.sanyedu.myfeedback.wrapper.LoadMoreWrapper;
 
 import java.util.ArrayList;
@@ -30,7 +34,7 @@ import java.util.List;
 /**
  *  反馈我的
  */
-public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPresenter> implements MyFeedbackFragmentContacts.IMyFeedbackFragmentUI{
+public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPresenter> implements CommonFeedbackFragmentContacts.ICommonFeedbackFragmentUI{
 
     @BindView(R.id.feedback_rl)
     RecyclerView recyclerView;
@@ -141,8 +145,9 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
 
     private void initRecycleView() {
         recordAdapter = new NeedModifyAdapter(getContext());
+        loadMoreWrapper = new LoadMoreWrapper(recordAdapter);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(recordAdapter);
+        recyclerView.setAdapter(loadMoreWrapper);
         LinearLayoutManager layout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layout);
     }
@@ -192,8 +197,41 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
     }
 
     @Override
-    public void setFeebacks(List<Records> recordsList) {
-        recordAdapter.setRecordsList(recordsList);
+    public void setFeebacks(List<Records> recordsList,int maxCount) {
+
+        SanyLogs.i("recordsList:" + recordsList.size());
+
+        //当列表为空时，这时有可能是下拉刷新,因此要设置下拉刷新的标志
+        if (currList.size() == 0){
+            if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }else{ //当列表不为空时，说明这时只是加载更多的数据，只要把loadMoreWrapper的标志设置一下就可以了。
+            loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_COMPLETE);
+        }
+        //TODO:最大条数要更
+        totalSize = maxCount;
+        currList.addAll(recordsList);
+        recordAdapter.setRecordsList(currList);
+        loadMoreWrapper.notifyDataSetChanged();
+
+        SanyLogs.i("totalSize:" + totalSize + ",maxCount:" + totalSize);
+
+    }
+
+    @Override
+    public void showNoMoreList() {
+        SanyLogs.i("shoNoMoreList~~~~");
+        loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_END);
+    }
+
+    @Override
+    public void showError(@NonNull String serverErrorMsg) {
+        SanyLogs.e("showError~~~~~");
+        if(!TextUtils.isEmpty(serverErrorMsg)) {
+            ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+        }
+        loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_COMPLETE);
     }
 
 

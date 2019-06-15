@@ -167,7 +167,7 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
 
     @Override
     public void showError(String serverErrorMsg) {
-        SanyLogs.e("showNoNotice~~~~~");
+        SanyLogs.e("showError~~~~~");
         if(!TextUtils.isEmpty(serverErrorMsg)) {
             ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
         }
