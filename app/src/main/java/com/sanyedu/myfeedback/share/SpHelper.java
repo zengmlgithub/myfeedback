@@ -85,16 +85,16 @@ public class SpHelper {
         SharedPreferences sharedPreferences=getPreferneces();
         String temp = sharedPreferences.getString(key, "");
         ByteArrayInputStream bais =  new ByteArrayInputStream(Base64.decode(temp.getBytes(), Base64.DEFAULT));
-        T userInfo = null;
+        T obj = null;
         try {
             ObjectInputStream ois = new ObjectInputStream(bais);
-            userInfo = (T) ois.readObject();
+            obj = (T) ois.readObject();
         } catch (IOException e) {
             SanyLogs.e(e.toString());
         }catch(ClassNotFoundException e) {
             SanyLogs.e(e.toString());
         }
-        return userInfo;
+        return obj;
 
     }
 
