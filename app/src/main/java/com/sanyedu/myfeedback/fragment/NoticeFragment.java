@@ -15,7 +15,6 @@ import com.sanyedu.myfeedback.base.BaseFragment;
 import com.sanyedu.myfeedback.listener.EndlessRecyclerOnScrollListener;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.NoticeBean;
-import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvpimpl.notice.NoticeContacts;
 import com.sanyedu.myfeedback.mvpimpl.notice.NoticePresenter;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
@@ -53,7 +52,7 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
 
     @Override
     protected int getLayout() {
-        return R.layout.fragment_main_msg;
+        return R.layout.fragment_notice;
     }
 
     @Override

@@ -30,7 +30,7 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
 
     @Override
     protected void init(View view) {
-        listView = view.findViewById(R.id.wait_el);
+        listView = view.findViewById(R.id.need_rv);
         adapter = new NeedModifyAdapter(getContext());
         listView.setHasFixedSize(true);
         listView.setAdapter(adapter);
