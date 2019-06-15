@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.activity.ModifyDetailActivity;
+import com.sanyedu.myfeedback.activity.RecyclerDemoActivity;
 import com.sanyedu.myfeedback.adapter.NeedModifyAdapter;
 import com.sanyedu.myfeedback.base.BaseFragment;
 
@@ -63,7 +64,7 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
 
 
     @Override
-    public void setRecords(List<Records> recordsList) {
+    public void setRecords(List<Records> recordsList,int maxCount) {
 //        for(Records records : recordsList){
 //            SanyLogs.i(records);
 //        }
@@ -72,7 +73,10 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
             adapter.setItemClickListener(new NeedModifyAdapter.OnItemClickListener() {
                 @Override
                 public void onClick(View view, int position, String id) {
-                    StartUtils.startActivity(getActivity(), ModifyDetailActivity.class,id);
+//                    StartUtils.startActivity(getActivity(), ModifyDetailActivity.class,id);
+
+                    //test
+                    StartUtils.startActivity(getActivity(), RecyclerDemoActivity.class);
                 }
             });
         }else{
@@ -81,4 +85,16 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
 
 
     }
+
+    @Override
+    public void showNoMoreList() {
+
+    }
+
+    @Override
+    public void showError(String msg) {
+
+    }
+
+
 }

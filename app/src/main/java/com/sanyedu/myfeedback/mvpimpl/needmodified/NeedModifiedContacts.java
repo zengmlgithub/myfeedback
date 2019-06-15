@@ -8,10 +8,12 @@ import java.util.List;
 
 public final class NeedModifiedContacts {
     public interface INeedModifiedUI extends IBaseView{
-        public void setRecords(List<Records> recordsList);
+         void setRecords(List<Records> recordsList,int maxCount);
+         void showNoMoreList();
+         void showError(String msg);
     }
 
     public interface INeedModifiedPresenter extends IBasePresenter{
-        public void getRecords(String startPage, String everyPage, String type);
+         void getRecords(String startPage, String everyPage, String type);
     }
 }

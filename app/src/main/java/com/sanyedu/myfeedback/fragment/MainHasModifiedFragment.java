@@ -62,7 +62,7 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
 
 
     @Override
-    public void setRecords(List<Records> recordsList) {
+    public void setRecords(List<Records> recordsList,int maxCount) {
 //        for(Records records : recordsList){
 //            SanyLogs.i(records);
 //        }
@@ -77,5 +77,15 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
         }else{
             SanyLogs.i("adapter is null");
         }
+    }
+
+    @Override
+    public void showNoMoreList() {
+
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 }

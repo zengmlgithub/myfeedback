@@ -49,13 +49,13 @@ public class NeedModifiedPresenter extends BasePresenter<NeedModifiedContacts.IN
                             @Override
                             public void onResponse(BaseModel<PageRecordBean> response, int id) {
                                 if (response == null){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 //                                SanyLogs.i(response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
@@ -70,9 +70,11 @@ public class NeedModifiedPresenter extends BasePresenter<NeedModifiedContacts.IN
 //                                    SanyLogs.i("sanyLog~~~~~~111111");
                                     if (recordsList != null && recordsList.size() > 0){
 //                                        SanyLogs.i("sanyLog~~~~~~222222");
-                                        getView().setRecords(recordsList);
+                                        getView().setRecords(recordsList,Integer.valueOf(noticeBean.getTotal()));
                                     }else{
-                                        ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                        //这个不是错误，是没有更多记录了
+//                                        ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                        getView().showNoMoreList();
                                     }
                                 }else{
                                     ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
