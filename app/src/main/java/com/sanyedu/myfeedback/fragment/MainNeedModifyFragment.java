@@ -80,7 +80,8 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
             public void onRefresh() {
                 currList.clear();
                 currentPage = 1;
-                getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","1");
+                getDataFromServer();
+
             }
         });
 
@@ -108,10 +109,16 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
         });
     }
 
+
     private void addMoreRecords() {
         currentPage ++;
+        getDataFromServer();
+    }
+
+    private void getDataFromServer() {
         getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","1");
     }
+
 
     @Override
     public NeedModifiedPresenter onBindPresenter() {
