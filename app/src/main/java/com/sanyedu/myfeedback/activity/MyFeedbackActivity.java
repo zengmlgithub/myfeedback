@@ -42,7 +42,7 @@ public class MyFeedbackActivity extends SanyBaseActivity<MyFeedbackPresenter> im
 
     @OnClick(R.id.go_feedback_tv)
     public void gotoFeedback() {
-        StartUtils.startActivity(this, GotoFeedbackActivity2.class);
+        StartUtils.startActivity(this, GotoFeedbackActivity.class);
     }
 
     @Override

@@ -46,7 +46,7 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
 
     @Override
     public void showModifySuccess() {
-        ToastUtil.showLongToast(R.string.modify_email_success);
+        ToastUtil.showLongToast(R.string.modify_tel_success);
         //TODO：反回主页时对主页进行刷新
     }
 

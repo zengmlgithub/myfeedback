@@ -40,7 +40,7 @@ import java.util.List;
 /**
  * 提交反馈的页面
  */
-public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI,ImagePickerAdapter.OnRecyclerViewItemClickListener, AdapterView.OnItemSelectedListener {
+public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter> implements GotoFeedbackContacts.IGotoFeedbackUI,ImagePickerAdapter.OnRecyclerViewItemClickListener, AdapterView.OnItemSelectedListener {
 
     private RecyclerView recyclerView;
 
@@ -334,7 +334,7 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
                         /**
                          * 判断用户是否点击了禁止后不再询问，AndPermission.hasAlwaysDeniedPermission(MainActivity.this, data)
                          */
-                        if (AndPermission.hasAlwaysDeniedPermission(GotoFeedbackActivity2.this, data)) {
+                        if (AndPermission.hasAlwaysDeniedPermission(GotoFeedbackActivity.this, data)) {
                             //true，弹窗再次向用户索取权限
 //                            showSettingDialog(MainActivity.this, data);
                         }
@@ -360,14 +360,14 @@ public class GotoFeedbackActivity2 extends SanyBaseActivity<GotoFeedbackPresente
                     case 0: // 直接调起相机
                         //打开选择,本次允许选择的数量
                         ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent = new Intent(GotoFeedbackActivity2.this, ImageGridActivity.class);
+                        Intent intent = new Intent(GotoFeedbackActivity.this, ImageGridActivity.class);
                         intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS,true); // 是否是直接打开相机
                         startActivityForResult(intent, REQUEST_CODE_SELECT);
                         break;
                     case 1:
                         //打开选择,本次允许选择的数量
                         ImagePicker.getInstance().setSelectLimit(maxImgCount - selImageList.size());
-                        Intent intent1 = new Intent(GotoFeedbackActivity2.this, ImageGridActivity.class);
+                        Intent intent1 = new Intent(GotoFeedbackActivity.this, ImageGridActivity.class);
                         startActivityForResult(intent1, REQUEST_CODE_SELECT);
                         break;
                     default:

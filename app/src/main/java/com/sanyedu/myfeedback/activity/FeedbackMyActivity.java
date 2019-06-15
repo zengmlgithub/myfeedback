@@ -68,7 +68,7 @@ public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackCo
 
     @OnClick(R.id.go_feedback_tv)
     public void goFeebackOnClick() {
-        StartUtils.startActivity(this,GotoFeedbackActivity2.class);
+        StartUtils.startActivity(this,GotoFeedbackActivity.class);
     }
 
     @Override

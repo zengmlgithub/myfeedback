@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.sanyedu.myfeedback.R;
-import com.sanyedu.myfeedback.activity.GotoFeedbackActivity2;
+import com.sanyedu.myfeedback.activity.GotoFeedbackActivity;
 
 
 import java.util.ArrayList;
@@ -123,7 +123,7 @@ public class ImagePickerAdapter extends RecyclerView.Adapter<ImagePickerAdapter.
                 iv_img.setScaleType(ImageView.ScaleType.FIT_XY);
                 cancelImg.setVisibility(View.INVISIBLE);
                 iv_img.setImageResource(R.mipmap.img_add);
-                clickPosition = GotoFeedbackActivity2.IMAGE_ITEM_ADD;
+                clickPosition = GotoFeedbackActivity.IMAGE_ITEM_ADD;
             } else {
                 iv_img.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 cancelImg.setVisibility(View.VISIBLE);
