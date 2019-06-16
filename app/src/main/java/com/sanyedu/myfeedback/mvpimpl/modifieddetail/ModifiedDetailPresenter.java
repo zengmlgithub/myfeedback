@@ -39,12 +39,14 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().getDetailFailure(ErrorUtils.SERVER_ERROR);
                             }
 
                             @Override
                             public void onResponse(BaseModel<DetailBean> response, int id) {
                                 if (response == null){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().getDetailFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
@@ -52,20 +54,24 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
 
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().getDetailFailure(ErrorUtils.SERVER_ERROR);
                                     return;
                                 }
 
                                 if (!"1".equals(code)){
-                                    ToastUtil.showLongToast(response.getInfo());
+//                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().getDetailFailure(response.getInfo());
                                     return;
                                 }
 
                                 DetailBean detailBean = response.getObj();
                                 if (detailBean != null){
                                     getView().setDetail(detailBean);
+                                    getView().getDetailSuccess();
                                 }else{
-                                    ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.PARSE_ERROR);
+                                    getView().getDetailFailure(ErrorUtils.PARSE_ERROR);
                                 }
                             }
                         }
@@ -90,27 +96,28 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
+                                getView().getDetailFailure(ErrorUtils.SERVER_ERROR);
                             }
 
                             @Override
                             public void onResponse(BaseModel<String> response, int id) {
                                 if (response == null){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().getDetailFailure(ErrorUtils.PARSE_ERROR);
                                     return;
                                 }
 //                                SanyLogs.i(response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)){
-                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    getView().getDetailFailure(ErrorUtils.PARSE_ERROR);
                                     return;
                                 }
 
                                 if (!"1".equals(code)){
-                                    ToastUtil.showLongToast(response.getInfo());
+                                    getView().getDetailFailure(response.getInfo());
                                     return;
                                 }
-
-                                getView().closeFeedbackResult(ModifiedDetailContacts.IModifiedDetailUI.CLOSE_SUCCESS);
+                                getView().modifySuccess();
                             }
                         }
                 );

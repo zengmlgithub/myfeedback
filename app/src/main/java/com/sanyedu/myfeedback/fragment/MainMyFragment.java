@@ -404,6 +404,8 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
                     SanyLogs.i("进入到commonDialog");
                     SpHelper.clear();
                     dialog.dismiss();
+                    StartUtils.startActivity(getContext(),LoginActivity.class);
+                    getActivity().finish();
                 }
 
                 @Override

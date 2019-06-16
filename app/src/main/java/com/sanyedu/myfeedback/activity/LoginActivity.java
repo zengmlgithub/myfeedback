@@ -45,6 +45,7 @@ public class LoginActivity extends SanyBaseActivity<LoginPresenter> implements L
     @Override
     public void startMain() {
         StartUtils.startActivity(LoginActivity.this, MainActivity.class);
+        finish();
     }
 
     @Override

@@ -69,7 +69,7 @@
                                  android:layout_height="41dp"
                                  android:id="@+id/modify_pwd_ib"
                                 android:background="@mipmap/modify_bg"
-                              android:text="去整改"
+                              android:text="修改密码"
                               android:gravity="center"
                               android:textSize="12sp"
 
@@ -82,7 +82,7 @@
                                  android:id="@+id/logout_ib"
                                  android:layout_below="@+id/modify_pwd_ib"
                                android:background="@drawable/shape_logout"
-                              android:text="去关闭"
+                              android:text="注册用户"
                               android:gravity="center"
                               android:textSize="12sp"
 

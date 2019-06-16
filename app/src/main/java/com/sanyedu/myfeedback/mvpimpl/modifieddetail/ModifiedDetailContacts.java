@@ -6,10 +6,11 @@ import com.sanyedu.myfeedback.mvp.IBaseView;
 
 public final class ModifiedDetailContacts {
     public interface IModifiedDetailUI extends IBaseView{
-        int CLOSE_SUCCESS = 1;
-        int CLOSE_FAILURE = 0;
-        public void setDetail(DetailBean bean);
-        void closeFeedbackResult(int resultCode);
+
+        void setDetail(DetailBean bean);
+        void getDetailFailure(String msg);
+        void getDetailSuccess();
+        void modifySuccess();
     }
 
     public interface IModifiedDetailPresenter extends IBasePresenter{

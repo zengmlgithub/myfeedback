@@ -28,7 +28,7 @@
             android:layout_marginRight="40dp"
             android:layout_marginBottom="30dp"
             android:text="签到成功，获得200积分"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textColor="@color/font_common_1"/>
     <View
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                 android:layout_weight="1.0"
                 android:gravity="center"
                 android:text="@string/cancel"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:textColor="@color/font_common_2"/>
 
         <View
@@ -64,7 +64,7 @@
                 android:gravity="center"
                 android:layout_weight="1.0"
                 android:text="@string/submit"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:textColor="@color/font_blue"/>
 
     </LinearLayout>

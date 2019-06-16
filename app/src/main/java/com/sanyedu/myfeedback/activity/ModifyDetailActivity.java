@@ -118,7 +118,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         Intent intent = getIntent();
         if(intent != null){
             feedbackId = intent.getStringExtra(ConstantUtil.ID);
-            SanyLogs.i("feedbackId:" + feedbackId);
+            SanyLogs.i("modifyDetail----feedbackId:" + feedbackId);
         }
     }
 
@@ -162,15 +162,22 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     }
 
     @Override
-    public void closeFeedbackResult(int resultCode) {
-        if(resultCode == CLOSE_FAILURE){
-            SanyLogs.i("close failure.");
-            hideLoading();
-        }else if (resultCode == CLOSE_SUCCESS){
-            SanyLogs.i("close failure.");
-            closeDialog();
-            getPresenter().getDetail(feedbackId);
-        }
+    public void getDetailFailure(String msg) {
+        hideLoading();
+        ToastUtil.showLongToast(msg);
+    }
+
+    @Override
+    public void getDetailSuccess() {
+        closeDialog();
+        hideLoading();
+    }
+
+    @Override
+    public void modifySuccess(){
+        closeDialog();
+        hideLoading();
+        getPresenter().getDetail(feedbackId);
     }
 
     private CloseFeedbackDialog closeFeedbackDialog;
