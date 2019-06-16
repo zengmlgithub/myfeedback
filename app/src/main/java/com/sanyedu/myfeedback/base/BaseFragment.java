@@ -1,6 +1,7 @@
 package com.sanyedu.myfeedback.base;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.broadcastreceiver.NetBroadcastReceiver;
 import com.sanyedu.myfeedback.mvp.IBasePresenter;
+import com.sanyedu.myfeedback.mvp.IBaseView;
 import com.sanyedu.myfeedback.mvp.IBaseXView;
+import com.sanyedu.myfeedback.widget.SanyProgressDialog;
 
 
 /**
@@ -19,10 +23,13 @@ import com.sanyedu.myfeedback.mvp.IBaseXView;
  * <p>
  * Created by 邹峰立 on 2017/10/19.
  */
-public abstract class BaseFragment<P extends IBasePresenter>  extends Fragment implements NetBroadcastReceiver.NetChangeListener,IBaseXView{
+public abstract class BaseFragment<P extends IBasePresenter>  extends Fragment implements NetBroadcastReceiver.NetChangeListener, IBaseView {
     public static NetBroadcastReceiver.NetChangeListener netEvent;// 网络状态改变监听事件
 
     private P mPresenter;
+
+    // 加载进度框
+    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
@@ -64,5 +71,24 @@ public abstract class BaseFragment<P extends IBasePresenter>  extends Fragment i
     @Override
     public Activity getSelfActivity() {
         return getActivity();
+    }
+
+    @Override
+    public void showLoading() {
+        //显示ProgressDialog
+        if(mProgressDialog == null){
+            mProgressDialog = new SanyProgressDialog(getActivity(), R.style.CustomProgressDialog);
+        }
+
+        if(!mProgressDialog.isShowing()){
+            mProgressDialog.show();
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if(mProgressDialog != null){
+            mProgressDialog.dismiss();
+        }
     }
 }

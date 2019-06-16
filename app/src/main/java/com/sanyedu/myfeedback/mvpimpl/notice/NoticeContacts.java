@@ -19,12 +19,12 @@ public final class NoticeContacts {
         void showError(String serverError);
     }
 
-    public interface INoticePresenter extends IBasePresenter{
+    public interface INoticePresenter extends IBasePresenter {
         /**
          *
          * @param curPage  当前查询的页面
          * @param pageCount 每个页面拥有的记录条数
          */
-        public void getNotices(String curPage,String pageCount);
+         void getNotices(String curPage,String pageCount);
     }
 }

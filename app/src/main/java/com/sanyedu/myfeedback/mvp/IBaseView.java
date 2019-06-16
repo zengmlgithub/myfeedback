@@ -1,5 +1,8 @@
 package com.sanyedu.myfeedback.mvp;
 
+/**
+ * 此处有两个接口
+ */
 public interface IBaseView extends IBaseXView {
 
    /**

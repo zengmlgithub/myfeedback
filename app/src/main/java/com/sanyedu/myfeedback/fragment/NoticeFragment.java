@@ -68,6 +68,7 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
     private void getFirstPageData() {
         currentPage = 1;
         currList.clear();
+        showLoading();
         getPresenter().getNotices(currentPage+"",PAGE_COUNT + "");
     }
 
@@ -135,7 +136,7 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
     @Override
     public void setNotices(ArrayList<NoticeBean> notices,int maxPageCount) {
         SanyLogs.i("recordsList:" + notices.size());
-
+        hideLoading();
         //当列表为空时，这时有可能是下拉刷新,因此要设置下拉刷新的标志
         if (currList.size() == 0){
             if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
@@ -156,25 +157,24 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
     @Override
     public void setNoNotices() {
         SanyLogs.i("shoNoMoreList~~~~");
+        hideLoading();
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_END);
+
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
-    public void showError(String serverError) {
+    public void showError(String msg) {
         SanyLogs.e("showNoNotice~~~~~");
-        if(!TextUtils.isEmpty(serverError)) {
-            ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+        hideLoading();
+        if(!TextUtils.isEmpty(msg)) {
+            ToastUtil.showLongToast(msg);
+        }
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
         }
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_COMPLETE);
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
     }
 }
