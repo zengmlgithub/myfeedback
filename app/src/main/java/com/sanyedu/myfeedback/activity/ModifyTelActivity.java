@@ -25,19 +25,11 @@ import java.util.List;
 
 public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> implements ModifyInfoContacts.IModifyInfoUI {
 
-//    @BindView(R.id.goback_ib)
-//    ImageButton gobackIB;
-
-//    @BindView(R.id.title_tv)
-//    TextView titleTv;
-
     @BindView(R.id.modify_content_etw)
     EditText modifyEt;
 
     @BindView(R.id.check_tv)
     TextView checkTv;
-
-
 
     @Override
     protected void initData() {
@@ -99,7 +91,6 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
 
         TeacherBean newBean = createNewTeacher();
         if(newBean != null) {
-//            newBean.setTeEmail(emailStr);
             newBean.setTePhone(telStr);
             List<TeacherBean> beanList = new ArrayList<>();
             beanList.add(newBean);
