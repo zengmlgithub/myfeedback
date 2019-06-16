@@ -54,10 +54,28 @@ public class CheckUtils {
      * @return 验证通过返回true
      */
     public static boolean isMobile(String str) {
+        String regexStr = "^[1][3,4,5,7,8,9][0-9]{9}$";
+        return check(str,regexStr);
+    }
+
+    /**
+     * 邮箱验证
+     * @param email
+     * @return
+     */
+    public static boolean isEmail(String email){
+        String regexStr = "[a-zA-Z_]{1,}[0-9]{0,}@(([a-zA-z0-9]-*){1,}\\.){1,3}[a-zA-z\\-]{1,}" ;
+        return check(email,regexStr);
+    }
+
+    private static boolean check(String str,String regexStr){
+        if(TextUtils.isEmpty(str) || TextUtils.isEmpty(regexStr)){
+            return false;
+        }
         Pattern p = null;
         Matcher m = null;
         boolean b = false;
-        p = Pattern.compile("^[1][3,4,5,7,8,9][0-9]{9}$"); // 验证手机号
+        p = Pattern.compile(regexStr); // 验证手机号
         m = p.matcher(str);
         b = m.matches();
         return b;

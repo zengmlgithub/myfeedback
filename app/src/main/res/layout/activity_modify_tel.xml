@@ -8,7 +8,9 @@
 
     <ImageButton
             android:id="@+id/goback_tv"
-            style="@style/goback_style"/>
+            style="@style/goback_style"
+            android:contentDescription="@string/common_description"
+    />
 
     <TextView style="@style/page_title_style"
               android:id="@+id/save_tv"
@@ -20,19 +22,23 @@
                                                    android:layout_below="@+id/goback_tv"
                                                    android:layout_marginTop="15dp"
                                                    android:id="@+id/modify_content_etw"
-                                                   android:background="@drawable/shape_rec_black"/>
-
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:layout_alignLeft="@+id/modify_content_etw"
-                        android:textSize="12dp"
-                        android:textColor="@color/red"
-                        android:text="电话号码不正确"
-                        android:layout_marginLeft="4dp"
-                        android:layout_below="@id/modify_content_etw"
-                        android:id="@+id/check_tv"
-                        android:visibility="gone"
-                        />
+                                                   android:background="@drawable/shape_rec_black"
+                                                   android:hint="@string/please_input_tel"
     />
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignStart="@+id/modify_content_etw"
+              android:layout_alignLeft="@+id/modify_content_etw"
+              android:textSize="12sp"
+              android:textColor="@color/red"
+              android:layout_marginStart="4dp"
+              android:layout_marginLeft="4dp"
+              android:layout_below="@id/modify_content_etw"
+              android:id="@+id/check_tv"
+              android:visibility="gone"
+    />
+
 
     <Button
             android:layout_below="@id/modify_content_etw"

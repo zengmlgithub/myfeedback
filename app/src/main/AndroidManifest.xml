@@ -112,7 +112,7 @@
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-        <activity android:name=".activity.ModifyInfoActivity"
+        <activity android:name=".activity.ModifyEmailActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"

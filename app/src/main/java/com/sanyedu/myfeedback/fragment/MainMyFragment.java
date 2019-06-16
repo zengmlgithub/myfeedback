@@ -185,7 +185,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     }
 
     private void modifyEmail() {
-        StartUtils.startActivity(getActivity(), ModifyInfoActivity.class);
+        StartUtils.startActivity(getActivity(), ModifyEmailActivity.class);
     }
 
 

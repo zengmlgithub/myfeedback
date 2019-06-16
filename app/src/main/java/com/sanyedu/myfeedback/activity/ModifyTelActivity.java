@@ -1,6 +1,8 @@
 package com.sanyedu.myfeedback.activity;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,17 +37,39 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     @BindView(R.id.check_tv)
     TextView checkTv;
 
+
+
     @Override
     protected void initData() {
         ButterKnife.bind(this);
+        setListener();
+    }
+
+    private void setListener() {
+        modifyEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(checkTv.getVisibility() == View.VISIBLE){
+                    checkTv.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_modify_info;
+        return R.layout.activity_modify_tel;
     }
-
-
 
     @Override
     public ModifyInfoPresenter onBindPresenter() {
