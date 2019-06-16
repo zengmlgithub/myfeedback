@@ -10,12 +10,12 @@ public final class ModifyChangeContacts {
     public interface IModifyChangeUI extends IBaseView{
         int UPDATE＿SUCCESS = 0;
         int UPDATE＿FAILURE = 1;
-        void updateFeedbackResult(int result); //result 只能在update_success 和  update_failure中取值
+        void updateFeedbackFailure(String msg);
+        void updateFeedbackSuccess();
     }
 
     public interface IModifyChangePresenter extends IBasePresenter{
          void updateFeedback(List<String> files, ChangeFeedbackBean changeFeedbackBean);
-        void updateFeedback(ChangeFeedbackBean changeFeedbackBean);
     }
 
 

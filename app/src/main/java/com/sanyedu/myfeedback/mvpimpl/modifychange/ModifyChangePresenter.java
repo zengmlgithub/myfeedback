@@ -20,10 +20,12 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
         super(view);
     }
 
-    @Override
-    public void updateFeedback(@NonNull ChangeFeedbackBean changeFeedbackBean){
+
+    private void updateFeedback(@NonNull ChangeFeedbackBean changeFeedbackBean,String pathA,String pathB,String pathC){
 
         String url = HttpUtil.getPort(HttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
+
+        SanyLogs.i(changeFeedbackBean.toString());
 
         try {
             if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
@@ -44,9 +46,9 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
                 .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_PERID,changeFeedbackBean.getFeedbackPerid())
                 .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_PERNAME,changeFeedbackBean.getFeedbackPername())
                 .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_PERDEPT,changeFeedbackBean.getFeedbackPerdept())
-                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEA,changeFeedbackBean.getFeedbackFilea())
-                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEB,changeFeedbackBean.getFeedbackFileb())
-                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEC,changeFeedbackBean.getFeedbackFilec())
+                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEA,pathA)
+                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEB,pathB)
+                .addParams(HttpUtil.UpdateFeedbackState.FEEDBACK_FILEC,pathC)
                 .build()
                 .execute(
                         new BaseModelCallback<String>(){
@@ -54,51 +56,53 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
                             @Override
                             public void onError(Call call, Exception e, int id) {
                                 SanyLogs.e("string:" + e.toString());
-                                getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿FAILURE);
+//                                getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿FAILURE);
+                                getView().updateFeedbackFailure("上传失败");
                             }
 
                             @Override
                             public void onResponse(BaseModel<String> response, int id) {
                                 if (response == null){
                                     ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿FAILURE);
+                                    getView().updateFeedbackFailure("上传失败");
                                     return;
                                 }
 //                                SanyLogs.i(response.toString());
                                 String code = response.getCode();
                                 if (TextUtils.isEmpty(code)){
                                     ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
-                                    getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿FAILURE);
+                                    getView().updateFeedbackFailure("上传失败");
                                     return;
                                 }
 
                                 if (!"1".equals(code)){
                                     ToastUtil.showLongToast(response.getInfo());
-                                    getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿FAILURE);
+                                    getView().updateFeedbackFailure("上传失败");
                                     return;
                                 }
 
 //                                String noticeBean = response.getObj();
 //                                ToastUtil.showLongToast("反馈成功");
-                                getView().updateFeedbackResult(ModifyChangeContacts.IModifyChangeUI.UPDATE＿SUCCESS);
+                                getView().updateFeedbackSuccess();
                             }
                         }
                 );
     }
 
 
-    @Override
-    public void updateFeedback(List<String> files,final ChangeFeedbackBean changeFeedbackBean) {
 
-        try {
-            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
-                SanyLogs.e("ChangeFeedbackBean is null,return!");
-                return;
-            }
-        }catch (Exception e){
-            SanyLogs.e(e.toString());
-            return;
-        }
+    @Override
+    public void updateFeedback(final List<String> files, final ChangeFeedbackBean changeFeedbackBean) {
+
+//        try {
+//            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
+//                SanyLogs.e("ChangeFeedbackBean is null,return!");
+//                return;
+//            }
+//        }catch (Exception e){
+//            SanyLogs.e(e.toString());
+//            return;
+//        }
 
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
@@ -110,12 +114,14 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
             public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
                 if(service.hasPhoto()){
                     if(changeFeedbackBean != null){
-                        changeFeedbackBean.setFeedbackFilea(service.getServicePathA(serverPathList));
-                        changeFeedbackBean.setFeedbackFileb(service.getServicePathB(serverPathList));
-                        changeFeedbackBean.setFeedbackFilec(service.getServicePathC(serverPathList));
-                        updateFeedback(changeFeedbackBean);
+                        updateFeedback(changeFeedbackBean,files.get(0),files.get(1),files.get(2));
                     }
                 }
+            }
+
+            @Override
+            public void updateFailure(UpdatePictureService service, String msg) {
+                getView().updateFeedbackFailure(msg);
             }
         });
 

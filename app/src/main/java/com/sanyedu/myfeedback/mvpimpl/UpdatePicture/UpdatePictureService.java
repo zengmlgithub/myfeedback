@@ -33,6 +33,7 @@ public class UpdatePictureService {
 
     public interface UpdateFinishedListener {
         void updateFinished(UpdatePictureService service,List<String> serverPathList);
+        void updateFailure(UpdatePictureService service,String msg);
     }
 
     public void setUpdateFinishedListener(UpdateFinishedListener updateFinishedListener) {
@@ -51,7 +52,9 @@ public class UpdatePictureService {
             File fileA = new File(pathA);
             postFilesA(pathA, fileA, 0);
         } else {
-            ToastUtil.showLongToast("请先拍照或选择已有图片");
+           if(updateFinishedListener != null){
+               updateFinishedListener.updateFailure(this,"请先拍照或选择图片");
+           }
         }
     }
 

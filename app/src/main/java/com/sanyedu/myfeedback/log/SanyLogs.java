@@ -61,6 +61,7 @@ public class SanyLogs {
         log(INFO, null, String.valueOf(sb));
     }
 
+
     public static void w(String msg) {
         log(WARN, null, msg);
     }

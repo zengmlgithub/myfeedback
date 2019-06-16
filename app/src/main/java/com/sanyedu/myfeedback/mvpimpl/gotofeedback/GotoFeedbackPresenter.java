@@ -173,7 +173,8 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
 
                                 String feedbackId = response.getObj();
                                 if (!TextUtils.isEmpty(feedbackId)) {
-                                    ToastUtil.showLongToast("反馈上传成功！");
+//                                    ToastUtil.showLongToast("反馈上传成功！");
+                                    getView().updateFeedbackSuccess();
                                 }
                             }
                         }
@@ -197,6 +198,11 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                     item.setFeedbackC(service.getServicePathC(serverPathList));
                     postFeedbackToServer(item);
                 }
+            }
+
+            @Override
+            public void updateFailure(UpdatePictureService service, String msg) {
+                getView().updateFeedbackFailure(msg);
             }
         });
 

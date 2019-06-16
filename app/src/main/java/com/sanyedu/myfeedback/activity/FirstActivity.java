@@ -43,10 +43,9 @@ public class FirstActivity extends SanyBaseActivity {
     }
 
     private void goToNext(){
-//        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
-
-        //TODO:test
-        Class clazz = MainActivity.class;
+        Class<?> clazz = hasUserInfo() ? MainActivity.class:LoginActivity.class;
+        //test
+//        Class clazz = MainActivity.class;
         StartUtils.startActivity(FirstActivity.this,clazz);
         finish();
     }
@@ -63,7 +62,7 @@ public class FirstActivity extends SanyBaseActivity {
                 mHandler.postDelayed(myRunnale,1000);
                 String skipTxt = getResources().getString(R.string.skip_txt);
                 String secondTxt = getResources().getString(R.string.second_txt);
-                skipButton.setText(skipTxt + limitTime + "s");
+                skipButton.setText(skipTxt + limitTime + secondTxt);
             }else{
                 mHandler.removeCallbacks(myRunnale);
                 goToNext();

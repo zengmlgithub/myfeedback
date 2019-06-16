@@ -11,8 +11,13 @@ public abstract class BaseActivity<P extends IBasePresenter> extends BaseXActivi
     @Override
     public void showLoading(){
         //显示ProgressDialog
-        mProgressDialog = new SanyProgressDialog(this, R.style.CustomProgressDialog);
-        mProgressDialog.show();
+        if(mProgressDialog == null){
+            mProgressDialog = new SanyProgressDialog(this, R.style.CustomProgressDialog);
+        }
+
+        if(!mProgressDialog.isShowing()){
+            mProgressDialog.show();
+        }
     }
     
     @Override

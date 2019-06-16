@@ -110,7 +110,7 @@ public class ModifiedDetailPresenter extends BasePresenter<ModifiedDetailContact
                                     return;
                                 }
 
-
+                                getView().closeFeedbackResult(ModifiedDetailContacts.IModifiedDetailUI.CLOSE_SUCCESS);
                             }
                         }
                 );

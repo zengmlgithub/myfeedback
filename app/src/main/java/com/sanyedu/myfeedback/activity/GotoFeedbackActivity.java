@@ -66,7 +66,7 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     public void submit(){
         SanyLogs.i("submit~~~~");
         List<String> pathList = getImagePath();
-
+        showLoading();
         getPresenter().postFeedbackToServer(pathList,getCurrentItem());
     }
 
@@ -211,6 +211,19 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
             SanyLogs.i(e.toString());
         }
         return tempItem;
+    }
+
+    @Override
+    public void updateFeedbackSuccess() {
+        hideLoading();
+        //上传完后
+        finish();
+    }
+
+    @Override
+    public void updateFeedbackFailure(String failureReson) {
+        hideLoading();
+        ToastUtil.showLongToast(failureReson);
     }
 
     private String getFeedbackDept() {

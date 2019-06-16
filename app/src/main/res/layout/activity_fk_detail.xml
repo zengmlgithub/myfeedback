@@ -11,7 +11,7 @@
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/goback_tv"
+                android:id="@+id/goback_ib"
                 android:background="@mipmap/icon_goback"
                 android:layout_marginLeft="17dp"
         />

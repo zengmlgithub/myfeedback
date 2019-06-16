@@ -251,15 +251,6 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         }
     }
 
-    @Override
-    public void updateFeedbackResult(int result) {
-        if(result == UPDATE＿SUCCESS){
-            ToastUtil.showLongToast("整改状态已更新");
-            finish();
-        }else{
-            ToastUtil.showLongToast("整改状态更新失败，请再次上传！");
-        }
-    }
 
     @OnClick(R.id.save_tv)
     public void save(){
@@ -302,5 +293,15 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
 
     private String getFeedbackStatus() {
         return "1";
+    }
+
+    @Override
+    public void updateFeedbackFailure(String msg) {
+        ToastUtil.showLongToast(msg);
+    }
+
+    @Override
+    public void updateFeedbackSuccess() {
+        ToastUtil.showLongToast("更新成功");
     }
 }

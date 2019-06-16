@@ -16,6 +16,9 @@ public final class GotoFeedbackContacts {
         void setPersonList(List<PersonBean> personList);
 
         FeedbackItem getCurrentItem();
+
+        void updateFeedbackSuccess();
+        void updateFeedbackFailure(String failureReson);
     }
 
     public interface IGoToFeedbackPresenter extends IBasePresenter{

@@ -9,9 +9,7 @@ public class ChangeFeedbackBean implements Serializable {
     private String feedbackPerid;
     private String feedbackPername; //关闭人名称
     private String feedbackPerdept; //关闭人部门
-    private String feedbackFilea; //整改图1
-    private String feedbackFileb;//整改图2
-    private String feedbackFilec;//整改图3
+
 
     public ChangeFeedbackBean(String feedbackId, String feedbackStatus, String feedbackContent, String feedbackPerid, String feedbackPername, String feedbackPerdept, String feedbackFilea, String feedbackFileb, String feedbackFilec) {
         this.feedbackId = feedbackId;
@@ -20,9 +18,6 @@ public class ChangeFeedbackBean implements Serializable {
         this.feedbackPerid = feedbackPerid;
         this.feedbackPername = feedbackPername;
         this.feedbackPerdept = feedbackPerdept;
-        this.feedbackFilea = feedbackFilea;
-        this.feedbackFileb = feedbackFileb;
-        this.feedbackFilec = feedbackFilec;
     }
 
     public ChangeFeedbackBean() {
@@ -76,29 +71,6 @@ public class ChangeFeedbackBean implements Serializable {
         this.feedbackPerdept = feedbackPerdept;
     }
 
-    public String getFeedbackFilea() {
-        return feedbackFilea;
-    }
-
-    public void setFeedbackFilea(String feedbackFilea) {
-        this.feedbackFilea = feedbackFilea;
-    }
-
-    public String getFeedbackFileb() {
-        return feedbackFileb;
-    }
-
-    public void setFeedbackFileb(String feedbackFileb) {
-        this.feedbackFileb = feedbackFileb;
-    }
-
-    public String getFeedbackFilec() {
-        return feedbackFilec;
-    }
-
-    public void setFeedbackFilec(String feedbackFilec) {
-        this.feedbackFilec = feedbackFilec;
-    }
 
     @Override
     public String toString() {
@@ -108,10 +80,7 @@ public class ChangeFeedbackBean implements Serializable {
                 ", feedbackContent='" + feedbackContent + '\'' +
                 ", feedbackPerid='" + feedbackPerid + '\'' +
                 ", feedbackPername='" + feedbackPername + '\'' +
-                ", feedbackPerdept='" + feedbackPerdept + '\'' +
-                ", feedbackFilea='" + feedbackFilea + '\'' +
-                ", feedbackFileb='" + feedbackFileb + '\'' +
-                ", feedbackFilec='" + feedbackFilec + '\'' +
+                ", feedbackPerdept='" + feedbackPerdept + '\''+
                 '}';
     }
 }

@@ -17,7 +17,7 @@ public class CheckUtils {
     public static boolean isParasLegality(String... params) {
         boolean isLegality = true;
         for (String para : params) {
-            if (TextUtils.isDigitsOnly(para)) {
+            if (TextUtils.isEmpty(para)) {
                 isLegality = false;
                 SanyLogs.e("param is legacy ,return.");
             }
@@ -30,7 +30,7 @@ public class CheckUtils {
      * 判断对象中的值是否有空存在
      * @param obj
      * @return
-     * @throws Exception
+     * @throws
      */
     public static boolean isAllObjFieldLegacity(Object obj) throws Exception {
         Class stuCla = (Class) obj.getClass();// 得到类对象
