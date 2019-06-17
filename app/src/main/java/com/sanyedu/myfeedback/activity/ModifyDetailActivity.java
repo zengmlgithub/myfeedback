@@ -157,7 +157,13 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             String rectiStatus = bean.getRectiStatus();
             SanyLogs.i("ModifyDetailActivity~~~~" + rectiStatus);
             initOperator(rectiStatus);
+
+            LoaderPictureUtils.load(this,bean.getFeedbackA(),photo1Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(this,bean.getFeedbackB(),photo2Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(this,bean.getFeedbackC(),photo3Iv,R.mipmap.ic_launcher);
         }
+
+
         hideLoading();
     }
 

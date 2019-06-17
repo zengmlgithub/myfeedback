@@ -28,6 +28,35 @@ public class DetailBean {
     private String toResponsibleid;
     private String toResponsiblename;
 
+    private String feedbackA;
+    private String feedbackB;
+
+    public String getFeedbackB() {
+        return feedbackB;
+    }
+
+    public void setFeedbackB(String feedbackB) {
+        this.feedbackB = feedbackB;
+    }
+
+    public String getFeedbackC() {
+        return feedbackC;
+    }
+
+    public void setFeedbackC(String feedbackC) {
+        this.feedbackC = feedbackC;
+    }
+
+    private String feedbackC;
+
+    public String getFeedbackA() {
+        return feedbackA;
+    }
+
+    public void setFeedbackA(String feedbackA) {
+        this.feedbackA = feedbackA;
+    }
+
     public void setFeedbackAdress(String feedbackAdress) {
         this.feedbackAdress = feedbackAdress;
     }
@@ -157,6 +186,9 @@ public class DetailBean {
                 ", toResponsibledept='" + toResponsibledept + '\'' +
                 ", toResponsibleid='" + toResponsibleid + '\'' +
                 ", toResponsiblename='" + toResponsiblename + '\'' +
+                ", feedbackA='" + feedbackA + '\'' +
+                ", feedbackB='" + feedbackB + '\'' +
+                ", feedbackC='" + feedbackC + '\'' +
                 '}';
     }
 }

@@ -11,7 +11,7 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 
 
 public class LoaderPictureUtils {
-    public static void loadImage(Context context, String path, float heigth, float width, int placeHolderId, ImageView imageView){
+     static void loadImage(Context context, String path, float heigth, float width, int placeHolderId, ImageView imageView){
         if(TextUtils.isEmpty(path)){
 //            throw new IllegalArgumentException("photo path is illegal.");
             SanyLogs.i("path is null,return!");

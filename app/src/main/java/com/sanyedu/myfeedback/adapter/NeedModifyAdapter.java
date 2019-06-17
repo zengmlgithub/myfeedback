@@ -78,17 +78,10 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
                 }
             });
 
-            SanyLogs.i("startLoad photo");
-
-//            LoaderPictureUtils.loadImage(context,records.getFeedbackA(),30,30,R.mipmap.ic_launcher,holder.photo1Iv);
-//            LoaderPictureUtils.loadImage(context,records.getFeedbackB(),30,30,R.mipmap.ic_launcher,holder.photo2Iv);
-//            LoaderPictureUtils.loadImage(context,records.getFeedbackC(),30,30,R.mipmap.ic_launcher,holder.photo3Iv);
-
             LoaderPictureUtils.load(context,records.getFeedbackA(),holder.photo1Iv,R.mipmap.ic_launcher);
             LoaderPictureUtils.load(context,records.getFeedbackB(),holder.photo2Iv,R.mipmap.ic_launcher);
             LoaderPictureUtils.load(context,records.getFeedbackC(),holder.photo3Iv,R.mipmap.ic_launcher);
 
-            SanyLogs.i("endLoad photo");
         }
     }
 
