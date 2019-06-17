@@ -80,9 +80,10 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     }
 
     private void getFeedbackId() {
-        Intent intent = new Intent();
+        Intent intent = getIntent();
         if (intent != null){
             feedbackId = intent.getStringExtra(ConstantUtil.ID);
+            SanyLogs.i("feedbackId--->" + feedbackId);
         }
     }
 
@@ -284,7 +285,6 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         return tempList;
     }
 
-
     private String getFeedbackContent() {
         String content = contentEt.getText().toString().trim() ;
         String contentStr = TextUtils.isEmpty(content)? "":content;
@@ -303,5 +303,6 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     @Override
     public void updateFeedbackSuccess() {
         ToastUtil.showLongToast("更新成功");
+        finish();
     }
 }

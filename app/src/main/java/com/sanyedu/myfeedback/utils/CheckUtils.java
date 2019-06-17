@@ -17,9 +17,11 @@ public class CheckUtils {
     public static boolean isParasLegality(String... params) {
         boolean isLegality = true;
         for (String para : params) {
+            SanyLogs.i("param--->" + para);
             if (TextUtils.isEmpty(para)) {
                 isLegality = false;
                 SanyLogs.e("param is legacy ,return.");
+                break;
             }
         }
 

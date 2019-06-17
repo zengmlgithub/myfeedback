@@ -1,6 +1,7 @@
 package com.sanyedu.myfeedback.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,11 +11,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sanyedu.myfeedback.R;
+import com.sanyedu.myfeedback.imageloader.ImageLoader;
+import com.sanyedu.myfeedback.imageloader.LoaderOptions;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
+import com.sanyedu.myfeedback.utils.LoaderPictureUtils;
 import com.sanyedu.myfeedback.utils.StatusUtils;
+import com.sanyedu.myfeedback.utils.SystemUtils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +49,7 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         final Records records = recordsList.get(position);
-//        SanyLogs.i("onBindViewHolder~~~records:" + records.toString());
+        SanyLogs.i("onBindViewHolder~~~records:" + records.toString());
         if (records != null){
 //            holder.headIv.setBackground(null);
             holder.departTv.setText(records.getToResponsibledept());
@@ -70,6 +77,18 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
                     }
                 }
             });
+
+            SanyLogs.i("startLoad photo");
+
+//            LoaderPictureUtils.loadImage(context,records.getFeedbackA(),30,30,R.mipmap.ic_launcher,holder.photo1Iv);
+//            LoaderPictureUtils.loadImage(context,records.getFeedbackB(),30,30,R.mipmap.ic_launcher,holder.photo2Iv);
+//            LoaderPictureUtils.loadImage(context,records.getFeedbackC(),30,30,R.mipmap.ic_launcher,holder.photo3Iv);
+
+            LoaderPictureUtils.load(context,records.getFeedbackA(),holder.photo1Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(context,records.getFeedbackB(),holder.photo2Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(context,records.getFeedbackC(),holder.photo3Iv,R.mipmap.ic_launcher);
+
+            SanyLogs.i("endLoad photo");
         }
     }
 

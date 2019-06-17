@@ -116,23 +116,23 @@
                         android:layout_marginTop="5dp"
                 >
                     <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:id="@+id/photo1_iv"
                             android:background="@mipmap/icon_test_bg"
                     />
 
                     <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:id="@+id/photo2_iv"
                             android:background="@mipmap/icon_test_bg"
                             android:layout_marginLeft="10dp"
                     />
 
                     <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:id="@+id/photo3_iv"
                             android:background="@mipmap/icon_test_bg"
                             android:layout_marginLeft="10dp"
