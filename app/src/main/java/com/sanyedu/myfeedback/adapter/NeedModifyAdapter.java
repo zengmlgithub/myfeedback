@@ -1,7 +1,6 @@
 package com.sanyedu.myfeedback.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,17 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.sanyedu.myfeedback.R;
-import com.sanyedu.myfeedback.imageloader.ImageLoader;
-import com.sanyedu.myfeedback.imageloader.LoaderOptions;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.utils.LoaderPictureUtils;
 import com.sanyedu.myfeedback.utils.StatusUtils;
-import com.sanyedu.myfeedback.utils.SystemUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
