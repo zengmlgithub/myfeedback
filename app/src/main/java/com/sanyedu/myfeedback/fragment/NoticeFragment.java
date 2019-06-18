@@ -163,6 +163,8 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
         if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }
+
+        ToastUtil.showLongToast("没有更多记录啦~");
     }
 
     @Override
