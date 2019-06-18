@@ -223,6 +223,9 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
     public void showNoMoreList() {
         SanyLogs.i("shoNoMoreList~~~~");
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_END);
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -232,6 +235,9 @@ public class BaseFeedbackMyFragment extends BaseFragment<FeedbackMyFragmentPrese
             ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
         }
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_COMPLETE);
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
 
