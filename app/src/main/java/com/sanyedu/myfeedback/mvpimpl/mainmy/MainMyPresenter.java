@@ -6,15 +6,22 @@ import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 
+import android.text.TextUtils;
 import com.sanyedu.myfeedback.log.SanyLogs;
+import com.sanyedu.myfeedback.model.BaseModel;
+import com.sanyedu.myfeedback.model.BaseModelCallback;
+import com.sanyedu.myfeedback.model.PageRecordBean;
+import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvp.BasePresenter;
+import com.sanyedu.myfeedback.okhttp.OkHttpUtils;
 import com.sanyedu.myfeedback.share.SpHelper;
-import com.sanyedu.myfeedback.utils.ConstantUtil;
-import com.sanyedu.myfeedback.utils.FileUtils;
+import com.sanyedu.myfeedback.utils.*;
+import okhttp3.Call;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import static com.sanyedu.myfeedback.utils.ConstantUtil.IMAGE_FILE_NAME;
 
@@ -91,6 +98,80 @@ public class MainMyPresenter extends BasePresenter<MainMyContacts.IMainMyUI> imp
         cropUri = Uri.fromFile(cropFile);
         getView().startActivityWithResult(uri,cropUri);
     }
+
+    @Override
+    public void getMyInfoNum(String id, final String infoType) {
+
+        if(!CheckUtils.isParasLegality(id,infoType)){
+            SanyLogs.e("params is null,return");
+            return;
+        }
+
+        String url = HttpUtil.getPort(HttpUtil.GET_MY_FEEDBACK_COUNT_PORT);
+//        SanyLogs.i("getLogin~~~tokenValue:" + tokenValue);
+        OkHttpUtils
+                .post()
+                .url(url)
+//                .addHeader(ConstantUtil.AUTHORIZATION, tokenValue)
+                .addParams(HttpUtil.MyFeedbackCount.ID, id)
+                .addParams(HttpUtil.MyFeedbackCount.TYPE,infoType)
+                .build()
+                .execute(
+                        new BaseModelCallback<Integer>(){
+
+                            @Override
+                            public void onError(Call call, Exception e, int id) {
+                                SanyLogs.e("string:" + e.toString());
+//                                getView().showError(ErrorUtils.PARSE_ERROR);
+                                goToFeedbackError(infoType);
+                            }
+
+                            @Override
+                            public void onResponse(BaseModel<Integer> response, int id) {
+                                if (response == null){
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+//                                    getView().showError(ErrorUtils.PARSE_ERROR);
+                                    goToFeedbackError(infoType);
+                                    return;
+                                }
+//                                SanyLogs.i(response.toString());
+                                String code = response.getCode();
+                                if (TextUtils.isEmpty(code)){
+//                                    ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
+                                    goToFeedbackError(infoType);
+                                    return;
+                                }
+
+                                if (!"1".equals(code)){
+//                                    ToastUtil.showLongToast(response.getInfo());
+                                    goToFeedbackError(infoType);
+                                    return;
+                                }
+
+                                int count = response.getObj();
+
+                                goToFeedbacSuccess(infoType,count);
+                            }
+                        }
+                );
+    }
+
+    private void goToFeedbackError(String infoType) {
+        if(ConstantUtil.FEEDBACK_MAIN.equals(infoType)){
+            getView().showFeedbackMyNumber(0);
+        }else if(ConstantUtil.MAIN_FEEDBACK.equals(infoType)){
+            getView().showMyFeedbackNumber(0);
+        }
+    }
+
+    private void goToFeedbacSuccess(String infoType,int count){
+        if(ConstantUtil.FEEDBACK_MAIN.equals(infoType)){
+            getView().showFeedbackMyNumber(count);
+        }else if(ConstantUtil.MAIN_FEEDBACK.equals(infoType)){
+            getView().showMyFeedbackNumber(count);
+        }
+    }
+
 
     private  void saveToken(String tokenString) {
         SanyLogs.i("save token:" + tokenString);

@@ -36,6 +36,7 @@ public class HttpUtil {
     public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
     public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";  //更新状态
     public static final String CLOASE_FEEDBACK_PORT = "submitFeedback/updFeedback"; //关闭反馈
+    public static final String GET_MY_FEEDBACK_COUNT_PORT = "sacademic/selMyInfoNum";//获取条数
 
 
 
@@ -154,5 +155,10 @@ public class HttpUtil {
         public static final String FEEDBACK_PERSON_ID = "feedbackPerid";
         public static final String FEEDBACK_PERSON_NAME = "feedbackPername";
         public static final String FEEDBACK_PERSON_DEPT = "feedbackPerdept";
+    }
+
+    public static class MyFeedbackCount{
+        public static final String ID = "id";
+        public static final String TYPE = "type";
     }
 }

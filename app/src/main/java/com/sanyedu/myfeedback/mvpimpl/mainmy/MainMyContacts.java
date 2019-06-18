@@ -11,6 +11,8 @@ public final class MainMyContacts {
         InputStream openInputStream(Uri uri);
         void showHeadImage();
         void startActivityWithResult(Uri uri,Uri cropUri);
+        void showMyFeedbackNumber(int count);
+        void showFeedbackMyNumber(int count);
     }
 
     public interface IMainMyPresenter extends IBasePresenter {
@@ -19,5 +21,7 @@ public final class MainMyContacts {
         void setPicToView(Uri uri);
 
         void startPhotoZoom(Uri uri);
+
+        void getMyInfoNum(String id,String infoType);
     }
 }

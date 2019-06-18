@@ -392,6 +392,11 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
         startActivityForResult(intent, REQUEST_SMALL_IMAGE_CUTTING);
     }
 
+    @Override
+    public void showNumber(int count) {
+
+    }
+
 
     private Dialog createDialog() {
 
