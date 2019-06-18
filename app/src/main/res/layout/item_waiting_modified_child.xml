@@ -29,7 +29,7 @@
                     android:id="@+id/head_iv"
                     android:layout_marginTop="21dp"
                     android:layout_marginLeft="8dp"
-                    android:src="@color/gray_back"
+                    android:src="@mipmap/icon_person_bg"
             />
             <TextView
                     android:layout_width="wrap_content"

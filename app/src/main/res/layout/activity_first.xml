@@ -12,23 +12,13 @@
 
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_centerInParent="true"
-                  android:id="@+id/hello"
-                  android:text="欢迎来到一日一反馈"
-                  android:textSize="30dp"
-                  android:textColor="@color/white"
-        />
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
                   android:id="@+id/next_btn"
                   android:layout_alignParentRight="true"
-                 android:background="@drawable/shap_rac_first_skip"
+                  android:background="@drawable/shap_rac_first_skip"
                   android:layout_marginRight="15dp"
                   android:layout_marginTop="15dp"
                   android:textSize="15sp"
                   android:textColor="@color/white"
-                  android:text="跳过"
                   android:gravity="center"
 
         />
