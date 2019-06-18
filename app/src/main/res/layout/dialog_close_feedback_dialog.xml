@@ -20,7 +20,8 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="29dp"
                 android:text="提示"
-                style="@style/base_title_style"/>
+                style="@style/base_title_style"
+                />
 
         <EditText
                 android:id="@+id/content"
@@ -32,6 +33,7 @@
                 android:background="@drawable/shape_close_feedback_bg"
                 android:layout_marginTop="10dp"
                 android:gravity="top|left"
+                android:padding="10dp"
                />
         <View
                 android:layout_width="match_parent"

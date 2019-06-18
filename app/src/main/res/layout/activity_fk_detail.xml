@@ -84,7 +84,6 @@
                 android:layout_height="wrap_content"
                 android:text="@string/test2_txt"
                 android:layout_marginLeft="4dp"
-
                 android:layout_toRightOf="@+id/pos_iv"
                 android:id="@+id/fk_single_pos"
                 style="@style/content_style"
@@ -157,17 +156,16 @@
             android:background="@color/depart_blue"
             android:layout_centerHorizontal="true"
             android:id="@+id/fk_pl_rl"
+
     >
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/feedback_depart_tv"
                 android:text="@string/fk_depart_txt"
-
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
-
-                style="@style/content_style"
+                style="@style/feedback_title_size_style"
                 android:textColor="@color/white"
 
         />
@@ -176,12 +174,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/polity_depart_tv"
                 android:text="@string/pl_depart_txt"
-
                 android:layout_centerVertical="true"
                 android:layout_marginRight="9dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                style="@style/content_style"
+                style="@style/feedback_title_size_style"
                 android:textColor="@color/white"
         />
     </RelativeLayout>

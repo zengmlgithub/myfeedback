@@ -107,6 +107,13 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="feedback_title_size_style">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="notice_title_size_style">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/black</item>

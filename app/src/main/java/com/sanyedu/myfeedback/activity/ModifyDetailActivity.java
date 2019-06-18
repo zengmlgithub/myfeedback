@@ -55,11 +55,22 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @BindView(R.id.operator_rl)
     RelativeLayout opeartorRl;
 
+    @BindView(R.id.feedback_depart_tv)
+    TextView feedbackDepartNameTv;
+
+    @BindView(R.id.polity_depart_tv)
+    TextView toResponseDepartNameTv;
+
+    @BindView(R.id.fk_pl_rl)
+    RelativeLayout departRl;
+
     TextView modifyTv;
     TextView closeTv;
 
     //feedbackId号
     private String feedbackId = "";
+    //feedback 状态
+    private String rectiStatus = "-1";
 
     @BindView(R.id.modify_fk_ib)
     ImageButton modifyFkIb;
@@ -72,6 +83,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             opeartorRl.setVisibility(View.VISIBLE);
         }
     }
+
+
 
     @OnClick(R.id.goback_ib)
     public void goback(){
@@ -94,6 +107,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             @Override
             public void onClick(View v) {
                 StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class,feedbackId);
+                opeartorRl.setVisibility(View.GONE);
             }
         });
 
@@ -102,6 +116,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             public void onClick(View v) {
 //                finish();
                 showCloaseDialog();
+                opeartorRl.setVisibility(View.GONE);
             }
         });
 
@@ -154,13 +169,19 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             if (adapter != null) {
                 adapter.setList(bean.getDetailedList());
             }
-            String rectiStatus = bean.getRectiStatus();
+            rectiStatus = bean.getRectiStatus();
             SanyLogs.i("ModifyDetailActivity~~~~" + rectiStatus);
             initOperator(rectiStatus);
 
             LoaderPictureUtils.load(this,bean.getFeedbackA(),photo1Iv,R.mipmap.ic_launcher);
             LoaderPictureUtils.load(this,bean.getFeedbackB(),photo2Iv,R.mipmap.ic_launcher);
             LoaderPictureUtils.load(this,bean.getFeedbackC(),photo3Iv,R.mipmap.ic_launcher);
+
+            feedbackDepartNameTv.setText("反馈部门：" + bean.getFeedbackDept());
+            toResponseDepartNameTv.setText("责任部门：" + bean.getToResponsibledept());
+
+            int curColor = StatusUtils.rectiStatus2Color(rectiStatus);
+            departRl.setBackgroundResource(curColor);
         }
 
 
