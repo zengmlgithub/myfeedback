@@ -8,6 +8,6 @@
                   android:text="@string/empty_tv"
                   style="@style/content_style"
                   android:layout_centerHorizontal="true"
-                  android:layout_marginTop="109dp"
+                  android:layout_marginTop="124dp"
             />
 </RelativeLayout>

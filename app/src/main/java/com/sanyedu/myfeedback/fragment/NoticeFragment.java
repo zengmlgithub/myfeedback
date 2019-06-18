@@ -2,7 +2,6 @@ package com.sanyedu.myfeedback.fragment;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -17,9 +16,9 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.NoticeBean;
 import com.sanyedu.myfeedback.mvpimpl.notice.NoticeContacts;
 import com.sanyedu.myfeedback.mvpimpl.notice.NoticePresenter;
-import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.widget.EmptyRecyclerView;
 import com.sanyedu.myfeedback.wrapper.LoadMoreWrapper;
 
 import java.util.ArrayList;
@@ -34,11 +33,14 @@ import java.util.List;
  */
 public class NoticeFragment extends BaseFragment<NoticePresenter> implements NoticeContacts.INoticeUI {
     @BindView(R.id.main_msg_rv)
-     RecyclerView recyclerView;
+    EmptyRecyclerView recyclerView;
 
     @BindView(R.id.refreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
      NoticeAdapter noticeAdapter;
+
+     @BindView(R.id.layout_empty_view)
+     View emptyView;
 
     private List<NoticeBean> currList = new ArrayList<>();
 
@@ -119,6 +121,8 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
         recyclerView.setAdapter(loadMoreWrapper);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(manager);
+
+        recyclerView.setEmptyView(emptyView);
     }
 
     private void initRefreshLayout() {

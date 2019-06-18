@@ -19,7 +19,7 @@
                                                   android:layout_marginTop="15dp"
 
     >
-        <android.support.v7.widget.RecyclerView
+        <com.sanyedu.myfeedback.widget.EmptyRecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/main_msg_rv"
@@ -29,6 +29,13 @@
                 android:foregroundGravity="center_horizontal"
 
         >
-        </android.support.v7.widget.RecyclerView>
+        </com.sanyedu.myfeedback.widget.EmptyRecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include layout="@layout/layout_empty_view"
+             android:id="@+id/layout_empty_view"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:visibility="gone"
+    />
 </RelativeLayout>
