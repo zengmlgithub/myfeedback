@@ -17,6 +17,7 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.Records;
 import com.sanyedu.myfeedback.mvpimpl.needmodified.NeedModifiedContacts;
 import com.sanyedu.myfeedback.mvpimpl.needmodified.NeedModifiedPresenter;
+import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
@@ -112,7 +113,7 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
     }
 
     private void getDataFromServer(){
-        getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","2");
+        getPresenter().getRecords(currentPage+"",PAGE_COUNT + "",ConstantUtil.HAS_MODIFIED);
     }
 
     @Override
@@ -158,6 +159,9 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
     public void showNoMoreList() {
         SanyLogs.i("shoNoMoreList~~~~");
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_END);
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -167,12 +171,15 @@ public class MainHasModifiedFragment extends BaseFragment<NeedModifiedPresenter>
             ToastUtil.showLongToast(ErrorUtils.SERVER_ERROR);
         }
         loadMoreWrapper.setLoadState(loadMoreWrapper.LOADING_COMPLETE);
+        if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     private void getFirstPageData() {
         currentPage = 1;
         currList.clear();
-        getPresenter().getRecords(currentPage+"",PAGE_COUNT + "","1");
+        getPresenter().getRecords(currentPage+"",PAGE_COUNT + "", ConstantUtil.HAS_MODIFIED);
     }
 
 }

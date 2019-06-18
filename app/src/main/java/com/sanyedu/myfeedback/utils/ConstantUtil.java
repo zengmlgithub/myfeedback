@@ -47,4 +47,8 @@ public class ConstantUtil {
     public static final String HEAD_IMAGE = "user_head_uri";
 
     public static final String ID = "id";
+
+    //今日反馈
+    public static final String HAS_MODIFIED = "2"; //已整改的反馈
+    public static final String NEED_MODIFED = "1"; //等整改的反馈
 }
