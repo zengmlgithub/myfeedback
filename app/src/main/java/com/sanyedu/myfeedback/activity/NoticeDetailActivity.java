@@ -45,8 +45,7 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
 
 
     @OnClick(R.id.goback_iv)
-    public void closePage()
-    {
+    public void closePage() {
         finish();
     }
 
