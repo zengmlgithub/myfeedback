@@ -393,9 +393,16 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     }
 
     @Override
-    public void showNumber(int count) {
-
+    public void showMyFeedbackNumber(int count) {
+        myFeedbackTv.setText(count + "");
     }
+
+    @Override
+    public void showFeedbackMyNumber(int count) {
+        feedbackMyTv.setText(count + "");
+    }
+
+
 
 
     private Dialog createDialog() {
