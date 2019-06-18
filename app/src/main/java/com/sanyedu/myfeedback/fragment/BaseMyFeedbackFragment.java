@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import butterknife.BindView;
@@ -28,6 +29,7 @@ import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.widget.EmptyRecyclerView;
 import com.sanyedu.myfeedback.wrapper.LoadMoreWrapper;
 
 import java.util.ArrayList;
@@ -39,10 +41,13 @@ import java.util.List;
 public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPresenter> implements CommonFeedbackFragmentContacts.ICommonFeedbackFragmentUI{
 
     @BindView(R.id.feedback_rl)
-    RecyclerView recyclerView;
+    EmptyRecyclerView recyclerView;
 
     @BindView(R.id.pulldown_srl)
     SwipeRefreshLayout swipeRefreshLayout;
+
+    @BindView(R.id.layout_empty_view)
+    View emptyView;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -152,6 +157,9 @@ public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPrese
         recyclerView.setAdapter(loadMoreWrapper);
         LinearLayoutManager layout = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layout);
+
+
+        recyclerView.setEmptyView(emptyView);
     }
 
     private void initRefreshLayout() {
@@ -241,7 +249,6 @@ public class BaseMyFeedbackFragment extends BaseFragment<MyFeedbackFragmentPrese
             swipeRefreshLayout.setRefreshing(false);
         }
     }
-
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

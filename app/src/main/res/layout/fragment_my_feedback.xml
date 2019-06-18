@@ -7,16 +7,24 @@
                                                   android:layout_height="match_parent"
                                                   android:id="@+id/pulldown_srl"
     >
-
-        <android.support.v7.widget.RecyclerView
+        <com.sanyedu.myfeedback.widget.EmptyRecyclerView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/feedback_rl"
                 android:layout_centerHorizontal="true"
                 android:groupIndicator="@null"
-
         >
-        </android.support.v7.widget.RecyclerView>
+        </com.sanyedu.myfeedback.widget.EmptyRecyclerView>
+
     </android.support.v4.widget.SwipeRefreshLayout>
+
+
+    <include layout="@layout/layout_empty_view"
+             android:id="@+id/layout_empty_view"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:visibility="gone"
+    />
+
 </RelativeLayout>
 
