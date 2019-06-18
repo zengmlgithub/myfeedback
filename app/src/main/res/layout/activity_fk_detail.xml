@@ -166,7 +166,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="22dp"
                 style="@style/feedback_title_size_style"
-                android:textColor="@color/white"
 
         />
         <TextView
