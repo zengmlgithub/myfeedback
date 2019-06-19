@@ -2,7 +2,9 @@ package com.sanyedu.myfeedback.app;
 
 import android.app.Application;
 
+import com.previewlibrary.ZoomMediaLoader;
 import com.sanyedu.myfeedback.imageloader.ImageLoader;
+import com.sanyedu.myfeedback.imageloader.ImagePicterLoader;
 import com.sanyedu.myfeedback.imageloader.PicassoLoader;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.share.SpHelper;
@@ -24,6 +26,9 @@ public class FeedbackApplication extends Application {
 
         //初始化图片库
         ImageLoader.getInstance().setGlobalImageLoader(new PicassoLoader());
+
+        //图片预览库加载
+        ZoomMediaLoader.getInstance().init(new ImagePicterLoader());
 
     }
 

@@ -2,6 +2,7 @@ package com.sanyedu.myfeedback.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.previewlibrary.GPreviewBuilder;
+import com.previewlibrary.enitity.ThumbViewInfo;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
@@ -24,6 +27,9 @@ import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.*;
 import com.sanyedu.myfeedback.widget.CloseFeedbackDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 整改详情
@@ -156,6 +162,9 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         return new ModifiedDetailPresenter(this);
     }
 
+    private String feedbackA = null;
+    private String feedbackB = null;
+    private String feedbackC = null;
 
     @Override
     public void setDetail(DetailBean bean) {
@@ -182,10 +191,75 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
             int curColor = StatusUtils.rectiStatus2Color(rectiStatus);
             departRl.setBackgroundResource(curColor);
+
+
+//            final ArrayList<ThumbViewInfo> mThumbViewInfoList = createThumbViewInfo(bean.getFeedbackA(),bean.getFeedbackB(),bean.getFeedbackB()); // 这个最好定义成成员变量
+//
+//            photo1Iv.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    GPreviewBuilder.from(ModifyDetailActivity.this)
+//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
+//                            .to(ImageLookActivity.class)
+//                            .setData(mThumbViewInfoList)
+//                            .setCurrentIndex(0)
+//                            .setSingleFling(true)
+//                            .setType(GPreviewBuilder.IndicatorType.Number)
+//                            // 小圆点
+//                            .start();//启动
+//
+//                }
+//            });
+//
+//            photo1Iv.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    GPreviewBuilder.from(ModifyDetailActivity.this)
+//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
+//                            .to(ImageLookActivity.class)
+//                            .setData(mThumbViewInfoList)
+//                            .setCurrentIndex(1)
+//                            .setSingleFling(true)
+//                            .setType(GPreviewBuilder.IndicatorType.Number)
+//                            // 小圆点
+//                            .start();//启动
+//
+//                }
+//            });
+//
+//            photo1Iv.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    GPreviewBuilder.from(ModifyDetailActivity.this)
+//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
+//                            .to(ImageLookActivity.class)
+//                            .setData(mThumbViewInfoList)
+//                            .setCurrentIndex(2)
+//                            .setSingleFling(true)
+//                            .setType(GPreviewBuilder.IndicatorType.Number)
+//                            // 小圆点
+//                            .start();//启动
+//
+//                }
+//            });
         }
 
 
         hideLoading();
+    }
+
+    private ArrayList<ThumbViewInfo> createThumbViewInfo(String ... args) {
+        ArrayList<ThumbViewInfo> thumbViewInfos = new ArrayList<>();
+        ThumbViewInfo item;
+        for(String str : args){
+            Rect bounds = new Rect();
+            //new ThumbViewInfo(图片地址);
+            item=new ThumbViewInfo(str);
+            item.setBounds(bounds);
+            thumbViewInfos.add(item);
+        }
+
+        return thumbViewInfos;
     }
 
     @Override
