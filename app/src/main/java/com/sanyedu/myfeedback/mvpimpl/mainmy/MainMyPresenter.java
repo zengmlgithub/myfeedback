@@ -149,7 +149,7 @@ public class MainMyPresenter extends BasePresenter<MainMyContacts.IMainMyUI> imp
                                 }
 
                                 int count = response.getObj();
-
+                                SanyLogs.i("infoType---->" + infoType + "=====get count:" + count);
                                 goToFeedbacSuccess(infoType,count);
                             }
                         }

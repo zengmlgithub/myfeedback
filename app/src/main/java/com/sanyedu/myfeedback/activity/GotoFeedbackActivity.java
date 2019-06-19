@@ -70,6 +70,11 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         getPresenter().postFeedbackToServer(pathList,getCurrentItem());
     }
 
+    @OnClick(R.id.goback_tv)
+    public void goBack(){
+        finish();
+    }
+
     @BindView(R.id.title_et)
     EditText titleEt;
 
@@ -78,6 +83,8 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
 
     @BindView(R.id.feedback_detail_et)
     EditText contentEt;
+
+
 
 
     private List<String> getImagePath() {
@@ -98,7 +105,6 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         ButterKnife.bind(this);
         initImagePickerMulti();
         initRecyclerView();
-
         initDepart();
         initPerson();
     }

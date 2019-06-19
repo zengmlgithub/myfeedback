@@ -54,4 +54,8 @@
     <string name="common_description">通用图片按钮</string>
     <string name="important_notice_title">重要通知</string>
     <string name="empty_tv">当前页没有任何数据</string>
+    <string name="please_choose_depart">请选择部门</string>
+    <string name="please_choose_person">请选择部门</string>
+    <string name="please_input_content">请输入内容</string>
+    <string name="feedback_my">反馈我的</string>
 </resources>

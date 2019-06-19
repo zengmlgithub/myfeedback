@@ -30,7 +30,7 @@ public abstract class BaseModelCallback<T> extends Callback<BaseModel<T>>
         Gson gson = new Gson();
         String string = response.body().string();
 
-        SanyLogs.i("str:" + string);
+//        SanyLogs.i("str:" + string);
 
         Type type = getClass().getGenericSuperclass();
         if(type instanceof ParameterizedType){

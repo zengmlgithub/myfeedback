@@ -52,9 +52,9 @@ public class ConstantUtil {
     public static final String HAS_MODIFIED = "2"; //已整改的反馈
     public static final String NEED_MODIFED = "1"; //等整改的反馈
 
-    public static final String FEEDBACK_MAIN = "2"; //反馈我的
-    public static final String MAIN_FEEDBACK = "1"; //我的反馈
+    public static final String FEEDBACK_MAIN = "1"; //反馈我的
+    public static final String MAIN_FEEDBACK = "2"; //我的反馈
 
-    public static final String MODIFY_MODIFIED = "2";
-    public static final String MODIFY_MODIFING = "1";
+    public static final String MODIFY_MODIFIED = "2"; //已整改
+    public static final String MODIFY_MODIFING = "1"; //整改中
 }

@@ -125,16 +125,16 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private void findViews(View view) {
         nameTv = view.findViewById(R.id.name_tv);
         departTv = view.findViewById(R.id.depart_tv);
-        feedbackMyTv = view.findViewById(R.id.feedback_main_number_tv);
-        myFeedbackTv = view.findViewById(R.id.main_fk_number_tv);
+        feedbackMyTv = view.findViewById(R.id.feedback_my_count_tv);
+        myFeedbackTv = view.findViewById(R.id.my_feedback_count_tv);
 
         telTv = view.findViewById(R.id.tel_tv);
         emailTv = view.findViewById(R.id.email_tv);
         cardTv = view.findViewById(R.id.card_tv);
         posTv = view.findViewById(R.id.pos_tv);
 
-        feedbackMyRl = view.findViewById(R.id.fk_main_ll);
-        myFeedbackRl = view.findViewById(R.id.main_fk_ll);
+        feedbackMyRl = view.findViewById(R.id.feedback_my_rl);
+        myFeedbackRl = view.findViewById(R.id.my_feedback_rl);
 
         headIv = view.findViewById(R.id.head_iv);
 
@@ -167,9 +167,9 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.main_fk_ll) {
+        if (v.getId() == R.id.my_feedback_rl) { //我的反馈
             StartUtils.startActivity(getContext(), MyFeedbackActivity.class);
-        } else if (v.getId() == R.id.fk_main_ll) {  //反馈我的
+        } else if (v.getId() == R.id.feedback_my_rl) {  //反馈我的
             StartUtils.startActivity(getContext(), FeedbackMyActivity.class);
         } else if (v.getId() == headIv.getId()) {
             showPop();

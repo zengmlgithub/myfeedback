@@ -11,10 +11,10 @@
         android:color="@color/color_D4D4D4"
         />
 
-    <corners android:radius="11dp"/>
+    <corners android:radius="14dp"/>
 
     <size
         android:width="200dp"
-        android:height="22dp"
+        android:height="28dp"
         />
 </shape>

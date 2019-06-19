@@ -102,7 +102,7 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/fk_main_ll"
+                android:id="@+id/feedback_my_rl"
                 android:orientation="vertical"
         >
             <TextView
@@ -110,7 +110,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:textColor="@color/red"
-                    android:id="@+id/feedback_main_number_tv"
+                    android:id="@+id/feedback_my_count_tv"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
             />
@@ -118,19 +118,19 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="反馈我的"
+                    android:text="已提反馈"
                     android:textSize="10sp"
                     android:textColor="@color/black"
-                    android:layout_below="@id/feedback_main_number_tv"
+                    android:layout_below="@id/feedback_my_count_tv"
             />
         </RelativeLayout>
 
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/main_fk_ll"
+                android:id="@+id/my_feedback_rl"
                 android:orientation="vertical"
-                android:layout_toRightOf="@+id/fk_main_ll"
+                android:layout_toRightOf="@+id/feedback_my_rl"
                 android:layout_marginLeft="95dp"
         >
             <TextView
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:textColor="@color/red"
-                    android:id="@+id/main_fk_number_tv"
+                    android:id="@+id/my_feedback_count_tv"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
             />
@@ -149,7 +149,7 @@
                     android:text="我的反馈"
                     android:textSize="10sp"
                     android:textColor="@color/black"
-                    android:layout_below="@id/main_fk_number_tv"
+                    android:layout_below="@id/my_feedback_count_tv"
             />
         </RelativeLayout>
 
