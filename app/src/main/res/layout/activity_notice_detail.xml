@@ -55,7 +55,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/content_tv"
-            android:text="@string/text_txt_2"
             android:layout_below="@+id/feedback_single_tv"
             android:layout_marginTop="4dp"
             android:lines="20"

@@ -76,6 +76,8 @@
         android:id="@+id/feedback_detail_et"
         android:hint="@string/please_input_content"
         android:gravity="top|left"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
         />
 
     <LinearLayout

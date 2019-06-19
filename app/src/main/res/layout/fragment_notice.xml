@@ -5,11 +5,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="消息中心"
-            android:textSize="15sp"
+
             android:layout_marginTop="6dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/title"
-            android:textColor="@color/black"
+           style="@style/base_title_style"
     />
 
     <android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"

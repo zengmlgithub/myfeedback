@@ -72,9 +72,9 @@ public class NeedModifyAdapter extends RecyclerView.Adapter<NeedModifyAdapter.My
                 }
             });
 
-            LoaderPictureUtils.load(context,records.getFeedbackA(),holder.photo1Iv,R.mipmap.ic_launcher);
-            LoaderPictureUtils.load(context,records.getFeedbackB(),holder.photo2Iv,R.mipmap.ic_launcher);
-            LoaderPictureUtils.load(context,records.getFeedbackC(),holder.photo3Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(context,records.getFeedbackA(),holder.photo1Iv,-1);
+            LoaderPictureUtils.load(context,records.getFeedbackB(),holder.photo2Iv,-1);
+            LoaderPictureUtils.load(context,records.getFeedbackC(),holder.photo3Iv,-1);
 
         }
     }

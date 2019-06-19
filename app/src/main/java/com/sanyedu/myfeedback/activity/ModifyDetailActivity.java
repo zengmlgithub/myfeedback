@@ -173,9 +173,9 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             SanyLogs.i("ModifyDetailActivity~~~~" + rectiStatus);
             initOperator(rectiStatus);
 
-            LoaderPictureUtils.load(this,bean.getFeedbackA(),photo1Iv,R.mipmap.ic_launcher);
-            LoaderPictureUtils.load(this,bean.getFeedbackB(),photo2Iv,R.mipmap.ic_launcher);
-            LoaderPictureUtils.load(this,bean.getFeedbackC(),photo3Iv,R.mipmap.ic_launcher);
+            LoaderPictureUtils.load(this,bean.getFeedbackA(),photo1Iv,-1);
+            LoaderPictureUtils.load(this,bean.getFeedbackB(),photo2Iv,-1);
+            LoaderPictureUtils.load(this,bean.getFeedbackC(),photo3Iv,-1);
 
             feedbackDepartNameTv.setText("反馈部门：" + bean.getFeedbackDept());
             toResponseDepartNameTv.setText("责任部门：" + bean.getToResponsibledept());

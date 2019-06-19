@@ -39,6 +39,7 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
     @BindView(R.id.pulldown_srl)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.empty_view)
+
     View emptyView;
 
     private NeedModifyAdapter recordAdapter;

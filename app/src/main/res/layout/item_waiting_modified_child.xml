@@ -119,14 +119,16 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:id="@+id/photo1_iv"
-                            android:background="@mipmap/icon_test_bg"
+                            android:background="@color/black"
+                            android:scaleType="fitXY"
                     />
 
                     <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:id="@+id/photo2_iv"
-                            android:background="@mipmap/icon_test_bg"
+                            android:background="@color/black"
+                            android:scaleType="fitXY"
                             android:layout_marginLeft="10dp"
                     />
 
@@ -134,7 +136,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:id="@+id/photo3_iv"
-                            android:background="@mipmap/icon_test_bg"
+                            android:background="@color/black"
+                            android:scaleType="fitXY"
                             android:layout_marginLeft="10dp"
                     />
                 </LinearLayout>
