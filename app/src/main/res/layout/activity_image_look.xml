@@ -6,6 +6,6 @@
              tools:context=".activity.ImageLookActivity">
 
     // 这是第三方库提供的，也就是默认的布局文件
-    <include layout="@layout/activity_image_preview_photo"/>
+    <!--<include layout="@layout/activity_image_preview_photo"/>-->
 
 </FrameLayout>

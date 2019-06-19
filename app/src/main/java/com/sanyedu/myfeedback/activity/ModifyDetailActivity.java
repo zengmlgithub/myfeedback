@@ -16,8 +16,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.previewlibrary.GPreviewBuilder;
-import com.previewlibrary.enitity.ThumbViewInfo;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
@@ -248,19 +246,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         hideLoading();
     }
 
-    private ArrayList<ThumbViewInfo> createThumbViewInfo(String ... args) {
-        ArrayList<ThumbViewInfo> thumbViewInfos = new ArrayList<>();
-        ThumbViewInfo item;
-        for(String str : args){
-            Rect bounds = new Rect();
-            //new ThumbViewInfo(图片地址);
-            item=new ThumbViewInfo(str);
-            item.setBounds(bounds);
-            thumbViewInfos.add(item);
-        }
-
-        return thumbViewInfos;
-    }
+    
 
     @Override
     public void getDetailFailure(String msg) {

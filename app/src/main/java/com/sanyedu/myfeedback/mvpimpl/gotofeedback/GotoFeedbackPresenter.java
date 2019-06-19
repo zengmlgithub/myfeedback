@@ -135,7 +135,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
             toResponsibleId = "-1";
         }
 
-        String toResponsibleName = item.getToResponsibleid();
+        String toResponsibleName = item.getToResponsiblename();
         if(TextUtils.isEmpty(toResponsibleName)){
             toResponsibleName = "-1";
         }
