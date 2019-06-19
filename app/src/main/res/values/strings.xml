@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">个人反馈</string>
+    <string name="app_name">今日反馈</string>
     <string name="submit_txt">提交</string>
     <string name="next_txt">下一页</string>
     <string name="hello_world">hello,world!</string>

@@ -129,6 +129,17 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
         SanyLogs.i(item.toString());
 
         String url = HttpUtil.getPort(HttpUtil.POST_FEEDBACK_TO_SERVER_PORT);
+
+        String toResponsibleId = item.getToResponsibleid();
+        if(TextUtils.isEmpty(toResponsibleId)){
+            toResponsibleId = "-1";
+        }
+
+        String toResponsibleName = item.getToResponsibleid();
+        if(TextUtils.isEmpty(toResponsibleName)){
+            toResponsibleName = "-1";
+        }
+
         OkHttpUtils
                 .post()
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_TITLE, item.getFeedbackTitle())
@@ -140,9 +151,9 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_A, item.getFeedbackA())
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_B, item.getFeedbackB())
                 .addParams(HttpUtil.FeedbackToServer.FEEDBACK_C, item.getFeedbackC())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, item.getToResponsiblename())
+                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBL_NAME, toResponsibleName)
                 .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_DEPT, item.getToResponsibledept())
-                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, item.getToResponsibleid())
+                .addParams(HttpUtil.FeedbackToServer.TO_RESPONSIBLE_ID, toResponsibleId)
                 .url(url)
                 .build()
                 .execute(

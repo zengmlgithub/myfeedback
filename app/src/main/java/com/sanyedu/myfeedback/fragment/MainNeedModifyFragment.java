@@ -23,6 +23,7 @@ import com.sanyedu.myfeedback.utils.ConstantUtil;
 import com.sanyedu.myfeedback.utils.ErrorUtils;
 import com.sanyedu.myfeedback.utils.StartUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
+import com.sanyedu.myfeedback.widget.EmptyRecyclerView;
 import com.sanyedu.myfeedback.wrapper.LoadMoreWrapper;
 
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ import java.util.List;
 public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> implements NeedModifiedContacts.INeedModifiedUI {
 
     @BindView(R.id.need_rv)
-     RecyclerView recyclerView;
+    EmptyRecyclerView recyclerView;
     @BindView(R.id.pulldown_srl)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.empty_view)
+    View emptyView;
 
     private NeedModifyAdapter recordAdapter;
     private List<Records> currList = new ArrayList<>();
@@ -68,6 +71,7 @@ public class MainNeedModifyFragment extends BaseFragment<NeedModifiedPresenter> 
         recyclerView.setAdapter(loadMoreWrapper);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(manager);
+        recyclerView.setEmptyView(emptyView);
     }
     private void initRefreshLayout() {
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light, android.R.color.holo_red_light,
