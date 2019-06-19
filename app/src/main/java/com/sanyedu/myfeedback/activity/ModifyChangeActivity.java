@@ -5,11 +5,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -42,24 +41,35 @@ import java.util.List;
  */
 public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter> implements ModifyChangeContacts.IModifyChangeUI,ImagePickerAdapter.OnRecyclerViewItemClickListener {
 
+    private String feedbackStatus = ConstantUtil.MODIFY_MODIFING; //默认为选中状态
+
     @OnClick(R.id.goback_tv)
     public void goBack(){
         finish();
     }
 
-
-
     @BindView(R.id.content_et)
     EditText contentEt;
 
-    @BindView(R.id.modifying_btn)
-    Button modifyingBtn;
-
-    @BindView(R.id.modified_btn)
-    Button modifiedBtn;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+
+    @OnCheckedChanged({R.id.modifying_rb, R.id.modified_rb})
+    public void onRadioCheck(CompoundButton view,boolean isChanged){
+        switch (view.getId()){
+            case R.id.modified_rb:
+                if(isChanged){
+                    feedbackStatus = ConstantUtil.MODIFY_MODIFIED;
+                }
+                break;
+            case R.id.modifying_rb:
+                if(isChanged){
+                    feedbackStatus = ConstantUtil.MODIFY_MODIFING;
+                }
+                break;
+        }
+    }
 
     //当前选择的所有图片
     private ArrayList<ImageItem> selImageList;
@@ -292,7 +302,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     }
 
     private String getFeedbackStatus() {
-        return "1";
+        return feedbackStatus;
     }
 
     @Override

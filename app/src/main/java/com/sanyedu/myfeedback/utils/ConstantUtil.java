@@ -54,4 +54,7 @@ public class ConstantUtil {
 
     public static final String FEEDBACK_MAIN = "2"; //反馈我的
     public static final String MAIN_FEEDBACK = "1"; //我的反馈
+
+    public static final String MODIFY_MODIFIED = "2";
+    public static final String MODIFY_MODIFING = "1";
 }

@@ -54,7 +54,7 @@
                 android:name="design_height_in_dp"
                 android:value="640"/>
 
-        <activity android:name=".activity.FirstActivity"
+        <activity android:name=".activity.ModifyChangeActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -129,7 +129,7 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
 
-        <activity android:name=".activity.ModifyChangeActivity"
+        <activity android:name=".activity.FirstActivity"
                   android:launchMode="singleInstance"
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"

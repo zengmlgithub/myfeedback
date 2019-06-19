@@ -27,10 +27,7 @@ import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.mvpimpl.mainmy.MainMyContacts;
 import com.sanyedu.myfeedback.mvpimpl.mainmy.MainMyPresenter;
 import com.sanyedu.myfeedback.share.SpHelper;
-import com.sanyedu.myfeedback.utils.ConstantUtil;
-import com.sanyedu.myfeedback.utils.FileUtils;
-import com.sanyedu.myfeedback.utils.PictureUtils;
-import com.sanyedu.myfeedback.utils.StartUtils;
+import com.sanyedu.myfeedback.utils.*;
 import com.sanyedu.myfeedback.widget.CommonDialog;
 import com.sanyedu.myfeedback.widget.PhotoPopupWindow;
 
@@ -87,6 +84,18 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     }
 
     private void setData() {
+        initUserInfo();
+        setListener();
+        initFeedbackCount();
+    }
+
+    private void initFeedbackCount() {
+        String id = UserInfoHelper.getPersonId();
+        getPresenter().getMyInfoNum(id, FEEDBACK_MAIN);
+        getPresenter().getMyInfoNum(id, MAIN_FEEDBACK);
+    }
+
+    private void initUserInfo() {
         TeacherBean userInfo = SpHelper.getObj(ConstantUtil.USERINFO);
         if(userInfo != null){
             nameTv.setText(userInfo.getUsername());
@@ -97,7 +106,9 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
             cardTv.setText(userInfo.getTeJobnum());
             posTv.setText(userInfo.getTeComp());
         }
+    }
 
+    private void setListener() {
         myFeedbackRl.setOnClickListener(this);
         feedbackMyRl.setOnClickListener(this);
         settingIv.setOnClickListener(this);
@@ -109,8 +120,6 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
 
         emailRl.setOnClickListener(this);
         telRl.setOnClickListener(this);
-
-
     }
 
     private void findViews(View view) {

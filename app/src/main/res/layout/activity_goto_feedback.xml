@@ -90,7 +90,6 @@
             android:hint="请选择责任部门"
             android:background="@drawable/shape_ring_depart"
             android:id="@+id/policy_department_et"
-
             android:paddingLeft="10dp"
             />
 

@@ -43,7 +43,6 @@
                 android:layout_marginTop="2dp"
                 android:id="@id/depart_tv"
         />
-        />
     </RelativeLayout>
 
     <ImageButton
