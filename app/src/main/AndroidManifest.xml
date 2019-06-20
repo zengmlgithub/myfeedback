@@ -145,11 +145,5 @@
                   android:screenOrientation="portrait"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         />
-
-        <activity android:name=".activity.ImageLookActivity"
-                  android:launchMode="singleInstance"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        />
     </application>
 </manifest>
