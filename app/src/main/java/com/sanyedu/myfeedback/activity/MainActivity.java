@@ -65,16 +65,6 @@ public class MainActivity extends SanyBaseActivity<TestPresenter> implements Tes
 
     }
 
-//    @Override
-//    protected void findViews() {
-//        viewPager = findViewById(R.id.vp_content);
-//        tabLayout = findViewById(R.id.tablayout);
-//    }
-//
-//    @Override
-//    protected void setListeners() {
-//
-//    }
 
     @Override
     protected int getLayout() {
