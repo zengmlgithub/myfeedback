@@ -125,7 +125,7 @@ public class UpdateService2 {
                     */
                    @Override
                    public void noNewApp(String error) {
-                       ToastUtil.showLongToast("没有新版本");
+//                       ToastUtil.showLongToast("没有新版本");
                    }
                });
    }
