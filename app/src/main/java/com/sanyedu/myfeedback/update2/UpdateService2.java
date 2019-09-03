@@ -1,13 +1,9 @@
 package com.sanyedu.myfeedback.update2;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Environment;
-import com.google.gson.Gson;
-import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.log.SanyLogs;
-import com.sanyedu.myfeedback.model.BaseModel;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 import com.sanyedu.myfeedback.utils.SystemUtils;
 import com.sanyedu.myfeedback.utils.ToastUtil;
