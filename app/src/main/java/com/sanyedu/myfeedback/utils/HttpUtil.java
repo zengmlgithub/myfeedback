@@ -37,6 +37,7 @@ public class HttpUtil {
     public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";  //更新状态
     public static final String CLOASE_FEEDBACK_PORT = "submitFeedback/updFeedback"; //关闭反馈
     public static final String GET_MY_FEEDBACK_COUNT_PORT = "academic/selMyInfoNum";//获取条数
+    public static final String GET_APP_VERSION_PORT = "schUser/getVersion"; //获取app应用信息
 
 
 

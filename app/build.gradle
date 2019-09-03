@@ -11,7 +11,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -50,7 +50,7 @@ dependencies {
     //增加自动适配设置
     implementation 'me.jessyan:autosize:1.1.2'
 
-    //permission 的相关说明
+
     implementation 'com.yanzhenjie.permission:support:2.0.1'
 
     //对glide的支持
@@ -73,4 +73,12 @@ dependencies {
     //增加QQ bugly 的上报
     implementation 'com.tencent.bugly:crashreport:3.0.0'
 
+    //permission 的相关说明
+//    implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+
+
+    //自动更新
+    implementation 'com.qianwen:update-app:3.5.2'
+
+    implementation 'com.lzy.net:okgo:3.0.4'
 }

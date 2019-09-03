@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:textSize="16dp"
+                  android:textColor="@color/black"
+                  android:gravity="center_horizontal"
+                  android:text="更新提示"
+                  android:id="@+id/title_tv"
+        />
+        <ImageView android:layout_width="match_parent" android:layout_height="1dp"
+                   android:paddingLeft="5dp"
+                   android:paddingRight="5dp"
+                   android:background="@color/black"
+                   android:layout_marginTop="5dp"
+                   android:layout_below="@+id/title_tv"
+                   android:id="@+id/line"
+        />
+
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:paddingLeft="25dp" android:paddingRight="5dp"
+                  android:textSize="13dp"
+                  android:textColor="@color/black"
+
+                  android:text="版本号：1.1.1"
+                  android:id="@+id/version_name_tv"
+                  android:layout_below="@+id/line"
+        />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:paddingLeft="25dp" android:paddingRight="5dp"
+                  android:textSize="13dp"
+                  android:textColor="@color/black"
+                  android:text="1.增加bug的反馈；\n\n2.增加对学生的条数的输出"
+                  android:id="@+id/msg_tv"
+                  android:layout_below="@+id/version_name_tv"
+        />
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:layout_below="@+id/msg_tv"
+        >
+            <Button android:layout_width="0dp" android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="取消"
+                    android:id="@+id/cancel_btn"
+            />
+
+            <Button android:layout_width="0dp" android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="安装"
+                    android:id="@+id/install_btn"
+            />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

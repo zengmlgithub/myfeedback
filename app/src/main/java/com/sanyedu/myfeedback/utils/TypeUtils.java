@@ -17,4 +17,17 @@ public class TypeUtils {
 
         return temp;
     }
+
+    public static long str2Long(String str){
+        long temp = 0;
+        if(!TextUtils.isEmpty(str)){
+            try{
+                temp = Integer.valueOf(str);
+            }catch (Exception e){
+                SanyLogs.i("number error!");
+            }
+        }
+
+        return temp;
+    }
 }
