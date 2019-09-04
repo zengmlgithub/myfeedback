@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.model.NoticeBean;
+import com.sanyedu.myfeedback.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,9 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
 //        SanyLogs.i("onBindViewHolder:" + noticeBean.toString());
         if(noticeBean != null){
             holder.titleTv.setText(noticeBean.getTitle());
-            holder.dateTv.setText(noticeBean.getCreatetime());
+
+            String dateStr = DateUtils.getDateString(noticeBean.getCreatetime());
+            holder.dateTv.setText(dateStr);
             holder.contentTv.setText(noticeBean.getContent());
             holder.personTv.setText(noticeBean.getPubName());
             final String id = noticeBean.getId();

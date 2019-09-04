@@ -79,14 +79,14 @@ public class UpdateService2 {
                            JSONObject jsonObject = new JSONObject(json);
                            JSONObject jsonData = jsonObject.getJSONObject("obj");
                            String updateResult = getUpdateResult(jsonData);
-                           String downUrl = getUpdateUrl(jsonData);
+//                           String downUrl = getUpdateUrl(jsonData);
                            updateAppBean
                                    //（必须）是否更新Yes,No
                                    .setUpdate(updateResult)
                                    //（必须）新版本号，
                                    .setNewVersion(jsonData.optString("versionName"))
                                    //（必须）下载地址
-                                   .setApkFileUrl(downUrl)
+                                   .setApkFileUrl(jsonData.optString("addressDow"))
                                    //（必须）更新内容
                                    .setUpdateLog(jsonData.optString("versionMsg"))
                                    //大小，不设置不显示大小，可以不设置

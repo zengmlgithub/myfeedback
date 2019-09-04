@@ -175,9 +175,9 @@ public class NoticeFragment extends BaseFragment<NoticePresenter> implements Not
     public void showError(String msg) {
         SanyLogs.e("showNoNotice~~~~~");
         hideLoading();
-        if(!TextUtils.isEmpty(msg)) {
-            ToastUtil.showLongToast(msg);
-        }
+//        if(!TextUtils.isEmpty(msg)) {
+//            ToastUtil.showLongToast(msg);
+//        }
         if (swipeRefreshLayout != null && swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }
