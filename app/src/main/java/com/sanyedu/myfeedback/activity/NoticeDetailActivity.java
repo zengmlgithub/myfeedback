@@ -14,6 +14,7 @@ import com.sanyedu.myfeedback.model.NoticeDetailBean;
 import com.sanyedu.myfeedback.mvpimpl.noticedetail.NoticeDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.noticedetail.NoticeDetailPresenter;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
+import com.sanyedu.myfeedback.utils.DateUtils;
 import com.sanyedu.myfeedback.utils.HttpUtil;
 
 public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter> implements NoticeDetailContacts.INoticeDetailUI/*, View.OnClickListener */{
@@ -28,21 +29,6 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
 
     @BindView(R.id.content_tv)
     TextView contentTv;
-//    private ImageButton gobackIb;
-
-//    titleTv = findViewById(R.id.feedback_single_tv);
-//    contentTv = findViewById(R.id.content_tv);
-//    pubPersonTv = findViewById(R.id.pub_person_tv);
-//    dateTv = findViewById(R.id.notice_date_time_tv);
-//    gobackIb = findViewById(R.id.goback_iv);
-
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.goback_iv){
-//            finish();
-//        }
-//    }
-
 
     @OnClick(R.id.goback_iv)
     public void closePage() {
@@ -58,16 +44,6 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
             getPresenter().getNoticeDetail(id);
         }
     }
-
-//    @Override
-//    protected void findViews() {
-//
-//    }
-
-//    @Override
-//    protected void setListeners() {
-//        gobackIb.setOnClickListener(this);
-//    }
 
     @Override
     protected int getLayout() {
@@ -85,7 +61,8 @@ public class NoticeDetailActivity extends SanyBaseActivity<NoticeDetailPresenter
             titleTv.setText(detailBean.getTitle());
             contentTv.setText(detailBean.getContent());
             pubPersonTv.setText(detailBean.getPubName());
-            dateTv.setText(detailBean.getCreatetime());
+            String createTime = DateUtils.getDateString(detailBean.getCreatetime());
+            dateTv.setText(createTime);
         }
     }
 }
