@@ -197,6 +197,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
     public void postFeedbackToServer(List<String> files,final FeedbackItem item) {
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
+            //TODO:当没有照片提示的时候
             return;
         }
 

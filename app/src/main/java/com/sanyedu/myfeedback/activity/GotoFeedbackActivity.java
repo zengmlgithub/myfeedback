@@ -65,7 +65,15 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
     @OnClick(R.id.submit_tv)
     public void submit(){
         SanyLogs.i("submit~~~~");
+
         List<String> pathList = getImagePath();
+        /**
+         * 如果没有图片时给出提示
+         */
+        if(pathList== null || pathList.size() <= 0){
+            ToastUtil.showLongToast("请上传图片");
+            return;
+        }
         showLoading();
         getPresenter().postFeedbackToServer(pathList,getCurrentItem());
     }
