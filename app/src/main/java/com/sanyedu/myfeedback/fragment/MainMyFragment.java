@@ -98,7 +98,12 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     private void initUserInfo() {
         TeacherBean userInfo = SpHelper.getObj(ConstantUtil.USERINFO);
         if(userInfo != null){
-            nameTv.setText(userInfo.getUsername());
+            /**
+             *  username为帐号
+             *  tename为名字
+             */
+
+            nameTv.setText(userInfo.getTeName());
             departTv.setText(userInfo.getTeDept() + "|" + userInfo.getTePosi());
 
             emailTv.setText(userInfo.getTeEmail());
