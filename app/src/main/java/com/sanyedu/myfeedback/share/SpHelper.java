@@ -90,9 +90,9 @@ public class SpHelper {
             ObjectInputStream ois = new ObjectInputStream(bais);
             obj = (T) ois.readObject();
         } catch (IOException e) {
-            SanyLogs.e(e.toString());
+//            SanyLogs.e(e.toString());
         }catch(ClassNotFoundException e) {
-            SanyLogs.e(e.toString());
+//            SanyLogs.e(e.toString());
         }
         return obj;
 

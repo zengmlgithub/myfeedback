@@ -80,7 +80,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
     @Override
     protected void init(View view) {
         findViews(view);
-        setData();
+//        setData();
     }
 
     private void setData() {
@@ -102,7 +102,7 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
              *  username为帐号
              *  tename为名字
              */
-
+            SanyLogs.i("userInfo:" + userInfo.toString());
             nameTv.setText(userInfo.getTeName());
             departTv.setText(userInfo.getTeDept() + "|" + userInfo.getTePosi());
 
@@ -443,6 +443,17 @@ public class MainMyFragment extends BaseFragment<MainMyPresenter> implements Mai
             }).setTitle("注销");
         }
         return dialog;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        SanyLogs.i("onResume~~~~~");
+
+        //修改个人信息后，返回时需要进行更新页面上的个人信息
+//        initUserInfo();
+        setData();
     }
 }
 

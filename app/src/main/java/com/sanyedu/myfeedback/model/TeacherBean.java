@@ -17,6 +17,7 @@ public class TeacherBean implements Serializable {
     private String teSex;
     private String username;
 
+
     public TeacherBean(String createtime, String id, String password, String teComp, String teDept, String teEmail, String teFlag, String teJobnum, String teName, String tePhone, String tePosi, String teSex, String username) {
         this.createtime = createtime;
         this.id = id;
@@ -35,6 +36,7 @@ public class TeacherBean implements Serializable {
 
     public TeacherBean() {
     }
+
 
     public String getCreatetime() {
         return createtime;

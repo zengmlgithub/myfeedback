@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import com.google.gson.Gson;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
+import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.TeacherBean;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifyinfo.ModifyInfoPresenter;
@@ -71,7 +72,7 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     @Override
     public void showModifySuccess() {
         ToastUtil.showLongToast(R.string.modify_tel_success);
-        //TODO：反回主页时对主页进行刷新
+        finish();
     }
 
     @OnClick(R.id.confirm_btn)
@@ -92,10 +93,13 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
         TeacherBean newBean = createNewTeacher();
         if(newBean != null) {
             newBean.setTePhone(telStr);
-            List<TeacherBean> beanList = new ArrayList<>();
-            beanList.add(newBean);
-            String str = new Gson().toJson(beanList);
-            getPresenter().ModifyObj("1",str);
+//            List<TeacherBean> beanList = new ArrayList<>();
+//            beanList.add(newBean);
+//            String str = new Gson().toJson(newBean);
+            String tePhone = newBean.getTePhone();
+            SanyLogs.i("tePhone:" + tePhone);
+            String id = newBean.getId();
+            getPresenter().ModifyObj(id,tePhone);
         }else{
             //TODO:当email没有输入的时候，这个时候是不需要改东西的时候，可以做一个用户提示
         }
@@ -104,6 +108,7 @@ public class ModifyTelActivity extends SanyBaseActivity<ModifyInfoPresenter> imp
     private TeacherBean createNewTeacher() {
         TeacherBean bean = SpHelper.getObj(ConstantUtil.USERINFO);
         TeacherBean tempBean = new TeacherBean();
+        SanyLogs.i("get id from sp:" + bean.getId());
         tempBean.setId(bean.getId());
         return tempBean;
     }

@@ -13,7 +13,7 @@ public class HttpUtil {
     private static final boolean IS_HTTP = true;
 
     private static final String FINAL_SERVER = "42.48.115.230:8082";  //正式服务器地址
-    private static final String TEST_SERVER = "42.48.115.201:8082";  //测试服务器地址
+    private static final String TEST_SERVER = "172.16.8.242:8082";  //测试服务器地址
 
     public static final String HTTPS = "https://";
     public static final String HTTP = "http://";
@@ -135,6 +135,8 @@ public class HttpUtil {
     public static class UpdateObj{
         public final static String TYPE = "type";
         public final static String TE_USER = "teUser";
+        public final static String TE_ID = "id";
+        public final static String TE_PHONE = "tePhone";
     }
 
 
