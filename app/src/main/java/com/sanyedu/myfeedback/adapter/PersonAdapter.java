@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.sanyedu.myfeedback.R;
-import com.sanyedu.myfeedback.model.DepartBean;
 import com.sanyedu.myfeedback.model.PersonBean;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class PersonAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return personList.size();
+        return personList == null ?0:personList.size();
     }
 
     @Override

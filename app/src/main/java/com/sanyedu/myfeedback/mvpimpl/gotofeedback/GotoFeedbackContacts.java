@@ -19,6 +19,9 @@ public final class GotoFeedbackContacts {
 
         void updateFeedbackSuccess();
         void updateFeedbackFailure(String failureReson);
+
+        //设置部门为空时的人员
+        void setNullPersons();
     }
 
     public interface IGoToFeedbackPresenter extends IBasePresenter{

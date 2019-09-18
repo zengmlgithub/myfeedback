@@ -240,6 +240,11 @@ public class GotoFeedbackActivity extends SanyBaseActivity<GotoFeedbackPresenter
         ToastUtil.showLongToast(failureReson);
     }
 
+    @Override
+    public void setNullPersons() {
+        personAdapter.setData(null);
+    }
+
     private String getFeedbackDept() {
         TeacherBean teacherBean = SpHelper.getObj(ConstantUtil.USERINFO);
         String depart = null;

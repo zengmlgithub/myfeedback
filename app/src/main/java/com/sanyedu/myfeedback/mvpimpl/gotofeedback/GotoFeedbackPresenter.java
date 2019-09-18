@@ -113,6 +113,7 @@ public class GotoFeedbackPresenter extends BasePresenter<GotoFeedbackContacts.IG
                                     getView().setPersonList(personBeans);
                                 } else {
                                     ToastUtil.showLongToast(response.getInfo());
+                                    getView().setNullPersons();
                                 }
                             }
                         }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.model.DepartBean;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +62,12 @@ public class DepartAdapter extends BaseAdapter {
     }
 
     public void setData(List<DepartBean> departList){
-        this.departList = departList;
+        if(departList == null || departList.size() == 0){
+            this.departList = new ArrayList<>();
+        }else{
+            this.departList = departList;
+        }
+
         notifyDataSetChanged();
     }
 }
