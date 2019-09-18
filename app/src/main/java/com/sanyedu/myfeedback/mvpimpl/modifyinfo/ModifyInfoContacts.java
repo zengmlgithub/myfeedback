@@ -9,6 +9,7 @@ public final class ModifyInfoContacts {
     }
 
     public interface IModifyInfoPresenter extends IBasePresenter{
-        void ModifyObj(String type,String obj);
+        void ModifyObj(String id,String phone);
+        void ModifyEmail(String id,String email);
     }
 }

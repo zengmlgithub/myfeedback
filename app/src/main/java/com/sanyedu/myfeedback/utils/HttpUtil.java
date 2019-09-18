@@ -137,6 +137,7 @@ public class HttpUtil {
         public final static String TE_USER = "teUser";
         public final static String TE_ID = "id";
         public final static String TE_PHONE = "tePhone";
+        public final static String TE_EMAIL = "teEmail";
     }
 
 

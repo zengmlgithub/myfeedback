@@ -23,11 +23,6 @@ import java.util.List;
 
 public class ModifyEmailActivity extends SanyBaseActivity<ModifyInfoPresenter> implements ModifyInfoContacts.IModifyInfoUI {
 
-//    @BindView(R.id.goback_ib)
-//    ImageButton gobackIB;
-
-//    @BindView(R.id.title_tv)
-//    TextView titleTv;
 
     @BindView(R.id.modify_content_etw)
     EditText modifyEt;
@@ -54,6 +49,7 @@ public class ModifyEmailActivity extends SanyBaseActivity<ModifyInfoPresenter> i
     public void showModifySuccess() {
         ToastUtil.showLongToast(R.string.modify_email_success);
         //TODO：反回主页时对主页进行刷新
+        finish();
     }
 
     @OnClick(R.id.confirm_btn)
@@ -77,8 +73,9 @@ public class ModifyEmailActivity extends SanyBaseActivity<ModifyInfoPresenter> i
             newBean.setTeEmail(emailStr);
             List<TeacherBean> beanList = new ArrayList<>();
             beanList.add(newBean);
-            String str = new Gson().toJson(beanList);
-            getPresenter().ModifyObj("1",str);
+//            String str = new Gson().toJson(beanList);
+
+            getPresenter().ModifyEmail(newBean.getId(),newBean.getTeEmail());
         }else{
             //TODO:当email没有输入的时候，这个时候是不需要改东西的时候，可以做一个用户提示
         }
