@@ -24,8 +24,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     private void updateFeedback(@NonNull ChangeFeedbackBean changeFeedbackBean,String pathA,String pathB,String pathC){
 
         String url = HttpUtil.getPort(HttpUtil.UPLOAD_SUBRECTIFICATION_PORT);
-
-        SanyLogs.i(changeFeedbackBean.toString());
+        SanyLogs.i("updateFeedback:" + changeFeedbackBean.toString());
 
         try {
             if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
@@ -94,15 +93,6 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
     @Override
     public void updateFeedback(final List<String> files, final ChangeFeedbackBean changeFeedbackBean) {
 
-//        try {
-//            if(!CheckUtils.isAllObjFieldLegacity(changeFeedbackBean)){
-//                SanyLogs.e("ChangeFeedbackBean is null,return!");
-//                return;
-//            }
-//        }catch (Exception e){
-//            SanyLogs.e(e.toString());
-//            return;
-//        }
 
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");

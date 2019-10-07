@@ -34,7 +34,7 @@ public class HttpUtil {
     public static final String UPDATE_PERSONAL_PASSWORD_PORT = "schUser/updPass"; //修改个人密码
     public static final String UPDATE_PERSON_OBJ_PORT = "schUser/updData"; //修改个人资料
     public static final String UPLOAD_PHOTO_PORT = "submitFeedback/updateFile"; //图片上传
-    public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";  //更新状态
+    public static final String UPLOAD_SUBRECTIFICATION_PORT = "submitFeedback/subRectification";  //更新图片状态
     public static final String CLOASE_FEEDBACK_PORT = "submitFeedback/updFeedback"; //关闭反馈
     public static final String GET_MY_FEEDBACK_COUNT_PORT = "academic/selMyInfoNum";//获取条数
     public static final String GET_APP_VERSION_PORT = "schUser/getVersion"; //获取app应用信息

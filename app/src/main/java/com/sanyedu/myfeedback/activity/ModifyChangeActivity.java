@@ -41,7 +41,7 @@ import java.util.List;
  */
 public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter> implements ModifyChangeContacts.IModifyChangeUI,ImagePickerAdapter.OnRecyclerViewItemClickListener {
 
-    private String feedbackStatus = ConstantUtil.MODIFY_MODIFING; //默认为选中状态
+    private String feedbackStatus = ConstantUtil.MODIFY_MODIFING; //默认整改中为为选中状态
 
     @OnClick(R.id.goback_tv)
     public void goBack(){
@@ -55,6 +55,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    //整改和关闭按钮
     @OnCheckedChanged({R.id.modifying_rb, R.id.modified_rb})
     public void onRadioCheck(CompoundButton view,boolean isChanged){
         switch (view.getId()){
@@ -107,6 +108,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         return new ModifyChangePresenter(this);
     }
 
+    //设置图片的格式
     private void initImagePickerMulti() {
         ImagePicker imagePicker = ImagePicker.getInstance();
         imagePicker.setImageLoader(new GlideImageLoader());   //设置图片加载器
@@ -263,6 +265,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     }
 
 
+    //整改上传
     @OnClick(R.id.save_tv)
     public void save(){
         ChangeFeedbackBean changeFeedbackBean = new ChangeFeedbackBean();
@@ -283,7 +286,9 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         String feedbackPerdept = UserInfoHelper.getPersonDept();
         changeFeedbackBean.setFeedbackPerdept(feedbackPerdept);
 
+
         List<String> pathList = getPathList();
+        SanyLogs.i("update feedbackbean:" + changeFeedbackBean.toString());
         getPresenter().updateFeedback(pathList,changeFeedbackBean);
     }
 
