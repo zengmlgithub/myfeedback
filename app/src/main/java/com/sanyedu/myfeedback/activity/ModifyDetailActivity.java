@@ -2,14 +2,11 @@ package com.sanyedu.myfeedback.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,7 +18,6 @@ import butterknife.OnClick;
 import com.luck.picture.lib.photoview.PhotoView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
-import com.sanyedu.myfeedback.adapter.NoticeAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailBean;
@@ -30,9 +26,6 @@ import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.*;
 import com.sanyedu.myfeedback.widget.CloseFeedbackDialog;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 整改详情
@@ -140,6 +133,13 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         });
 
         adapter = new ModifyDetailAdapter(this);
+        adapter.setOnItemClickListener(new ModifyDetailAdapter.OnItemClickListener() {
+            @Override
+            public void onclick(View view, DetailedList detail) {
+                SanyLogs.i("you click:" + detail.toString());
+                StartUtils.startActivity(ModifyDetailActivity.this,ModifyItemActivity.class,detail);
+            }
+        });
         recyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -213,57 +213,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
             int curColor = StatusUtils.rectiStatus2Color(rectiStatus);
             departRl.setBackgroundResource(curColor);
-
-
-//            final ArrayList<ThumbViewInfo> mThumbViewInfoList = createThumbViewInfo(bean.getFeedbackA(),bean.getFeedbackB(),bean.getFeedbackB()); // 这个最好定义成成员变量
-//
-//            photo1Iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    GPreviewBuilder.from(ModifyDetailActivity.this)
-//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
-//                            .to(ImageLookActivity.class)
-//                            .setData(mThumbViewInfoList)
-//                            .setCurrentIndex(0)
-//                            .setSingleFling(true)
-//                            .setType(GPreviewBuilder.IndicatorType.Number)
-//                            // 小圆点
-//                            .start();//启动
-//
-//                }
-//            });
-//
-//            photo1Iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    GPreviewBuilder.from(ModifyDetailActivity.this)
-//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
-//                            .to(ImageLookActivity.class)
-//                            .setData(mThumbViewInfoList)
-//                            .setCurrentIndex(1)
-//                            .setSingleFling(true)
-//                            .setType(GPreviewBuilder.IndicatorType.Number)
-//                            // 小圆点
-//                            .start();//启动
-//
-//                }
-//            });
-//
-//            photo1Iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    GPreviewBuilder.from(ModifyDetailActivity.this)
-//                            //是否使用自定义预览界面，当然8.0之后因为配置问题，必须要使用
-//                            .to(ImageLookActivity.class)
-//                            .setData(mThumbViewInfoList)
-//                            .setCurrentIndex(2)
-//                            .setSingleFling(true)
-//                            .setType(GPreviewBuilder.IndicatorType.Number)
-//                            // 小圆点
-//                            .start();//启动
-//
-//                }
-//            });
         }
 
 

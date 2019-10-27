@@ -57,4 +57,5 @@ public class ConstantUtil {
 
     public static final String MODIFY_MODIFIED = "2"; //已整改
     public static final String MODIFY_MODIFING = "1"; //整改中
+    public static final String OBJ = "obj";
 }

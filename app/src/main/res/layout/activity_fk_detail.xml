@@ -151,7 +151,7 @@
 
     <RelativeLayout
             android:layout_width="325dp"
-            android:layout_height="19dp"
+            android:layout_height="25dp"
             android:layout_below="@id/detail_ll"
             android:layout_marginTop="21dp"
             android:background="@color/depart_blue"

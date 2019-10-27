@@ -19,6 +19,8 @@ public class ModifyDetailAdapter extends RecyclerView.Adapter<ModifyDetailAdapte
     private List<DetailedList> list;
     private View view ;
 
+    private OnItemClickListener onItemClickListener = null;
+
     public ModifyDetailAdapter(Context context){
         this.inflater = LayoutInflater.from(context);
     }
@@ -32,14 +34,18 @@ public class ModifyDetailAdapter extends RecyclerView.Adapter<ModifyDetailAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        DetailedList detail = list.get(i);
-
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
+        final DetailedList detail = list.get(position);
         if (detail != null){
-//            myViewHolder.headIv.setBackground();
             myViewHolder.nameTv.setText(detail.getFeedbackPername());
             myViewHolder.longTimeTv.setText(detail.getFeedbackTime());
             myViewHolder.contentTv.setText(detail.getFeedbackContent());
+            myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onclick(v,detail);
+                }
+            });
         }
     }
 
@@ -73,4 +79,12 @@ public class ModifyDetailAdapter extends RecyclerView.Adapter<ModifyDetailAdapte
         notifyDataSetChanged();
     }
 
+
+    public interface OnItemClickListener{
+        void onclick(View view,DetailedList detail);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.onItemClickListener = listener;
+    }
 }

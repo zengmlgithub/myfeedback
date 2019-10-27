@@ -3,13 +3,15 @@
   */
 package com.sanyedu.myfeedback.model;
 
+import java.io.Serializable;
+
 /**
  * Auto-generated: 2019-05-22 17:26:30
  *
  * @author bejson.com (i@bejson.com)
  * @website http://www.bejson.com/java2pojo/
  */
-public class DetailedList {
+public class DetailedList implements Serializable {
 
     private String feedbackContent;
     private String feedbackFilea;
@@ -22,6 +24,8 @@ public class DetailedList {
     private String feedbackStatus;
     private String feedbackTime;
     private String id;
+
+
     public void setFeedbackContent(String feedbackContent) {
          this.feedbackContent = feedbackContent;
      }

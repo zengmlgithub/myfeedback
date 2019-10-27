@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import com.sanyedu.myfeedback.log.SanyLogs;
 
+import java.io.Serializable;
+
 
 /**
  * 启动activity
@@ -25,6 +27,17 @@ public class StartUtils {
             intent.setClass(packageContext, cls);
             packageContext.startActivity(intent);
         }catch (Exception e){
+            SanyLogs.i(e.toString());
+        }
+    }
+
+    public static void startActivity(Context packageContext, Class<?> cls, Serializable obj){
+        try{
+            Intent intent = new Intent();
+            intent.putExtra(ConstantUtil.OBJ,obj);
+            intent.setClass(packageContext, cls);
+            packageContext.startActivity(intent);
+        }catch(Exception e){
             SanyLogs.i(e.toString());
         }
     }
