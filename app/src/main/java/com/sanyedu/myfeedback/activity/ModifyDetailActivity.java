@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -43,14 +44,14 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @BindView(R.id.date_tv)
     TextView dateTv;
     @BindView(R.id.detail_1)
-    PhotoView photo1Iv;
+    ImageView photo1Iv;
 
 
     @BindView(R.id.detail_2)
-    PhotoView photo2Iv;
+    ImageView photo2Iv;
 
     @BindView(R.id.detail_3)
-    PhotoView photo3Iv;
+    ImageView photo3Iv;
 
     @BindView(R.id.fk_info_rv)
     RecyclerView recyclerView;
@@ -85,6 +86,21 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 //            startActivity(photoPreviewIntentBuilder.build());
 //    }
 
+    @OnClick({R.id.detail_1,R.id.detail_2,R.id.detail_3})
+    public void onPreviewClicked(View view){
+        String path = null;
+        if (view.getId() == R.id.detail_1){
+            path = feedbackA;
+        }else if(view.getId() == R.id.detail_2){
+            path = feedbackB;
+        }else if(view.getId() == R.id.detail_3){
+            path = feedbackC;
+        }else{
+            //TODO:这个时候是没有的
+        }
+        SanyLogs.i("path:" + path);
+        StartUtils.startActivity(ModifyDetailActivity.this,PhotoActivity.class,path);
+    }
 
     @OnClick(R.id.modify_fk_ib)
     public void setVsibleOfOperator() {

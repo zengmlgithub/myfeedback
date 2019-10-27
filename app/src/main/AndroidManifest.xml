@@ -153,6 +153,12 @@
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar"
                 />
 
+        <activity android:name=".activity.PhotoActivity"
+                android:launchMode="singleInstance"
+                android:screenOrientation="portrait"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+                />
+
         <service android:name=".update.LoadingService" />
 
     </application>

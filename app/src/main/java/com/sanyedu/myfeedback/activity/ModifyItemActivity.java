@@ -1,10 +1,8 @@
 package com.sanyedu.myfeedback.activity;
 
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,12 +14,14 @@ import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailedList;
 import com.sanyedu.myfeedback.mvp.IBaseXPresenter;
 import com.sanyedu.myfeedback.utils.ConstantUtil;
+import com.sanyedu.myfeedback.utils.StartUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * created by zengmaolin
@@ -41,6 +41,11 @@ public class ModifyItemActivity extends SanyBaseActivity {
 
     @BindView(R.id.content_tv)
     TextView contentTv;
+
+    @OnClick(R.id.goback_ib)
+    public void onGoback(){
+        finish();
+    }
 
     DetailedList detailBean;
 
@@ -63,7 +68,8 @@ public class ModifyItemActivity extends SanyBaseActivity {
             recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
                 @Override
                 public void onSimpleItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                    SanyLogs.i("you click:" + photoPaths.get(position));
+//                    SanyLogs.i("you click:" + photoPaths.get(position));
+                    StartUtils.startActivity(ModifyItemActivity.this,PhotoActivity.class,photoPaths.get(position));
                 }
             });
         }

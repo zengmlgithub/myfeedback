@@ -6,6 +6,8 @@
         android:paddingLeft="5dp"
         android:paddingBottom="5dp">
 
+
+
     <com.sanyedu.myfeedback.widget.MyImageView
             android:id="@+id/iv_img"
             android:layout_width="match_parent"
