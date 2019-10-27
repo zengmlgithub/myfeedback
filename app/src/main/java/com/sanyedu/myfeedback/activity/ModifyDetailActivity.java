@@ -16,11 +16,16 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+
+import com.luck.picture.lib.photoview.PhotoView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
+import com.sanyedu.myfeedback.adapter.NoticeAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailBean;
+import com.sanyedu.myfeedback.model.DetailedList;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.*;
@@ -45,13 +50,14 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @BindView(R.id.date_tv)
     TextView dateTv;
     @BindView(R.id.detail_1)
-    ImageView photo1Iv;
+    PhotoView photo1Iv;
+
 
     @BindView(R.id.detail_2)
-    ImageView photo2Iv;
+    PhotoView photo2Iv;
 
     @BindView(R.id.detail_3)
-    ImageView photo3Iv;
+    PhotoView photo3Iv;
 
     @BindView(R.id.fk_info_rv)
     RecyclerView recyclerView;
@@ -79,19 +85,26 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     @BindView(R.id.modify_fk_ib)
     ImageButton modifyFkIb;
 
+//    @OnClick(R.id.detail_1)
+//    public void onPreviewClicked() {
+//            BGAPhotoPreviewActivity.IntentBuilder photoPreviewIntentBuilder = new BGAPhotoPreviewActivity.IntentBuilder(this).saveImgDir(null); // 保存图片的目录，如果传 null，则没有保存图片功能
+//            photoPreviewIntentBuilder.previewPhoto(feedbackA);
+//            startActivity(photoPreviewIntentBuilder.build());
+//    }
+
+
     @OnClick(R.id.modify_fk_ib)
-    public void setVsibleOfOperator(){
-        if(opeartorRl.getVisibility() == View.VISIBLE){
+    public void setVsibleOfOperator() {
+        if (opeartorRl.getVisibility() == View.VISIBLE) {
             opeartorRl.setVisibility(View.GONE);
-        }else{
+        } else {
             opeartorRl.setVisibility(View.VISIBLE);
         }
     }
 
 
-
     @OnClick(R.id.goback_ib)
-    public void goback(){
+    public void goback() {
         finish();
     }
 
@@ -103,6 +116,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         ButterKnife.bind(this);
 
         initFeedbackId();
+
+
 //        initOperator();
 
         modifyTv = opeartorRl.findViewById(R.id.modify_pwd_tv);
@@ -110,12 +125,12 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         modifyTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StartUtils.startActivity(ModifyDetailActivity.this,ModifyChangeActivity.class,feedbackId);
+                StartUtils.startActivity(ModifyDetailActivity.this, ModifyChangeActivity.class, feedbackId);
                 opeartorRl.setVisibility(View.GONE);
             }
         });
 
-        closeTv.setOnClickListener(new View.OnClickListener(){
+        closeTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                finish();
@@ -131,20 +146,22 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
         showLoading();
         getPresenter().getDetail(feedbackId);
+
+
     }
 
     private void initFeedbackId() {
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             feedbackId = intent.getStringExtra(ConstantUtil.ID);
             SanyLogs.i("modifyDetail----feedbackId:" + feedbackId);
         }
     }
 
     private void initOperator(String rectiStatus) {
-        if("3".equals(rectiStatus) || "4".equals(rectiStatus)){
+        if ("3".equals(rectiStatus) || "4".equals(rectiStatus)) {
             modifyFkIb.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             modifyFkIb.setVisibility(View.INVISIBLE);
         }
     }
@@ -164,14 +181,21 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     private String feedbackB = null;
     private String feedbackC = null;
 
+//    private List<DetailedList> details = new ArrayList<>();
+
     @Override
     public void setDetail(DetailBean bean) {
         SanyLogs.i(bean.toString());
+
         if (bean != null) {
             titleTv.setText(bean.getFeedbackTitle());
             contentTv.setText(bean.getFeedbackContent());
             addressTv.setText(bean.getFeedbackAdress());
             dateTv.setText(bean.getFeedbackPubtime());
+
+            feedbackA = bean.getFeedbackA();
+            feedbackB = bean.getFeedbackB();
+            feedbackC = bean.getFeedbackC();
 
             if (adapter != null) {
                 adapter.setList(bean.getDetailedList());
@@ -180,9 +204,9 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             SanyLogs.i("ModifyDetailActivity~~~~" + rectiStatus);
             initOperator(rectiStatus);
 
-            LoaderPictureUtils.load(this,bean.getFeedbackA(),photo1Iv,-1);
-            LoaderPictureUtils.load(this,bean.getFeedbackB(),photo2Iv,-1);
-            LoaderPictureUtils.load(this,bean.getFeedbackC(),photo3Iv,-1);
+            LoaderPictureUtils.load(this, bean.getFeedbackA(), photo1Iv, -1);
+            LoaderPictureUtils.load(this, bean.getFeedbackB(), photo2Iv, -1);
+            LoaderPictureUtils.load(this, bean.getFeedbackC(), photo3Iv, -1);
 
             feedbackDepartNameTv.setText("反馈部门：" + bean.getFeedbackDept());
             toResponseDepartNameTv.setText("责任部门：" + bean.getToResponsibledept());
@@ -246,7 +270,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         hideLoading();
     }
 
-    
 
     @Override
     public void getDetailFailure(String msg) {
@@ -261,15 +284,16 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     }
 
     @Override
-    public void modifySuccess(){
+    public void modifySuccess() {
         closeDialog();
         hideLoading();
         getPresenter().getDetail(feedbackId);
     }
 
     private CloseFeedbackDialog closeFeedbackDialog;
-    private void showCloaseDialog(){
-        if(closeFeedbackDialog == null){
+
+    private void showCloaseDialog() {
+        if (closeFeedbackDialog == null) {
             closeFeedbackDialog = new CloseFeedbackDialog(ModifyDetailActivity.this, R.style.sany_dialog, new CloseFeedbackDialog.OnClickListener() {
                 @Override
                 public void onPositive(Dialog dialog, boolean cancel) {
@@ -285,20 +309,20 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             });
         }
 
-        if(!closeFeedbackDialog.isShowing()){
+        if (!closeFeedbackDialog.isShowing()) {
             closeFeedbackDialog.show();
         }
     }
 
-    private void closeDialog(){
-        if (closeFeedbackDialog != null && closeFeedbackDialog.isShowing()){
+    private void closeDialog() {
+        if (closeFeedbackDialog != null && closeFeedbackDialog.isShowing()) {
             closeFeedbackDialog.dismiss();
         }
     }
 
     //提交内容
-    private void closeFeedback(String feedbackContent){
-        if(TextUtils.isEmpty(feedbackContent)){
+    private void closeFeedback(String feedbackContent) {
+        if (TextUtils.isEmpty(feedbackContent)) {
             ToastUtil.showLongToast("请输入内容");
             return;
         }
@@ -308,6 +332,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         String feedbackPerdept = UserInfoHelper.getPersonDept();
 
         showLoading();
-        getPresenter().closeFeedback(feedbackId,feedbackContent,feedbakcPerid,feedbackPername,feedbackPerdept);
+        getPresenter().closeFeedback(feedbackId, feedbackContent, feedbakcPerid, feedbackPername, feedbackPerdept);
     }
 }

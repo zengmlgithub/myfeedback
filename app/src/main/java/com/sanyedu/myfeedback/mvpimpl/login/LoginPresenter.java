@@ -100,6 +100,7 @@ public class LoginPresenter extends BasePresenter<LoginContacts.ILoginUI> implem
 
                             @Override
                             public void onResponse(BaseModel<List<TeacherBean>> response, int id) {
+
                                 SanyLogs.i("userInfo:" + response.getObj().get(0));
                                 try {
                                     TeacherBean userInfo = response.getObj().get(0);

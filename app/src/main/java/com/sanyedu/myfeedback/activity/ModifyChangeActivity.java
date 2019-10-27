@@ -288,7 +288,11 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
 
 
         List<String> pathList = getPathList();
-        SanyLogs.i("update feedbackbean:" + changeFeedbackBean.toString());
+
+        for(String path : pathList){
+            SanyLogs.i("update path:" + path);
+        }
+
         getPresenter().updateFeedback(pathList,changeFeedbackBean);
     }
 

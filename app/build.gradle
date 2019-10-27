@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.sany.myfeedback"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 2
         versionName "1.0.1"
@@ -34,8 +34,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
-    implementation 'de.hdodenhof:circleimageview:3.0.0'  //圆形图片
+    implementation 'de.hdodenhof:circleimageview:3.0.1'  //圆形图片
 
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.3' //图片选择器
 
@@ -81,4 +80,8 @@ dependencies {
     implementation 'com.qianwen:update-app:3.5.2'
 
     implementation 'com.lzy.net:okgo:3.0.4'
+
+    //增加recycleview.adapter的封装类
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v2.9.0'
+
 }

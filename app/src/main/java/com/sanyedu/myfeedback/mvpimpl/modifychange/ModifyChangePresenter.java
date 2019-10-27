@@ -104,7 +104,7 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
             public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
                 if(service.hasPhoto()){
                     if(changeFeedbackBean != null){
-                        updateFeedback(changeFeedbackBean,files.get(0),files.get(1),files.get(2));
+                        updateFeedback(changeFeedbackBean,UpdatePictureService.getServicePathA(serverPathList),UpdatePictureService.getServicePathB(serverPathList),UpdatePictureService.getServicePathC(serverPathList));
                     }
                 }
             }
