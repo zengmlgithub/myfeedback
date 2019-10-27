@@ -24,7 +24,7 @@ public class StatusUtils {
                 statusStr = "整改中";
                 break;
             case "5":
-                statusStr = "已整改";
+                statusStr = "已完成";
                 break;
             case "6":
                 statusStr = "已关闭";
