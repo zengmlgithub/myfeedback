@@ -40,19 +40,19 @@ public class FeedbackMyActivity extends SanyBaseActivity implements MyFeedbackCo
 
         BaseFeedbackMyFragment submitedFragment = BaseFeedbackMyFragment.newInstance("1");
         BaseFeedbackMyFragment checkedFragment = BaseFeedbackMyFragment.newInstance("2");
-        BaseFeedbackMyFragment waittingFragment = BaseFeedbackMyFragment.newInstance("3");
+//        BaseFeedbackMyFragment waittingFragment = BaseFeedbackMyFragment.newInstance("3");
         BaseFeedbackMyFragment finishFragment =  BaseFeedbackMyFragment.newInstance("4");
 
         fragments.add(submitedFragment);
         fragments.add(checkedFragment);
-        fragments.add(waittingFragment);
+//        fragments.add(waittingFragment);
         fragments.add(finishFragment);
 
         titles = new ArrayList<>();
         titles.add("待整改");
         titles.add("整改中");
-        titles.add("已整改");
-        titles.add("已关闭");
+//        titles.add("已整改");
+        titles.add("已结束");
 
         feedbackAdapter = new FeedbackAdapter(getSupportFragmentManager(), this, fragments, titles,tabLayout);
         viewPager.setAdapter(feedbackAdapter);
