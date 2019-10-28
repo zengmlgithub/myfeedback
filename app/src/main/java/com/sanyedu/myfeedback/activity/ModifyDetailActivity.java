@@ -2,6 +2,7 @@ package com.sanyedu.myfeedback.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -77,6 +78,9 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
     @BindView(R.id.modify_fk_ib)
     ImageButton modifyFkIb;
+
+    @BindView(R.id.srl)
+    SwipeRefreshLayout srfLayout;
 
     @OnClick({R.id.detail_1,R.id.detail_2,R.id.detail_3})
     public void onPreviewClicked(View view){
@@ -155,7 +159,14 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         showLoading();
         getPresenter().getDetail(feedbackId);
 
-
+        srfLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                SanyLogs.i("you have refreshed!");
+                getPresenter().getDetail(feedbackId);
+                srfLayout.setRefreshing(false);
+            }
+        });
     }
 
     private void initFeedbackId() {
@@ -198,7 +209,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             titleTv.setText(bean.getFeedbackTitle());
             contentTv.setText(bean.getFeedbackContent());
             addressTv.setText(bean.getFeedbackAdress());
-            dateTv.setText(bean.getFeedbackPubtime());
+            String simplePubtime = DateUtils.getDateString(bean.getFeedbackPubtime());
+            dateTv.setText(simplePubtime);
 
             feedbackA = bean.getFeedbackA();
             feedbackB = bean.getFeedbackB();
