@@ -12,6 +12,7 @@ public final class ModifyChangeContacts {
         int UPDATE＿FAILURE = 1;
         void updateFeedbackFailure(String msg);
         void updateFeedbackSuccess();
+
     }
 
     public interface IModifyChangePresenter extends IBasePresenter{

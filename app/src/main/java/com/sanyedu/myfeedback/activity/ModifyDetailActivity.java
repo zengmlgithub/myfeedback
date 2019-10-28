@@ -15,8 +15,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
-import com.luck.picture.lib.photoview.PhotoView;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
@@ -78,13 +76,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
 
     @BindView(R.id.modify_fk_ib)
     ImageButton modifyFkIb;
-
-//    @OnClick(R.id.detail_1)
-//    public void onPreviewClicked() {
-//            BGAPhotoPreviewActivity.IntentBuilder photoPreviewIntentBuilder = new BGAPhotoPreviewActivity.IntentBuilder(this).saveImgDir(null); // 保存图片的目录，如果传 null，则没有保存图片功能
-//            photoPreviewIntentBuilder.previewPhoto(feedbackA);
-//            startActivity(photoPreviewIntentBuilder.build());
-//    }
 
     @OnClick({R.id.detail_1,R.id.detail_2,R.id.detail_3})
     public void onPreviewClicked(View view){
@@ -181,7 +172,6 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             modifyFkIb.setVisibility(View.INVISIBLE);
         }
     }
-
 
     @Override
     protected int getLayout() {

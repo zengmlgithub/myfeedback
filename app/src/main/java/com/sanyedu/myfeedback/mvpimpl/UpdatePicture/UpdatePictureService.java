@@ -16,6 +16,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 图片上传的策略：
+ *     由客户端串行上传三张图片，上传成功后，服务器将返回三张图片的服务器地址，客户端拿到三张图片的地址后
+ *     再将三将张图片的地址写到上传的对象信息中，然后再上传其他信息，上传完后，本次通过算完
+ */
 public class UpdatePictureService {
     private List<String> pathList ;
     //服务器反馈过来的新的path
@@ -253,19 +258,6 @@ public class UpdatePictureService {
                         }
                 );
     }
-
-//    private boolean hasPhoto() {
-//        boolean result = false;
-//        if (serverPathList != null && serverPathList.size() > 0) {
-//            for (int i = 0; i < serverPathList.size(); i++) {
-//                if (!TextUtils.isEmpty(serverPathList.get(i))) {
-//                    result = true;
-//                    break;
-//                }
-//            }
-//        }
-//        return result;
-//    }
 
     private void savePathToServerList(String path, int i) {
         ToastUtil.showLongToast("第" + (i + 1) + "张图片上传成功");

@@ -96,25 +96,27 @@ public class ModifyChangePresenter extends BasePresenter<ModifyChangeContacts.IM
 
         if (files == null || files.size() <= 0) {
             SanyLogs.e("file is null,return");
-            return;
-        }
+//            return;
+            getView().updateFeedbackFailure("请上传图片");
 
-        UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
-            @Override
-            public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
-                if(service.hasPhoto()){
-                    if(changeFeedbackBean != null){
-                        updateFeedback(changeFeedbackBean,UpdatePictureService.getServicePathA(serverPathList),UpdatePictureService.getServicePathB(serverPathList),UpdatePictureService.getServicePathC(serverPathList));
+        }else{
+            UpdatePictureService updatePictureService = new UpdatePictureService(files, new UpdatePictureService.UpdateFinishedListener() {
+                @Override
+                public void updateFinished(UpdatePictureService service,List<String> serverPathList) {
+                    if(service.hasPhoto()){
+                        if(changeFeedbackBean != null){
+                            updateFeedback(changeFeedbackBean,UpdatePictureService.getServicePathA(serverPathList),UpdatePictureService.getServicePathB(serverPathList),UpdatePictureService.getServicePathC(serverPathList));
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void updateFailure(UpdatePictureService service, String msg) {
-                getView().updateFeedbackFailure(msg);
-            }
-        });
+                @Override
+                public void updateFailure(UpdatePictureService service, String msg) {
+                    getView().updateFeedbackFailure(msg);
+                }
+            });
 
-        updatePictureService.postFiles();
+            updatePictureService.postFiles();
+        }
     }
 }

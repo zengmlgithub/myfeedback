@@ -294,6 +294,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
         }
 
         getPresenter().updateFeedback(pathList,changeFeedbackBean);
+        showLoading();
     }
 
     private List<String> getPathList() {
@@ -317,6 +318,7 @@ public class ModifyChangeActivity extends SanyBaseActivity<ModifyChangePresenter
     @Override
     public void updateFeedbackFailure(String msg) {
         ToastUtil.showLongToast(msg);
+        hideLoading();
     }
 
     @Override
