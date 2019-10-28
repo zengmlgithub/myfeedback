@@ -17,8 +17,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.sanyedu.myfeedback.R;
 import com.sanyedu.myfeedback.adapter.ModifyDetailAdapter;
+import com.sanyedu.myfeedback.adapter.ModifyDetailBaseQuickAdapter;
 import com.sanyedu.myfeedback.base.SanyBaseActivity;
 import com.sanyedu.myfeedback.log.SanyLogs;
 import com.sanyedu.myfeedback.model.DetailBean;
@@ -27,6 +29,8 @@ import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailContacts;
 import com.sanyedu.myfeedback.mvpimpl.modifieddetail.ModifiedDetailPresenter;
 import com.sanyedu.myfeedback.utils.*;
 import com.sanyedu.myfeedback.widget.CloseFeedbackDialog;
+
+import java.util.List;
 
 /**
  * 整改详情
@@ -113,8 +117,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
         finish();
     }
 
-    private ModifyDetailAdapter adapter;
-
+//    private ModifyDetailAdapter adapter;
+    private ModifyDetailBaseQuickAdapter adapter;
 
     @Override
     protected void initData() {
@@ -144,14 +148,20 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             }
         });
 
-        adapter = new ModifyDetailAdapter(this);
-        adapter.setOnItemClickListener(new ModifyDetailAdapter.OnItemClickListener() {
+        adapter = new ModifyDetailBaseQuickAdapter(R.layout.item_modified_detail);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onclick(View view, DetailedList detail) {
-                SanyLogs.i("you click:" + detail.toString());
-                StartUtils.startActivity(ModifyDetailActivity.this,ModifyItemActivity.class,detail);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+               List<DetailedList> detailedLists= adapter.getData();
+               if (detailedLists != null){
+                   if(position < detailedLists.size()){
+                       DetailedList detail = detailedLists.get(position);
+                       StartUtils.startActivity(ModifyDetailActivity.this,ModifyItemActivity.class,detail);
+                   }
+               }
             }
         });
+
         recyclerView.setAdapter(adapter);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
@@ -217,7 +227,8 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
             feedbackC = bean.getFeedbackC();
 
             if (adapter != null) {
-                adapter.setList(bean.getDetailedList());
+//                adapter.setList(bean.getDetailedList());
+                adapter.addData(bean.getDetailedList());
             }
             rectiStatus = bean.getRectiStatus();
             SanyLogs.i("ModifyDetailActivity~~~~" + rectiStatus);
