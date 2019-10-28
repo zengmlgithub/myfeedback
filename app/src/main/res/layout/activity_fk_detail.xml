@@ -1,195 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent" android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <RelativeLayout
+            android:id="@+id/title_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:id="@+id/title_rl"
-    >
-        <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/goback_ib"
-                android:background="@mipmap/icon_goback"
-                android:layout_marginLeft="17dp"
-        />
-        <TextView
-                android:text="@string/detail_title"
-                style="@style/common_title_style"
-        />
+            android:layout_marginTop="6dp">
 
         <ImageButton
+                android:id="@+id/goback_ib"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/icon_fk_op"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="17dp"
-                android:layout_centerVertical="true"
+                android:layout_marginLeft="17dp"
+                android:background="@mipmap/icon_goback" />
+
+        <TextView
+                style="@style/common_title_style"
+                android:text="@string/detail_title" />
+
+        <ImageButton
                 android:id="@+id/modify_fk_ib"
-        />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="17dp"
+                android:background="@mipmap/icon_fk_op" />
     </RelativeLayout>
 
-    <include layout="@layout/layout_operator"
-             android:layout_width="60dp"
-             android:layout_height="84dp"
-             android:layout_alignParentRight="true"
-             android:id="@+id/operator_rl"
-             android:layout_below="@+id/title_rl"
-             android:layout_marginRight="20dp"
-             android:visibility="gone"
-             />
+    <include
+            android:id="@+id/operator_rl"
+            layout="@layout/layout_operator"
+            android:layout_width="60dp"
+            android:layout_height="84dp"
+            android:layout_below="@+id/title_rl"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:visibility="gone" />
 
     <TextView
+            android:id="@+id/fk_single_title"
+            style="@style/title_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/title_rl"
             android:layout_marginLeft="36dp"
-            android:layout_marginTop="38dp"
-            android:id="@+id/fk_single_title"
-            style="@style/title_style"
-    />
+            android:layout_marginTop="38dp" />
 
     <TextView
+            android:id="@+id/fk_single_detail"
+            style="@style/content_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/fk_single_title"
             android:layout_marginLeft="36dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="49dp"
-            android:id="@+id/fk_single_detail"
-            style="@style/content_style"
-            android:lines="3"
-    />
+            android:lines="3" />
 
-    <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/depart_date_rl"
-                    android:layout_below="@id/fk_single_detail"
-    >
+    <RelativeLayout
+            android:id="@+id/depart_date_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fk_single_detail">
+
         <ImageView
+                android:id="@+id/pos_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/icon_pos_bg"
 
-                android:layout_marginLeft="36dp"
-                android:id="@+id/pos_iv"
                 android:layout_centerVertical="true"
-        />
+                android:layout_marginLeft="36dp"
+                android:background="@mipmap/icon_pos_bg" />
 
         <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_toRightOf="@+id/pos_iv"
                 android:id="@+id/fk_single_pos"
                 style="@style/content_style"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:textStyle="bold"
-        />
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/pos_iv"
+                android:textStyle="bold" />
 
         <TextView
+                style="@style/content_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/date_txt"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/date_tv"
-                style="@style/content_style"
-                android:layout_centerVertical="true"
-                android:textStyle="bold"
-        />
+                android:text="@string/date_txt"
+                android:textStyle="bold" />
+
         <TextView
+                android:id="@+id/date_tv"
+                style="@style/content_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/content_style"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="26dp"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/date_tv"
                 android:layout_centerVertical="true"
-        />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="26dp" />
     </RelativeLayout>
 
 
     <LinearLayout
+            android:id="@+id/detail_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal"
             android:layout_below="@+id/depart_date_rl"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="24dp"
-            android:id="@+id/detail_ll"
-    >
+            android:orientation="horizontal">
 
         <ImageView
-                android:layout_width="78dp"
-                android:layout_height="78dp"
-                android:background="@color/black"
                 android:id="@+id/detail_1"
-                android:scaleType="fitXY"
-        />
-
-        <ImageView
                 android:layout_width="78dp"
                 android:layout_height="78dp"
                 android:background="@color/black"
+                android:scaleType="fitXY" />
+
+        <ImageView
                 android:id="@+id/detail_2"
-                android:layout_marginLeft="27dp"
-                android:scaleType="fitXY"
-        />
-
-        <ImageView
                 android:layout_width="78dp"
                 android:layout_height="78dp"
-                android:background="@color/black"
-                android:id="@+id/detail_3"
                 android:layout_marginLeft="27dp"
-                android:scaleType="fitXY"
-        />
+                android:background="@color/black"
+                android:scaleType="fitXY" />
+
+        <ImageView
+                android:id="@+id/detail_3"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_marginLeft="27dp"
+                android:background="@color/black"
+                android:scaleType="fitXY" />
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
+            android:id="@+id/fk_pl_rl"
             android:layout_width="325dp"
             android:layout_height="25dp"
             android:layout_below="@id/detail_ll"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="21dp"
             android:background="@color/depart_blue"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/fk_pl_rl"
 
-    >
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/feedback_depart_tv"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="22dp"
-                style="@style/feedback_title_size_style"
+            >
 
-        />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/polity_depart_tv"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="9dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                style="@style/feedback_title_size_style"
-                android:textColor="@color/white"
-        />
-    </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            <TextView
+                    android:id="@+id/feedback_depart_tv"
+                    style="@style/feedback_title_size_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="22dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    />
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            <TextView
+                    android:id="@+id/polity_depart_tv"
+                    style="@style/feedback_title_size_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="9dp"
+                    android:textColor="@color/white"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    />
+        </RelativeLayout>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+            android:id="@+id/fk_info_rv"
             android:layout_width="312dp"
             android:layout_height="match_parent"
             android:layout_below="@id/fk_pl_rl"
-            android:layout_marginTop="9dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="12dp"
-            android:id="@+id/fk_info_rv"
-    >
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="12dp">
 
     </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

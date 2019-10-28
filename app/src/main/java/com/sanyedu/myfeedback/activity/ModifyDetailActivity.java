@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -64,7 +65,7 @@ public class ModifyDetailActivity extends SanyBaseActivity<ModifiedDetailPresent
     TextView toResponseDepartNameTv;
 
     @BindView(R.id.fk_pl_rl)
-    RelativeLayout departRl;
+    LinearLayout departRl;
 
     TextView modifyTv;
     TextView closeTv;
